@@ -1,6 +1,8 @@
 @echo off
 
-set DEST_FOLDER=.\..\..\_back_up\_bin
+call .\..\shared\_path_all.cmd
+
+set DEST_FOLDER=%BACK_UP_ZIP_PATH%
 
 set DATE_TIME=%date: =0% %TIME: =0%
 
@@ -21,7 +23,7 @@ goto NEWITERATION
 
 :FINISH
 
-SET DEST_NAME="%DEST_FOLDER%\%DATE_TIME%"
+SET DEST_NAME=%DEST_FOLDER%\%DATE_TIME%
 SET PATH=%PATH%;%PROGRAMFILES%\7-Zip;%PROGRAMFILES(x86)%\7-Zip
 
 

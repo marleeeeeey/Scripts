@@ -1,0 +1,10 @@
+@echo off
+
+call zip_init.cmd
+
+set SOURSE_FOLDER_NAME=RSU-135
+set SOURSE_FOLDER_PATH=%SOLUTION_BIN_PATH%\%SOURSE_FOLDER_NAME%
+
+7z a "%DEST_NAME%_%SOURSE_FOLDER_NAME%" %SOURSE_FOLDER_PATH%\ -mhe=on 
+
+::pause

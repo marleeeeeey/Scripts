@@ -2,6 +2,10 @@
 !include "MUI2.nsh"
 !include "LogicLib.nsh"
 
+!define PATH_TO_OUT            "g:\_back_up\_nsis\"
+!define PATH_TO_BIN_FILE       "g:\Programming\_bin\RSU-135\"
+!define PATH_TO_INFO           "g:\Programming\Work\RSU-135\"
+
 SetCompressor /SOLID lzma
 !define /date MyTIMESTAMP      "%Y-%m-%d_%H%M"
 !define /date My_VERSION_TIME  "%Y.%m.%d.%H.%M"
@@ -9,9 +13,6 @@ SetCompressor /SOLID lzma
 
 !define CHEAT_INSTALL_MSG      "cheat_install"
 !define CHEAT_INSTALL_CMD      "cheat_install"
-!define PATH_TO_OUT            ".\..\..\_back_up\_nsis\"
-!define PATH_TO_BIN_FILE       ".\RSU-135\"
-!define PATH_TO_INFO           ".\..\Work\RSU-135\"
 !define PRODUCT_NAME           "RSU-135"
 !define ACCORD_LNK_NAME        "${PRODUCT_NAME} accord mode"
 !define ACCORD_LNK_COMMANDS    "accord accord_ip:0.0.0.0 accord_port:0 ${CHEAT_INSTALL_CMD}"

@@ -1,0 +1,8 @@
+// Not use this files
+*.sdf  
+*.vc.db
+*.opendb
+//Debug          
+//Release        
+//GeneratedFiles 
+//_bin       
