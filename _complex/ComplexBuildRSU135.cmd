@@ -2,6 +2,9 @@
 
 call .\..\shared\_path_all.cmd
 
+set INVITE_USER_STRING=Please input postfix (NOT use SPACE)
+call .\..\shared\_promtString.cmd
+
 cd %SOLUTION_PROGRAMMING_PATH%
     call copy_to_bin.cmd
 
@@ -14,8 +17,8 @@ cd %SOLUTION_SCRIPTS_PATH%\copy
 cd %SOLUTION_SCRIPTS_PATH%\zip_pack
     call zip_RSU-135.cmd
 
-cd %SOLUTION_SCRIPTS_PATH%\nsis
-    call nsis_RSU-135.cmd
+::cd %SOLUTION_SCRIPTS_PATH%\nsis
+::    call nsis_RSU-135.cmd
     
     
 pause

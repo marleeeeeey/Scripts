@@ -55,7 +55,6 @@ SetCompressor /SOLID lzma
 !define MUI_FINISHPAGE_SHOWREADME               "$INSTDIR\${HISTORY_TXT}"
 !define MUI_FINISHPAGE_SHOWREADME_NOTCHECKED         
 
-
 Name                "${PRODUCT_NAME}"
 Caption             "${PRODUCT_NAME} ${PRODUCT_VERSION}" 
 OutFile             "${PATH_TO_OUT}${MyTIMESTAMP} ${PRODUCT_NAME}_install(${CHEAT_INSTALL_MSG}).exe"
