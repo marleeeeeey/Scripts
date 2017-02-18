@@ -1,22 +1,25 @@
 @echo off
 
+
+:: change only archive name
+
 set ARCHIVE_NAME=acr.7z
 
 
 
-set DEST_FOLDER=%PROGRAMFILES(x86)%
+set PF_FOLDER=%PROGRAMFILES(x86)%
 
-if exist "%DEST_FOLDER%" (
+if exist "%PF_FOLDER%" (
     echo System x64
 ) else (
     echo System x86
-    set DEST_FOLDER=%PROGRAMFILES%
+    set PF_FOLDER=%PROGRAMFILES%
 )
 
-echo PF folder: %DEST_FOLDER%
+echo PF folder: %PF_FOLDER%
 
 SET PATH=%PATH%;%PROGRAMFILES%\7-Zip;%PROGRAMFILES(x86)%\7-Zip
 
-7z x "%ARCHIVE_NAME%" -o"%DEST_FOLDER%\"
+7z x "%ARCHIVE_NAME%" -o"%PF_FOLDER%\"
 
 pause
