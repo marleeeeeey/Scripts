@@ -1,3 +1,4 @@
+@echo off
 ECHO Start Power REEBOT ...
 
 SET POWER_FLAGS=-t 1 -r -f

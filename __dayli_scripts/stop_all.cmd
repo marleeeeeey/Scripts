@@ -1,3 +1,4 @@
+@echo off
 echo Start Stop All ...
 
 call _kill_all_process.cmd

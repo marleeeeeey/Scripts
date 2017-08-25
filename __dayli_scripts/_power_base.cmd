@@ -1,3 +1,4 @@
+@echo off
 echo Start Power Off ...
 echo %POWER_FLAGS%
 

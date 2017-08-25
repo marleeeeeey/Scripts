@@ -1,3 +1,4 @@
+@echo off
 echo Start Kill All Process ...
 
 TaskkillFlags=""
