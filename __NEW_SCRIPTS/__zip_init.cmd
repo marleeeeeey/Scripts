@@ -24,9 +24,13 @@ goto NEWITERATION
 :FINISH
 
 SET DEST_NAME=%DEST_FOLDER%\%DATE_TIME%
+ECHO add 7-Zip Directory to PATH
 SET PATH=%PATH%;%PROGRAMFILES%\7-Zip;%PROGRAMFILES(x86)%\7-Zip
 
 
+echo **************** __zip_init.cmd **********************
+echo DEST_NAME=%DEST_NAME%
+echo ******************************************************
 
 
 
