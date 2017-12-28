@@ -1,0 +1,3 @@
+version=classic
+PATH=/usr/local/old
+PS1="classic> "

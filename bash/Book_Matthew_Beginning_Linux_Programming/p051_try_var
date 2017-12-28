@@ -1,0 +1,22 @@
+salutation="Hello"
+echo $salutation
+echo "The program $0 is now running"
+echo -n "Please enter a new greeting: "
+read salutation
+echo $salutation
+
+if test -f $salutation
+then
+  echo "file exists"
+else
+  echo "file not exists"
+fi
+
+if test -d $salutation
+then
+  echo "it is folder"
+else
+  echo "is isn't folder"
+fi
+
+exit 0

@@ -1,0 +1,10 @@
+foo(){
+  echo "Hello from function!"
+}
+
+foo
+
+result="$(foo)"
+echo result="$result"
+
+exit 0
