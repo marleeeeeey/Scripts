@@ -1,0 +1,6 @@
+import sys
+sys.path.append('g:\\Programming\\YandexShcool\\shared\\')
+import imp
+import my_imports
+imp.reload(my_imports)   # перезагрузка модуля в любом случае
+from my_imports import *
