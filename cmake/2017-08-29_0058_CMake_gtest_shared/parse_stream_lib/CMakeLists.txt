@@ -1,0 +1,17 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 3.9.0)
+
+PROJECT(parse_stream)
+
+SET(HEADER_FILES
+    include/parse_stream/parse_stream.h)
+
+SET(SOURCE_FILES
+    src/parse_stream.cpp)
+
+ADD_LIBRARY(parse_stream STATIC ${SOURCE_FILES} ${HEADER_FILES})
+
+TARGET_INCLUDE_DIRECTORIES(${PROJECT_NAME} PUBLIC ./include)
+
+TARGET_INCLUDE_DIRECTORIES(${PROJECT_NAME} PRIVATE ./include/${PROJECT_NAME})
+
+TARGET_LINK_LIBRARIES(parse_stream my_math)
