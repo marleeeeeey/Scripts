@@ -12,3 +12,6 @@ xcopy "%source_file%" "%dest_folder%" /Y
 
 :: For more information visit:
 :: https://stackoverflow.com/questions/14578175/xcopy-with-credentials-on-remote-machine
+
+:: How to Specify Pre-Build and Post-Build Events in Visual Studio:
+:: https://msdn.microsoft.com/en-us/library/ke5z92ks.aspx
