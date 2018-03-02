@@ -1,11 +1,14 @@
-SET username=user
-SET password=***
-SET target_folder=\\WIN7STYULENEV\styulenev_shared
-SET target_file=$(TargetPath)
+:: How to use:
+:: remote_copy.cmd source_file dest_folder user pass  
 
-echo Remote Copy: '$(TargetPath)' to '%target_folder%'
-net use "%target_folder%" %password% /user:domain\%username%
-xcopy "%target_file%" "%target_folder%" /Y
+SET source_file=%1
+SET dest_folder=%2
+SET username=%3
+SET password=%4
 
-::For more information visit:
-::https://stackoverflow.com/questions/14578175/xcopy-with-credentials-on-remote-machine
+echo Remote Copy: '%source_file%' to '%dest_folder%'
+net use "%dest_folder%" %password% /user:domain\%username%
+xcopy "%source_file%" "%dest_folder%" /Y
+
+:: For more information visit:
+:: https://stackoverflow.com/questions/14578175/xcopy-with-credentials-on-remote-machine
