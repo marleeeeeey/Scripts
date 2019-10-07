@@ -32,7 +32,7 @@ def randomId(stringLength=10):
 # parse args
 importFileName = sys.argv[1]
 print("importFileName=", importFileName)
-exportFileName = importFileName + "_export.apkg"
+exportFileName = importFileName.rstrip(".txt") + "_export.apkg"
 print("exportFileName=", exportFileName)
 
 # read to list of lines
@@ -97,7 +97,7 @@ my_model = genanki.Model(
 
 my_deck = genanki.Deck(
     deck_id,
-    importFileName
+    importFileName.rstrip(".txt")
 )
 
 #export to anki
