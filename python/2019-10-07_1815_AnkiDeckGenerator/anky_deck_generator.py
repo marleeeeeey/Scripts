@@ -18,6 +18,7 @@ class Bucket:
         self.example = ""
         self.example_translation = ""
         self.path_to_picture = ""
+        self.isPictureLoaded = True
 
     def print(self):
         print(" word:", self.word, "\n",
@@ -30,10 +31,12 @@ class Bucket:
               "path_to_picture:", self.path_to_picture)
 
     def process(self):
-        print("Processing word:", self.word)
         self.generate_translations()
         self.generate_speech()
-        self.generate_pictures()
+        try:
+            self.generate_pictures()
+        except AttributeError:
+            print("can't generate image", self.word)
 
     def generate_translations(self):
         self.example_translation = Helper.translate(self.example)
@@ -48,8 +51,13 @@ class Bucket:
     def generate_pictures(self):
         count_of_pictures = 1  # TODO
         basewidth = 300
-        self.path_to_picture = Helper.load_pictures(self.word, count_of_pictures)[0]
-        Helper.resize_image(self.path_to_picture, basewidth)
+        pictures = Helper.load_pictures(self.word, count_of_pictures)
+        if(len(pictures) != 0):
+            self.path_to_picture = pictures[0]
+            Helper.resize_image(self.path_to_picture, basewidth)
+        else:
+            print("Can't load pictures for word:", self.word)
+            self.isPictureLoaded = False
 
 
 class Helper:
@@ -72,13 +80,22 @@ class Helper:
     @staticmethod
     def load_pictures(word, count_of_pictures=1):
         file_names = []
+        attempt_number = 1
+        max_attempt_couter = 3
         while(len(file_names) < count_of_pictures):
+            if(attempt_number > max_attempt_couter):
+                break
+            if(attempt_number > 1):
+                print("attemt to dowload <<", word, ">> image number", str(attempt_number))
             pic_downloader = google_images_download.googleimagesdownload()
             arguments = {"keywords": word, "limit": count_of_pictures, "silent_mode": 1 }
             tuple_dict_err: Tuple[Dict[str, List[Any]], Union[int, Any]] = pic_downloader.download(arguments)
-            dict_values: Dict[str, List[Any]] = tuple_dict_err[0]
-            just_loaded = list(dict_values.values())[0]
-            file_names += just_loaded
+            error_count = tuple_dict_err[1]
+            if(error_count == 0):
+                dict_values: Dict[str, List[Any]] = tuple_dict_err[0]
+                just_loaded = list(dict_values.values())[0]
+                file_names += just_loaded
+            attempt_number += 1
         return file_names
 
     @staticmethod
@@ -169,6 +186,8 @@ class AnkiManager:
 
     def save_anki_package(self, buckets, export_file_name):
         for bucket in buckets:
+            if(bucket.isPictureLoaded == False):
+                continue
             question = bucket.word + "<br><br>" + bucket.example
             backward_question = bucket.word_translation
             answer = bucket.word + "<br>" + \
