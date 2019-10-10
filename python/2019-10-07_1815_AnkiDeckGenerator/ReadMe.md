@@ -1,4 +1,4 @@
-# Converter [https://www.vocabulary.com](https://www.vocabulary.com/) list of words to anki deck.
+# ANKI Deck Generator
 
 ## how to use it
 
@@ -31,3 +31,5 @@
 3. googletrans
 4. genanki
 5. Google-Images-Search
+6. pip install "curses-2.2.1+utf8-cp37-cp37m-win32.whl" 
+from https://www.lfd.uci.edu/~gohlke/pythonlibs/#curses

@@ -50,9 +50,9 @@ class Helper:
         return result.text
 
     @staticmethod
-    def get_random_id(stringLength=10):
+    def get_random_id(string_length=10):
         letters = "123456789"
-        result = ''.join(random.choice(letters) for i in range(stringLength))
+        result = ''.join(random.choice(letters) for i in range(string_length))
         return int(result)
 
     @staticmethod
@@ -62,31 +62,31 @@ class Helper:
 
 class Converter:
     def start(self, import_file_name):
-        importArray = self.read_lines(import_file_name)
-        buckets = self.read_buckets(importArray)
+        import_lines = self.read_lines(import_file_name)
+        buckets = self.read_buckets(import_lines)
         deck_name = import_file_name.rstrip(".txt")
         anki_manager = AnkiManager(deck_name)
         export_file_name = deck_name + ".apkg"
         anki_manager.save_anki_package(buckets, export_file_name)
 
     def read_lines(self, import_file_name):
-        importArray = []
+        import_lines = []
         with open(import_file_name, 'r') as reader:
             for line in reader.readlines():
-                importArray.append(line.rstrip())
-        return importArray
+                import_lines.append(line.rstrip())
+        return import_lines
 
-    def read_buckets(self, importArray):
+    def read_buckets(self, import_lines):
         buckets = []
         counter = 1
         bucket = Bucket()
-        for line in importArray:
-            type = counter % 3
-            if type == 1:
+        for line in import_lines:
+            type_of_field = counter % 3
+            if type_of_field == 1:
                 bucket.word = line
-            elif type == 2:
+            elif type_of_field == 2:
                 bucket.meaning = line
-            elif type == 0:
+            elif type_of_field == 0:
                 bucket.example = line
                 bucket.process()
                 buckets.append(bucket)
@@ -143,8 +143,12 @@ class AnkiManager:
         for media_file in list_of_audio_files:
             os.remove(media_file)
 
-# main
-converter = Converter()
-import_file_name = Helper.get_import_file_name()
-print("Import file name is", import_file_name)
-converter.start(import_file_name)
+
+def main():
+    converter = Converter()
+    import_file_name = Helper.get_import_file_name()
+    print("Import file name is", import_file_name)
+    converter.start(import_file_name)
+
+
+main()
