@@ -99,9 +99,6 @@ class Converter:
         forward_manager = AnkiManager(deck_name)
         forward_manager.save_anki_package(buckets, deck_name + ".apkg")
 
-        backward_manager = AnkiManager(deck_name+"backward")
-        backward_manager.save_anki_package(buckets, deck_name + "_backward.apkg")
-
         # remove temporary files
         for media_file in forward_manager.list_of_media_files:
             os.remove(media_file)
@@ -139,45 +136,58 @@ class AnkiManager:
         print("model_id=", self.model_id)
         print("deck_id =", self.deck_id)
 
-    def __init__(self, deck_name, is_backward = False):
-        self.is_backward = is_backward
+    def __init__(self, deck_name):
         self.list_of_media_files = []
         self.model_id = Helper.get_random_id()
         self.deck_id = Helper.get_random_id()
         self.model_name = "marleeeeeey@gmail.com export"
-        self.my_model = genanki.Model(
-            self.model_id,
-            self.model_name,
-            fields=[
-                {'name': 'Question'},
-                {'name': 'Answer'},
-                {'name': 'Sound'},
-                {'name': 'Picture'},
-            ],
-            templates=[
-                {
-                    'name': 'Card 1',
-                    'qfmt': '{{Question}}<br>{{Sound}}',
-                    'afmt': '{{FrontSide}}<hr id="answer">{{Answer}}<br>{{Picture}}<br>{{Sound}}',
-                },
-            ])
+        fields = [
+            {'name': 'Question'},
+            {'name': 'BWQuestion'},
+            {'name': 'Answer'},
+            {'name': 'BWAnswer'},
+            {'name': 'Sound'},
+            {'name': 'Picture'},
+        ]
+        templates = [
+            {
+                'name': 'Card 1',
+                'qfmt': '{{Question}}<br>{{Sound}}',
+                'afmt': '{{FrontSide}}<hr id="answer">{{Answer}}<br>{{Picture}}<br>{{Sound}}',
+            },
+            {
+                'name': 'Card 2',
+                'qfmt': '{{BWQuestion}}<br>{{Picture}}',
+                'afmt': '{{FrontSide}}<hr id="answer">{{BWAnswer}}<br>{{Sound}}',
+            },
+        ]
+        self.my_model = genanki.Model(self.model_id, self.model_name, fields = fields, templates=templates)
         self.my_deck = genanki.Deck(self.deck_id, deck_name)
+
+    def get_forward_template(self):
+        return
 
     def save_anki_package(self, buckets, export_file_name):
         for bucket in buckets:
-            first_side = bucket.word + "<br><br>" + bucket.example
-            second_side = bucket.word_translation + "<br><br>" + \
-                          bucket.meaning + "<br>" + \
-                          bucket.meaning_translation + "<br><br>" + \
-                          bucket.example + "<br>" + \
-                          bucket.example_translation
+            question = bucket.word + "<br><br>" + bucket.example
+            backward_question = bucket.word_translation
+            answer = bucket.word + "<br>" + \
+                     bucket.word_translation + "<br><br>" + \
+                     bucket.meaning + "<br>" + \
+                     bucket.meaning_translation + "<br><br>" + \
+                     bucket.example + "<br>" + \
+                     bucket.example_translation
+            backward_answer = answer
             sound_string = "[sound:" + bucket.path_to_sound + "]"
             image_name = os.path.basename(bucket.path_to_picture)
             image_string = "<img src=\"" + image_name + "\">"
             print(image_string)
             self.list_of_media_files.append(bucket.path_to_sound)
             self.list_of_media_files.append(bucket.path_to_picture)
-            note = genanki.Note(model=self.my_model, fields=[first_side, second_side, sound_string, image_string])
+            note = genanki.Note(model=self.my_model,
+                                fields=[question, backward_question,
+                                        answer, backward_answer,
+                                        sound_string, image_string])
             self.my_deck.add_note(note)
         pack = genanki.Package(self.my_deck)
         pack.media_files = self.list_of_media_files

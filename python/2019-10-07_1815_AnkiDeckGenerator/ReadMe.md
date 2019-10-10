@@ -19,10 +19,10 @@
 3. Run python script: 
 
    ```
-   VocToCsv.py <your_file_name>
+   anky_deck_generator.py <your_file_name>
    ```
 
-4. Open `<your_file_name>_export.apkg` to import it to `ANKI`.
+4. Open `<your_file_name>.apkg` to import it to `ANKI`.
 
 ## Prerequisites
 
