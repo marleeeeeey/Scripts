@@ -1,9 +1,11 @@
 import sys
+from typing import Dict, List, Any, Tuple, Union
 from googletrans import Translator
 import genanki
 from google_speech import Speech
 import os
 import random
+from google_images_download import google_images_download
 
 
 class Bucket:
@@ -15,17 +17,23 @@ class Bucket:
         self.meaning_translation = ""
         self.example = ""
         self.example_translation = ""
+        self.path_to_picture = ""
 
     def print(self):
         print(" word:", self.word, "\n",
+              "word_translation:", self.word_translation, "\n",
+              "path_to_sound:", self.path_to_sound, "\n",
               "meaning:", self.meaning, "\n",
+              "meaning_translation:", self.meaning_translation, "\n",
               "example:", self.example, "\n",
-              "example_translation:", self.example_translation)
+              "example_translation:", self.example_translation, "\n",
+              "path_to_picture:", self.path_to_picture)
 
     def process(self):
         print("Processing word:", self.word)
         self.generate_translations()
         self.generate_speech()
+        self.generate_pictures()
 
     def generate_translations(self):
         self.example_translation = Helper.translate(self.example)
@@ -37,16 +45,16 @@ class Bucket:
         self.path_to_sound = self.word + ".mp3"
         speech.save(self.path_to_sound)
 
-    def generate_picture(self):
-        # todo
-        return
+    def generate_pictures(self):
+        count_of_pictures = 1  # TODO
+        self.path_to_picture = Helper.load_pictures(self.word, count_of_pictures)[0]
 
 
 class Helper:
     @staticmethod
     def translate(source, src='en', dest='ru'):
         translator = Translator()
-        result = translator.translate(source, src, dest)
+        result = translator.translate(source, src=src, dest=dest)
         return result.text
 
     @staticmethod
@@ -58,6 +66,16 @@ class Helper:
     @staticmethod
     def get_import_file_name():
         return sys.argv[1]
+
+    @staticmethod
+    def load_pictures(word, count_of_pictures=1):
+        pic_downloader = google_images_download.googleimagesdownload()
+        arguments = {"keywords": word, "limit": count_of_pictures, "silent_mode": 1 }
+        tuple_dict_err: Tuple[Dict[str, List[Any]], Union[int, Any]] = pic_downloader.download(arguments)
+        dict_values: Dict[str, List[Any]] = tuple_dict_err[0]
+        orig_file_names: List[Any] = list(dict_values.values())[0]
+        return orig_file_names
+
 
 
 class Converter:
@@ -89,6 +107,7 @@ class Converter:
             elif type_of_field == 0:
                 bucket.example = line
                 bucket.process()
+                #bucket.print()
                 buckets.append(bucket)
                 bucket = Bucket()
             counter += 1
@@ -111,19 +130,20 @@ class AnkiManager:
             fields=[
                 {'name': 'Question'},
                 {'name': 'Answer'},
-                {'name': 'MyMedia'},
+                {'name': 'Sound'},
+                {'name': 'Picture'},
             ],
             templates=[
                 {
                     'name': 'Card 1',
-                    'qfmt': '{{Question}}<br>{{MyMedia}}',
-                    'afmt': '{{FrontSide}}<hr id="answer">{{Answer}}',
+                    'qfmt': '{{Question}}<br>{{Sound}}',
+                    'afmt': '{{FrontSide}}<hr id="answer">{{Answer}}<br>{{Picture}}<br>{{Sound}}',
                 },
             ])
         self.my_deck = genanki.Deck(self.deck_id, deck_name)
 
     def save_anki_package(self, buckets, export_file_name):
-        list_of_audio_files = []
+        list_of_media_files = []
         for bucket in buckets:
             first_side = bucket.word + "<br><br>" + bucket.example
             second_side = bucket.word_translation + "<br><br>" + \
@@ -132,15 +152,19 @@ class AnkiManager:
                           bucket.example + "<br>" + \
                           bucket.example_translation
             sound_string = "[sound:" + bucket.path_to_sound + "]"
-            list_of_audio_files.append(bucket.path_to_sound)
-            note = genanki.Note(model=self.my_model, fields=[first_side, second_side, sound_string])
+            image_name = os.path.basename(bucket.path_to_picture)
+            image_string = "<img src=\"" + image_name + "\">"
+            print(image_string)
+            list_of_media_files.append(bucket.path_to_sound)
+            list_of_media_files.append(bucket.path_to_picture)
+            note = genanki.Note(model=self.my_model, fields=[first_side, second_side, sound_string, image_string])
             self.my_deck.add_note(note)
         pack = genanki.Package(self.my_deck)
-        pack.media_files = list_of_audio_files
+        pack.media_files = list_of_media_files
         pack.write_to_file(export_file_name)
         print("ANKI deck saved to", export_file_name)
         # remove temporary files
-        for media_file in list_of_audio_files:
+        for media_file in list_of_media_files:
             os.remove(media_file)
 
 
