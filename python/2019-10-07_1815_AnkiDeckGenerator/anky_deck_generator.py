@@ -6,7 +6,7 @@ from google_speech import Speech
 import os
 import random
 from google_images_download import google_images_download
-
+from PIL import Image
 
 class Bucket:
     def __init__(self):
@@ -47,7 +47,9 @@ class Bucket:
 
     def generate_pictures(self):
         count_of_pictures = 1  # TODO
+        basewidth = 300
         self.path_to_picture = Helper.load_pictures(self.word, count_of_pictures)[0]
+        Helper.resize_image(self.path_to_picture, basewidth)
 
 
 class Helper:
@@ -69,13 +71,23 @@ class Helper:
 
     @staticmethod
     def load_pictures(word, count_of_pictures=1):
-        pic_downloader = google_images_download.googleimagesdownload()
-        arguments = {"keywords": word, "limit": count_of_pictures, "silent_mode": 1 }
-        tuple_dict_err: Tuple[Dict[str, List[Any]], Union[int, Any]] = pic_downloader.download(arguments)
-        dict_values: Dict[str, List[Any]] = tuple_dict_err[0]
-        orig_file_names: List[Any] = list(dict_values.values())[0]
-        return orig_file_names
+        file_names = []
+        while(len(file_names) < count_of_pictures):
+            pic_downloader = google_images_download.googleimagesdownload()
+            arguments = {"keywords": word, "limit": count_of_pictures, "silent_mode": 1 }
+            tuple_dict_err: Tuple[Dict[str, List[Any]], Union[int, Any]] = pic_downloader.download(arguments)
+            dict_values: Dict[str, List[Any]] = tuple_dict_err[0]
+            just_loaded = list(dict_values.values())[0]
+            file_names += just_loaded
+        return file_names
 
+    @staticmethod
+    def resize_image(path, basewidth):
+        img = Image.open(path)
+        wpercent = (basewidth / float(img.size[0]))
+        hsize = int((float(img.size[1]) * float(wpercent)))
+        img = img.resize((basewidth, hsize), Image.ANTIALIAS)
+        img.save(path)
 
 
 class Converter:
@@ -83,9 +95,16 @@ class Converter:
         import_lines = self.read_lines(import_file_name)
         buckets = self.read_buckets(import_lines)
         deck_name = import_file_name.rstrip(".txt")
-        anki_manager = AnkiManager(deck_name)
-        export_file_name = deck_name + ".apkg"
-        anki_manager.save_anki_package(buckets, export_file_name)
+
+        forward_manager = AnkiManager(deck_name)
+        forward_manager.save_anki_package(buckets, deck_name + ".apkg")
+
+        backward_manager = AnkiManager(deck_name+"backward")
+        backward_manager.save_anki_package(buckets, deck_name + "_backward.apkg")
+
+        # remove temporary files
+        for media_file in forward_manager.list_of_media_files:
+            os.remove(media_file)
 
     def read_lines(self, import_file_name):
         import_lines = []
@@ -120,7 +139,9 @@ class AnkiManager:
         print("model_id=", self.model_id)
         print("deck_id =", self.deck_id)
 
-    def __init__(self, deck_name):
+    def __init__(self, deck_name, is_backward = False):
+        self.is_backward = is_backward
+        self.list_of_media_files = []
         self.model_id = Helper.get_random_id()
         self.deck_id = Helper.get_random_id()
         self.model_name = "marleeeeeey@gmail.com export"
@@ -143,7 +164,6 @@ class AnkiManager:
         self.my_deck = genanki.Deck(self.deck_id, deck_name)
 
     def save_anki_package(self, buckets, export_file_name):
-        list_of_media_files = []
         for bucket in buckets:
             first_side = bucket.word + "<br><br>" + bucket.example
             second_side = bucket.word_translation + "<br><br>" + \
@@ -155,17 +175,14 @@ class AnkiManager:
             image_name = os.path.basename(bucket.path_to_picture)
             image_string = "<img src=\"" + image_name + "\">"
             print(image_string)
-            list_of_media_files.append(bucket.path_to_sound)
-            list_of_media_files.append(bucket.path_to_picture)
+            self.list_of_media_files.append(bucket.path_to_sound)
+            self.list_of_media_files.append(bucket.path_to_picture)
             note = genanki.Note(model=self.my_model, fields=[first_side, second_side, sound_string, image_string])
             self.my_deck.add_note(note)
         pack = genanki.Package(self.my_deck)
-        pack.media_files = list_of_media_files
+        pack.media_files = self.list_of_media_files
         pack.write_to_file(export_file_name)
         print("ANKI deck saved to", export_file_name)
-        # remove temporary files
-        for media_file in list_of_media_files:
-            os.remove(media_file)
 
 
 def main():
