@@ -5,6 +5,7 @@ from google_speech import Speech
 import os
 import random
 
+
 class Bucket:
     def __init__(self):
         self.word = ""
@@ -32,7 +33,7 @@ class Bucket:
         self.word_translation = Helper.translate(self.word)
 
     def generate_speech(self):
-        speech = Speech(self.word, "en");
+        speech = Speech(self.word, "en")
         self.path_to_sound = self.word + ".mp3"
         speech.save(self.path_to_sound)
 
@@ -137,12 +138,12 @@ class AnkiManager:
         pack = genanki.Package(self.my_deck)
         pack.media_files = list_of_audio_files
         pack.write_to_file(export_file_name)
-        print("ANKI deck saved to", export_file_name);
+        print("ANKI deck saved to", export_file_name)
         # remove temporary files
         for media_file in list_of_audio_files:
             os.remove(media_file)
 
-
+# main
 converter = Converter()
 import_file_name = Helper.get_import_file_name()
 print("Import file name is", import_file_name)
