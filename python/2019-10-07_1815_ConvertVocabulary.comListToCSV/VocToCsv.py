@@ -126,8 +126,10 @@ class AnkiManager:
         for bucket in buckets:
             first_side = bucket.word + "<br><br>" + bucket.example
             second_side = bucket.word_translation + "<br><br>" + \
-                          bucket.example_translation + "<br><br>" + \
-                          bucket.meaning
+                          bucket.meaning + "<br>" + \
+                          bucket.meaning_translation + "<br><br>" + \
+                          bucket.example + "<br>" + \
+                          bucket.example_translation
             sound_string = "[sound:" + bucket.path_to_sound + "]"
             list_of_audio_files.append(bucket.path_to_sound)
             note = genanki.Note(model=self.my_model, fields=[first_side, second_side, sound_string])

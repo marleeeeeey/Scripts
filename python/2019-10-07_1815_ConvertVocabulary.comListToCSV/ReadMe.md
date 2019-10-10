@@ -30,3 +30,4 @@
 2. google_speech
 3. googletrans
 4. genanki
+5. Google-Images-Search
