@@ -13,7 +13,8 @@ class Bucket:
     def __init__(self):
         self.word = ""
         self.word_translation = ""
-        self.path_to_sound = ""
+        self.word_sound_path = ""
+        self.meaning_sound_path = ""
         self.meaning = ""
         self.meaning_translation = ""
         self.example = ""
@@ -23,7 +24,7 @@ class Bucket:
     def print(self):
         print(" word:", self.word, "\n",
               "word_translation:", self.word_translation, "\n",
-              "path_to_sound:", self.path_to_sound, "\n",
+              "path_to_sound:", self.word_sound_path, "\n",
               "meaning:", self.meaning, "\n",
               "meaning_translation:", self.meaning_translation, "\n",
               "example:", self.example, "\n",
@@ -45,11 +46,12 @@ class Bucket:
         self.word_translation = Helper.translate(self.word)
 
     def generate_speech(self):
-        self.path_to_sound = Helper.save_speech_to(self.word, "downloads", "en")
+        self.word_sound_path = Helper.save_speech_to(self.word, "downloads", "en")
+        self.meaning_sound_path = Helper.save_speech_to(self.meaning, "downloads", "en")
 
     def generate_pictures(self):
         count_of_pictures = 1  # TODO
-        basewidth = 300
+        basewidth = 400
         pictures = Helper.load_pictures_to_download_subfolder(self.word, count_of_pictures)
         if (len(pictures) != 0):
             self.path_to_picture = pictures[0]
@@ -59,6 +61,12 @@ class Bucket:
 
 
 class Helper:
+    @staticmethod
+    def read_file_to_one_line(path):
+        with open(path, 'r') as file:
+            data = file.read().replace('\n', '')
+            return data
+
     @staticmethod
     def translate(source, src='en', dest='ru'):
         translator = Translator()
@@ -160,26 +168,32 @@ class AnkiManager:
         self.deck_id = Helper.get_random_id()
         self.model_name = "marleeeeeey@gmail.com export"
         fields = [
-            {'name': 'Question'},
-            {'name': 'BWQuestion'},
-            {'name': 'Answer'},
-            {'name': 'BWAnswer'},
+            {'name': 'Word'},
+            {'name': 'Image'},
             {'name': 'Sound'},
-            {'name': 'Picture'},
+            {'name': 'Sound_Meaning'},
+            {'name': 'Sound_Example'},
+            {'name': 'Meaning'},
+            {'name': 'Example'},
+            {'name': 'IPA'},
+            {'name': 'Word_Translation'},
+            {'name': 'Meaning_Translation'},
+            {'name': 'Example_Translation'},
         ]
         templates = [
             {
                 'name': 'Card 1',
-                'qfmt': '{{Question}}<br>{{Sound}}',
-                'afmt': '{{FrontSide}}<hr id="answer">{{Answer}}<br>{{Picture}}<br>{{Sound}}',
+                'qfmt': Helper.read_file_to_one_line("front_template.txt"),
+                'afmt': Helper.read_file_to_one_line("back_template.txt"),
             },
             {
                 'name': 'Card 2',
-                'qfmt': '{{BWQuestion}}<br>{{Picture}}',
-                'afmt': '{{FrontSide}}<hr id="answer">{{BWAnswer}}<br>{{Sound}}',
+                'qfmt': Helper.read_file_to_one_line("front_template2.txt"),
+                'afmt': Helper.read_file_to_one_line("back_template2.txt"),
             },
         ]
-        self.my_model = genanki.Model(self.model_id, self.model_name, fields=fields, templates=templates)
+        css = Helper.read_file_to_one_line("css_template.txt")
+        self.my_model = genanki.Model(self.model_id, self.model_name, fields=fields, templates=templates, css=css)
         self.my_deck = genanki.Deck(self.deck_id, deck_name)
 
     def save_anki_package(self, buckets, export_file_name):
@@ -192,16 +206,6 @@ class AnkiManager:
         print("ANKI deck saved to", export_file_name)
 
     def add_bucket_to_deck(self, bucket):
-        question = bucket.word + "<br><br>" + bucket.example
-        backward_question = bucket.word_translation
-        answer = bucket.word + "<br>" + \
-                 bucket.word_translation + "<br><br>" + \
-                 bucket.meaning + "<br>" + \
-                 bucket.meaning_translation + "<br><br>" + \
-                 bucket.example + "<br>" + \
-                 bucket.example_translation
-        backward_answer = answer
-        sound_string = "[sound:" + os.path.basename(bucket.path_to_sound) + "]"
         image_string = ""
         if (bucket.path_to_picture != ""):
             image_name = os.path.basename(bucket.path_to_picture)
@@ -209,11 +213,23 @@ class AnkiManager:
             self.list_of_media_files.append(bucket.path_to_picture)
         else:
             print("Image is not present for word:", bucket.word)
-        self.list_of_media_files.append(bucket.path_to_sound)
+        word_sound_string = "[sound:" + os.path.basename(bucket.word_sound_path) + "]"
+        meaning_sound_string = "[sound:" + os.path.basename(bucket.meaning_sound_path) + "]"
+        self.list_of_media_files.append(bucket.word_sound_path)
+        self.list_of_media_files.append(bucket.meaning_sound_path)
         note = genanki.Note(model=self.my_model,
-                            fields=[question, backward_question,
-                                    answer, backward_answer,
-                                    sound_string, image_string])
+                            fields=[bucket.word,
+                                    image_string,
+                                    word_sound_string,
+                                    meaning_sound_string,
+                                    "", # Sound_Example
+                                    bucket.meaning,
+                                    bucket.example,
+                                    "", # IPA
+                                    bucket.word_translation,
+                                    bucket.meaning_translation,
+                                    bucket.example_translation
+                                    ])
         self.my_deck.add_note(note)
 
 

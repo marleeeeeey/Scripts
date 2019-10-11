@@ -1,0 +1,21 @@
+<div style='font-family: Arial; font-size: 70px; color:#FF80DD;'>{{Word}}</div>
+<div style='font-family: Arial; font-size: 90px; color:#FFFF00;'>{{Word_Translation}}</div>
+<hr>
+{{Image}}
+<hr>
+
+<div  style='font-family: Arial; color:#00aaaa; text-align:left;'>
+Meaning: {{Meaning}}</div>
+<div  style='font-family: Arial; font-size:90%; color:#FFFF00; text-align:left;'>
+Translation: {{Meaning_Translation}}</div>
+<hr>
+
+<div  style='font-family: Arial; color:#9CFFFA; text-align:left;'>
+Example: {{Example}}</div>
+<div  style='font-family: Arial; font-size:90%; color:#FFFF00; text-align:left;'>
+Translation: {{Example_Translation}}</div>
+
+[sound:_1sec.mp3]
+{{Sound_Meaning}}
+[sound:_1sec.mp3]
+{{Sound_Example}}
