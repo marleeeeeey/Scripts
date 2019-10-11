@@ -1,0 +1,5 @@
+Image is not present for word: weird
+Image is not present for word: slim
+Image is not present for word: herd
+Image is not present for word: gross
+Image is not present for word: disease
