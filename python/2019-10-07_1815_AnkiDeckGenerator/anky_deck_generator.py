@@ -8,6 +8,7 @@ import random
 from google_images_download import google_images_download
 from PIL import Image
 
+
 class Bucket:
     def __init__(self):
         self.word = ""
@@ -18,7 +19,6 @@ class Bucket:
         self.example = ""
         self.example_translation = ""
         self.path_to_picture = ""
-        self.isPictureLoaded = True
 
     def print(self):
         print(" word:", self.word, "\n",
@@ -36,6 +36,7 @@ class Bucket:
         try:
             self.generate_pictures()
         except AttributeError:
+            self.path_to_picture = ""
             print("can't generate image", self.word)
 
     def generate_translations(self):
@@ -44,20 +45,17 @@ class Bucket:
         self.word_translation = Helper.translate(self.word)
 
     def generate_speech(self):
-        speech = Speech(self.word, "en")
-        self.path_to_sound = self.word + ".mp3"
-        speech.save(self.path_to_sound)
+        self.path_to_sound = Helper.save_speech_to(self.word, "downloads", "en")
 
     def generate_pictures(self):
         count_of_pictures = 1  # TODO
         basewidth = 300
-        pictures = Helper.load_pictures(self.word, count_of_pictures)
-        if(len(pictures) != 0):
+        pictures = Helper.load_pictures_to_download_subfolder(self.word, count_of_pictures)
+        if (len(pictures) != 0):
             self.path_to_picture = pictures[0]
             Helper.resize_image(self.path_to_picture, basewidth)
         else:
             print("Can't load pictures for word:", self.word)
-            self.isPictureLoaded = False
 
 
 class Helper:
@@ -78,20 +76,29 @@ class Helper:
         return sys.argv[1]
 
     @staticmethod
-    def load_pictures(word, count_of_pictures=1):
+    def save_speech_to(text_to_speech, subfolder, lang):
+        speech = Speech(text_to_speech, lang)
+        if not os.path.exists(subfolder):
+            os.makedirs(subfolder)
+        path_to_save = subfolder + "\\" + text_to_speech + ".mp3"
+        speech.save(path_to_save)
+        return path_to_save
+
+    @staticmethod
+    def load_pictures_to_download_subfolder(word, count_of_pictures=1):
         file_names = []
         attempt_number = 1
         max_attempt_couter = 3
-        while(len(file_names) < count_of_pictures):
-            if(attempt_number > max_attempt_couter):
+        while (len(file_names) < count_of_pictures):
+            if (attempt_number > max_attempt_couter):
                 break
-            if(attempt_number > 1):
-                print("attemt to dowload <<", word, ">> image number", str(attempt_number))
+            if (attempt_number > 1):
+                print("attempt to download <<", word, ">> image number", str(attempt_number))
             pic_downloader = google_images_download.googleimagesdownload()
-            arguments = {"keywords": word, "limit": count_of_pictures, "silent_mode": 1 }
+            arguments = {"keywords": word, "limit": count_of_pictures, "silent_mode": 1}
             tuple_dict_err: Tuple[Dict[str, List[Any]], Union[int, Any]] = pic_downloader.download(arguments)
             error_count = tuple_dict_err[1]
-            if(error_count == 0):
+            if (error_count == 0):
                 dict_values: Dict[str, List[Any]] = tuple_dict_err[0]
                 just_loaded = list(dict_values.values())[0]
                 file_names += just_loaded
@@ -140,19 +147,13 @@ class Converter:
             elif type_of_field == 0:
                 bucket.example = line
                 bucket.process()
-                #bucket.print()
                 buckets.append(bucket)
                 bucket = Bucket()
             counter += 1
-        print("Processed", len(buckets), "words")
         return buckets
 
 
 class AnkiManager:
-    def print(self):
-        print("model_id=", self.model_id)
-        print("deck_id =", self.deck_id)
-
     def __init__(self, deck_name):
         self.list_of_media_files = []
         self.model_id = Helper.get_random_id()
@@ -178,40 +179,42 @@ class AnkiManager:
                 'afmt': '{{FrontSide}}<hr id="answer">{{BWAnswer}}<br>{{Sound}}',
             },
         ]
-        self.my_model = genanki.Model(self.model_id, self.model_name, fields = fields, templates=templates)
+        self.my_model = genanki.Model(self.model_id, self.model_name, fields=fields, templates=templates)
         self.my_deck = genanki.Deck(self.deck_id, deck_name)
-
-    def get_forward_template(self):
-        return
 
     def save_anki_package(self, buckets, export_file_name):
         for bucket in buckets:
-            if(bucket.isPictureLoaded == False):
-                continue
-            question = bucket.word + "<br><br>" + bucket.example
-            backward_question = bucket.word_translation
-            answer = bucket.word + "<br>" + \
-                     bucket.word_translation + "<br><br>" + \
-                     bucket.meaning + "<br>" + \
-                     bucket.meaning_translation + "<br><br>" + \
-                     bucket.example + "<br>" + \
-                     bucket.example_translation
-            backward_answer = answer
-            sound_string = "[sound:" + bucket.path_to_sound + "]"
-            image_name = os.path.basename(bucket.path_to_picture)
-            image_string = "<img src=\"" + image_name + "\">"
-            print(image_string)
-            self.list_of_media_files.append(bucket.path_to_sound)
-            self.list_of_media_files.append(bucket.path_to_picture)
-            note = genanki.Note(model=self.my_model,
-                                fields=[question, backward_question,
-                                        answer, backward_answer,
-                                        sound_string, image_string])
-            self.my_deck.add_note(note)
+            self.add_bucket_to_deck(bucket)
+
         pack = genanki.Package(self.my_deck)
         pack.media_files = self.list_of_media_files
         pack.write_to_file(export_file_name)
         print("ANKI deck saved to", export_file_name)
+
+    def add_bucket_to_deck(self, bucket):
+        question = bucket.word + "<br><br>" + bucket.example
+        backward_question = bucket.word_translation
+        answer = bucket.word + "<br>" + \
+                 bucket.word_translation + "<br><br>" + \
+                 bucket.meaning + "<br>" + \
+                 bucket.meaning_translation + "<br><br>" + \
+                 bucket.example + "<br>" + \
+                 bucket.example_translation
+        backward_answer = answer
+        sound_string = "[sound:" + os.path.basename(bucket.path_to_sound) + "]"
+        image_string = ""
+        if (bucket.path_to_picture != ""):
+            image_name = os.path.basename(bucket.path_to_picture)
+            image_string = "<img src=\"" + image_name + "\">"
+            self.list_of_media_files.append(bucket.path_to_picture)
+        else:
+            print("Image is not present for word:", bucket.word)
+        self.list_of_media_files.append(bucket.path_to_sound)
+        note = genanki.Note(model=self.my_model,
+                            fields=[question, backward_question,
+                                    answer, backward_answer,
+                                    sound_string, image_string])
+        self.my_deck.add_note(note)
 
 
 def main():
