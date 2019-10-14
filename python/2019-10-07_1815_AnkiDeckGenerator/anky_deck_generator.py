@@ -21,16 +21,6 @@ class Bucket:
         self.example_translation = ""
         self.path_to_picture = ""
 
-    def print(self):
-        print(" word:", self.word, "\n",
-              "word_translation:", self.word_translation, "\n",
-              "path_to_sound:", self.word_sound_path, "\n",
-              "meaning:", self.meaning, "\n",
-              "meaning_translation:", self.meaning_translation, "\n",
-              "example:", self.example, "\n",
-              "example_translation:", self.example_translation, "\n",
-              "path_to_picture:", self.path_to_picture)
-
     def process(self):
         self.generate_translations()
         self.generate_speech()
@@ -38,7 +28,7 @@ class Bucket:
             self.generate_pictures()
         except AttributeError:
             self.path_to_picture = ""
-            print("can't generate image", self.word)
+            print("Can't generate image", self.word)
 
     def generate_translations(self):
         self.example_translation = Helper.translate(self.example)
@@ -93,7 +83,6 @@ class Helper:
 
     @staticmethod
     def create_folder_if_not_exist(subfolder):
-        print('Check is folder exist:', subfolder)
         if not os.path.exists(subfolder):
             os.makedirs(subfolder)
             print('Created subfolder:', subfolder)
@@ -107,7 +96,7 @@ class Helper:
             if (attempt_number > max_attempt_couter):
                 break
             if (attempt_number > 1):
-                print("attempt to download <<", word, ">> image number", str(attempt_number))
+                print("Attempt to download <<", word, ">> image number", str(attempt_number))
             pic_downloader = google_images_download.googleimagesdownload()
             arguments = {"keywords": word, "limit": count_of_pictures, "silent_mode": 1}
             tuple_dict_err: Tuple[Dict[str, List[Any]], Union[int, Any]] = pic_downloader.download(arguments)
