@@ -98,7 +98,8 @@ class Helper:
             if (attempt_number > 1):
                 print("Attempt to download <<", word, ">> image number", str(attempt_number))
             pic_downloader = google_images_download.googleimagesdownload()
-            arguments = {"keywords": word, "limit": count_of_pictures, "silent_mode": 1, "output_directory": output_directory}
+            arguments = {"keywords": word, "limit": count_of_pictures, "silent_mode": 1,
+                         "output_directory": output_directory}
             tuple_dict_err: Tuple[Dict[str, List[Any]], Union[int, Any]] = pic_downloader.download(arguments)
             error_count = tuple_dict_err[1]
             if (error_count == 0):
@@ -221,10 +222,10 @@ class AnkiManager:
                                     image_string,
                                     word_sound_string,
                                     meaning_sound_string,
-                                    "", # Sound_Example
+                                    "",  # Sound_Example
                                     bucket.meaning,
                                     bucket.example,
-                                    "", # IPA
+                                    "",  # IPA
                                     bucket.word_translation,
                                     bucket.meaning_translation,
                                     bucket.example_translation
