@@ -1,2 +1,2 @@
 <div style='font-family: Arial; font-size: 60px; color:#000000;'> {{Word}} </div>
-<div style='font-family: Arial; font-size: 65px; color:#FFFF00;'>{{Word_Translation}}</div>
+<div style='font-family: Arial; font-size: 60px; color:#FFFF00;'>{{Word_Translation}}</div>
