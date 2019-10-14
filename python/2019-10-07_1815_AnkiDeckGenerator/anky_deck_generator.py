@@ -64,7 +64,7 @@ class Helper:
     @staticmethod
     def read_file_to_one_line(path):
         with open(path, 'r') as file:
-            data = file.read().replace('\n', '')
+            data = file.read()
             return data
 
     @staticmethod
@@ -86,11 +86,17 @@ class Helper:
     @staticmethod
     def save_speech_to(text_to_speech, subfolder, lang):
         speech = Speech(text_to_speech, lang)
-        if not os.path.exists(subfolder):
-            os.makedirs(subfolder)
+        Helper.create_folder_if_not_exist(subfolder)
         path_to_save = subfolder + "\\" + text_to_speech + ".mp3"
         speech.save(path_to_save)
         return path_to_save
+
+    @staticmethod
+    def create_folder_if_not_exist(subfolder):
+        print('Check is folder exist:', subfolder)
+        if not os.path.exists(subfolder):
+            os.makedirs(subfolder)
+            print('Created subfolder:', subfolder)
 
     @staticmethod
     def load_pictures_to_download_subfolder(word, count_of_pictures=1):
@@ -123,13 +129,13 @@ class Helper:
 
 
 class Converter:
-    def start(self, import_file_name):
-        import_lines = self.read_lines(import_file_name)
+    def start(self, file_path, export_dir):
+        import_lines = self.read_lines(file_path)
         buckets = self.read_buckets(import_lines)
-        deck_name = import_file_name.rstrip(".txt")
-
+        file_name = os.path.basename(file_path)
+        deck_name = file_name.rstrip(".txt")
         forward_manager = AnkiManager(deck_name)
-        forward_manager.save_anki_package(buckets, deck_name + ".apkg")
+        forward_manager.save_anki_package(buckets, export_dir + "\\" + deck_name + ".apkg")
 
         # remove temporary files
         for media_file in forward_manager.list_of_media_files:
@@ -183,16 +189,16 @@ class AnkiManager:
         templates = [
             {
                 'name': 'Card 1',
-                'qfmt': Helper.read_file_to_one_line("front_template.txt"),
-                'afmt': Helper.read_file_to_one_line("back_template.txt"),
+                'qfmt': Helper.read_file_to_one_line("anki_templates\\front_template.txt"),
+                'afmt': Helper.read_file_to_one_line("anki_templates\\back_template.txt"),
             },
             {
                 'name': 'Card 2',
-                'qfmt': Helper.read_file_to_one_line("front_template2.txt"),
-                'afmt': Helper.read_file_to_one_line("back_template2.txt"),
+                'qfmt': Helper.read_file_to_one_line("anki_templates\\front_template2.txt"),
+                'afmt': Helper.read_file_to_one_line("anki_templates\\back_template2.txt"),
             },
         ]
-        css = Helper.read_file_to_one_line("css_template.txt")
+        css = Helper.read_file_to_one_line("anki_templates\\css_template.txt")
         self.my_model = genanki.Model(self.model_id, self.model_name, fields=fields, templates=templates, css=css)
         self.my_deck = genanki.Deck(self.deck_id, deck_name)
 
@@ -202,6 +208,7 @@ class AnkiManager:
 
         pack = genanki.Package(self.my_deck)
         pack.media_files = self.list_of_media_files
+        Helper.create_folder_if_not_exist(os.path.dirname(export_file_name))
         pack.write_to_file(export_file_name)
         print("ANKI deck saved to", export_file_name)
 
@@ -236,8 +243,9 @@ class AnkiManager:
 def main():
     converter = Converter()
     import_file_name = Helper.get_import_file_name()
-    print("Import file name is", import_file_name)
-    converter.start(import_file_name)
+    print("Processing file:", import_file_name)
+    export_dir = "export"
+    converter.start(import_file_name, export_dir)
 
 
 main()

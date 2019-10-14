@@ -1,0 +1,9 @@
+version
+something a little different from others of the same type
+By default, all newly created decks use the same options group, and decks imported from previous versions of Anki have separate option groups.
+setting
+the physical position of something
+If you’d like to alter the settings on one deck but not other decks, click the gears icon in the top right and add a new options group.
+alter
+cause to change; make different
+If you’d like to alter the settings on one deck but not other decks, click the gears icon in the top right and add a new options group.

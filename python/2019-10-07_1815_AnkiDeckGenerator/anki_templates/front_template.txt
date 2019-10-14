@@ -1,0 +1,3 @@
+<div style='font-family: Arial; font-size: 60px; color:#FF80DD;'>{{Word}}</div>
+<div style='font-family: Arial; font-size: 60px; color:#000000;'>{{Word_Translation}}</div>
+{{Sound}}<hr>

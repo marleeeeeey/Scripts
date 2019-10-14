@@ -1,0 +1,15 @@
+option
+one of a number of things from which only one can be chosen
+Deck options are accessed by selecting a deck on the Decks screen, and then clicking Options at the bottom of the screen.
+icon
+a visual representation produced on a surface
+If you’d like to alter the settings on one deck but not other decks, click the gears icon in the top right and add a new options group.
+default
+an option that is selected automatically
+By default, all newly created decks use the same options group, and decks imported from previous versions of Anki have separate option groups.
+imported
+purchased from a foreign source
+By default, all newly created decks use the same options group, and decks imported from previous versions of Anki have separate option groups.
+gear
+a toothed wheel that engages another toothed mechanism
+If you’d like to alter the settings on one deck but not other decks, click the gears icon in the top right and add a new options group.

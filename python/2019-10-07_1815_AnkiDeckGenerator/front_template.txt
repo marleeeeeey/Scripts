@@ -1,2 +1,0 @@
-<div style='font-family: Arial; font-size: 70px; color:#FF80DD;'>{{Word}}</div>
-{{Sound}}<hr>
