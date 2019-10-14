@@ -117,13 +117,21 @@ class Helper:
         img = img.resize((basewidth, hsize), Image.ANTIALIAS)
         img.save(path)
 
+    @staticmethod
+    def read_file_to_lines(file_name):
+        import_lines = []
+        with open(file_name, 'r') as reader:
+            for line in reader.readlines():
+                import_lines.append(line.rstrip())
+        return import_lines
+
 
 class Converter:
     def __init__(self):
         self.output_directory = "downloads"
 
     def start(self, file_path, export_dir):
-        import_lines = self.read_lines(file_path)
+        import_lines = Helper.read_file_to_lines(file_path)
         buckets = self.read_buckets(import_lines)
         file_name = os.path.basename(file_path)
         deck_name = file_name.rstrip(".txt")
@@ -133,13 +141,6 @@ class Converter:
         # remove temporary files
         for media_file in forward_manager.list_of_media_files:
             os.remove(media_file)
-
-    def read_lines(self, import_file_name):
-        import_lines = []
-        with open(import_file_name, 'r') as reader:
-            for line in reader.readlines():
-                import_lines.append(line.rstrip())
-        return import_lines
 
     def read_buckets(self, import_lines):
         buckets = []
