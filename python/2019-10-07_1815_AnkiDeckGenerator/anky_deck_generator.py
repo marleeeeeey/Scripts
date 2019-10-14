@@ -22,27 +22,27 @@ class Bucket:
         self.path_to_picture = ""
 
     def process(self, temporary_dir):
-        self.generate_translations()
-        self.generate_speech(temporary_dir)
+        self.__generate_translations()
+        self.__generate_speech(temporary_dir)
         try:
-            self.generate_pictures(temporary_dir)
+            self.__generate_pictures(temporary_dir)
         except AttributeError:
             self.path_to_picture = ""
             print("Can't generate image", self.word)
 
-    def generate_translations(self):
+    def __generate_translations(self):
         self.example_translation = Helper.translate(self.example)
         self.meaning_translation = Helper.translate(self.meaning)
         self.word_translation = Helper.translate(self.word)
 
-    def generate_speech(self, temporary_dir):
+    def __generate_speech(self, temporary_dir):
         self.word_sound_path = Helper.save_speech_to(self.word, temporary_dir, "en")
         self.meaning_sound_path = Helper.save_speech_to(self.meaning, temporary_dir, "en")
 
-    def generate_pictures(self, temporary_dir):
+    def __generate_pictures(self, temporary_dir):
         count_of_pictures = 1  # TODO
         basewidth = 400
-        pictures = Helper.load_pictures_to_download_subfolder(self.word, temporary_dir, count_of_pictures)
+        pictures = Helper.load_pictures(self.word, temporary_dir, count_of_pictures)
         if (len(pictures) != 0):
             self.path_to_picture = pictures[0]
             Helper.resize_image(self.path_to_picture, basewidth)
@@ -88,7 +88,7 @@ class Helper:
             print('Created subfolder:', subfolder)
 
     @staticmethod
-    def load_pictures_to_download_subfolder(word, temporary_dir, count_of_pictures=1):
+    def load_pictures(word, output_folder, count_of_pictures=1):
         file_names = []
         attempt_number = 1
         max_attempt_couter = 3
@@ -99,7 +99,7 @@ class Helper:
                 print("Attempt to download <<", word, ">> image number", str(attempt_number))
             pic_downloader = google_images_download.googleimagesdownload()
             arguments = {"keywords": word, "limit": count_of_pictures, "silent_mode": 1,
-                         "output_directory": temporary_dir}
+                         "output_directory": output_folder}
             tuple_dict_err: Tuple[Dict[str, List[Any]], Union[int, Any]] = pic_downloader.download(arguments)
             error_count = tuple_dict_err[1]
             if (error_count == 0):
@@ -133,17 +133,17 @@ class Converter:
     def start(self, file_path, export_dir, temporary_dir):
         self.temporary_dir = temporary_dir
         import_lines = Helper.read_file_to_lines(file_path)
-        buckets = self.read_buckets(import_lines)
+        buckets = self.__read_buckets(import_lines)
         file_name = os.path.basename(file_path)
         deck_name = file_name.rstrip(".txt")
-        forward_manager = AnkiManager(deck_name)
-        forward_manager.save_anki_package(buckets, export_dir + "\\" + deck_name + ".apkg")
+        anki_manager = AnkiManager(deck_name)
+        anki_manager.save_anki_package(buckets, export_dir + "\\" + deck_name + ".apkg")
 
         # remove temporary files
-        for media_file in forward_manager.list_of_media_files:
+        for media_file in anki_manager.list_of_media_files:
             os.remove(media_file)
 
-    def read_buckets(self, import_lines):
+    def __read_buckets(self, import_lines):
         buckets = []
         counter = 1
         bucket = Bucket()
@@ -199,7 +199,7 @@ class AnkiManager:
 
     def save_anki_package(self, buckets, export_file_name):
         for bucket in buckets:
-            self.add_bucket_to_deck(bucket)
+            self.__add_bucket_to_deck(bucket)
 
         pack = genanki.Package(self.my_deck)
         pack.media_files = self.list_of_media_files
@@ -207,7 +207,7 @@ class AnkiManager:
         pack.write_to_file(export_file_name)
         print("ANKI deck saved to", export_file_name)
 
-    def add_bucket_to_deck(self, bucket):
+    def __add_bucket_to_deck(self, bucket):
         image_string = ""
         if (bucket.path_to_picture != ""):
             image_name = os.path.basename(bucket.path_to_picture)
