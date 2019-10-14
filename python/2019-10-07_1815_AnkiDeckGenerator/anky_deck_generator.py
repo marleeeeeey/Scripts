@@ -21,11 +21,11 @@ class Bucket:
         self.example_translation = ""
         self.path_to_picture = ""
 
-    def process(self, output_directory):
+    def process(self, temporary_dir):
         self.generate_translations()
-        self.generate_speech(output_directory)
+        self.generate_speech(temporary_dir)
         try:
-            self.generate_pictures(output_directory)
+            self.generate_pictures(temporary_dir)
         except AttributeError:
             self.path_to_picture = ""
             print("Can't generate image", self.word)
@@ -35,14 +35,14 @@ class Bucket:
         self.meaning_translation = Helper.translate(self.meaning)
         self.word_translation = Helper.translate(self.word)
 
-    def generate_speech(self, output_directory):
-        self.word_sound_path = Helper.save_speech_to(self.word, output_directory, "en")
-        self.meaning_sound_path = Helper.save_speech_to(self.meaning, output_directory, "en")
+    def generate_speech(self, temporary_dir):
+        self.word_sound_path = Helper.save_speech_to(self.word, temporary_dir, "en")
+        self.meaning_sound_path = Helper.save_speech_to(self.meaning, temporary_dir, "en")
 
-    def generate_pictures(self, output_directory):
+    def generate_pictures(self, temporary_dir):
         count_of_pictures = 1  # TODO
         basewidth = 400
-        pictures = Helper.load_pictures_to_download_subfolder(self.word, output_directory, count_of_pictures)
+        pictures = Helper.load_pictures_to_download_subfolder(self.word, temporary_dir, count_of_pictures)
         if (len(pictures) != 0):
             self.path_to_picture = pictures[0]
             Helper.resize_image(self.path_to_picture, basewidth)
@@ -88,7 +88,7 @@ class Helper:
             print('Created subfolder:', subfolder)
 
     @staticmethod
-    def load_pictures_to_download_subfolder(word, output_directory, count_of_pictures=1):
+    def load_pictures_to_download_subfolder(word, temporary_dir, count_of_pictures=1):
         file_names = []
         attempt_number = 1
         max_attempt_couter = 3
@@ -99,7 +99,7 @@ class Helper:
                 print("Attempt to download <<", word, ">> image number", str(attempt_number))
             pic_downloader = google_images_download.googleimagesdownload()
             arguments = {"keywords": word, "limit": count_of_pictures, "silent_mode": 1,
-                         "output_directory": output_directory}
+                         "output_directory": temporary_dir}
             tuple_dict_err: Tuple[Dict[str, List[Any]], Union[int, Any]] = pic_downloader.download(arguments)
             error_count = tuple_dict_err[1]
             if (error_count == 0):
@@ -128,9 +128,10 @@ class Helper:
 
 class Converter:
     def __init__(self):
-        self.output_directory = "downloads"
+        self.temporary_dir = ""
 
-    def start(self, file_path, export_dir):
+    def start(self, file_path, export_dir, temporary_dir):
+        self.temporary_dir = temporary_dir
         import_lines = Helper.read_file_to_lines(file_path)
         buckets = self.read_buckets(import_lines)
         file_name = os.path.basename(file_path)
@@ -154,7 +155,7 @@ class Converter:
                 bucket.meaning = line
             elif type_of_field == 0:
                 bucket.example = line
-                bucket.process(self.output_directory)
+                bucket.process(self.temporary_dir)
                 buckets.append(bucket)
                 bucket = Bucket()
             counter += 1
@@ -239,7 +240,8 @@ def main():
     import_file_name = Helper.get_import_file_name()
     print("Processing file:", import_file_name)
     export_dir = "export"
-    converter.start(import_file_name, export_dir)
+    temporary_dir = "downloads"
+    converter.start(import_file_name, export_dir, temporary_dir)
 
 
 main()
