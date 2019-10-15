@@ -7,6 +7,9 @@ import os
 import random
 from google_images_download import google_images_download
 from PIL import Image
+import abc
+import argparse
+import string
 
 
 class Bucket:
@@ -31,13 +34,16 @@ class Bucket:
             print("Can't generate image", self.word)
 
     def __generate_translations(self):
-        self.example_translation = Helper.translate(self.example)
-        self.meaning_translation = Helper.translate(self.meaning)
-        self.word_translation = Helper.translate(self.word)
+        if(self.example != ""):
+            self.example_translation = Helper.translate(self.example)
+        if(self.meaning != ""):
+            self.meaning_translation = Helper.translate(self.meaning)
+        if(self.word_translation == ""):
+            self.word_translation = Helper.translate(self.word)
 
     def __generate_speech(self, temporary_dir):
         self.word_sound_path = Helper.save_speech_to(self.word, temporary_dir, "en")
-        self.meaning_sound_path = Helper.save_speech_to(self.meaning, temporary_dir, "en")
+        #self.meaning_sound_path = Helper.save_speech_to(self.meaning, temporary_dir, "en")
 
     def __generate_pictures(self, temporary_dir):
         count_of_pictures = 1  # TODO
@@ -70,14 +76,16 @@ class Helper:
         return int(result)
 
     @staticmethod
-    def get_import_file_name():
-        return sys.argv[1]
+    def remove_special_symbols(s):
+        exclude = set(string.punctuation)
+        ret_string = ''.join(ch for ch in s if ch not in exclude)
+        return ret_string
 
     @staticmethod
     def save_speech_to(text_to_speech, subfolder, lang):
         speech = Speech(text_to_speech, lang)
         Helper.create_folder_if_not_exist(subfolder)
-        path_to_save = subfolder + "\\" + text_to_speech + ".mp3"
+        path_to_save = subfolder + "\\" + Helper.remove_special_symbols(text_to_speech) + ".mp3"
         speech.save(path_to_save)
         return path_to_save
 
@@ -98,7 +106,9 @@ class Helper:
             if (attempt_number > 1):
                 print("Attempt to download <<", word, ">> image number", str(attempt_number))
             pic_downloader = google_images_download.googleimagesdownload()
-            arguments = {"keywords": word, "limit": count_of_pictures, "silent_mode": 1,
+            arguments = {"keywords": Helper.remove_special_symbols(word),
+                         "limit": count_of_pictures,
+                         "silent_mode": 1,
                          "output_directory": output_folder}
             tuple_dict_err: Tuple[Dict[str, List[Any]], Union[int, Any]] = pic_downloader.download(arguments)
             error_count = tuple_dict_err[1]
@@ -120,20 +130,21 @@ class Helper:
     @staticmethod
     def read_file_to_lines(file_name):
         import_lines = []
-        with open(file_name, 'r') as reader:
+        with open(file_name, 'r', encoding="utf8") as reader:
             for line in reader.readlines():
                 import_lines.append(line.rstrip())
         return import_lines
 
 
-class Converter:
+
+class IConverter(abc.ABC):
     def __init__(self):
         self.temporary_dir = ""
 
     def start(self, file_path, export_dir, temporary_dir):
         self.temporary_dir = temporary_dir
         import_lines = Helper.read_file_to_lines(file_path)
-        buckets = self.__read_buckets(import_lines)
+        buckets = self.read_buckets(import_lines)
         file_name = os.path.basename(file_path)
         deck_name = file_name.rstrip(".txt")
         anki_manager = AnkiManager(deck_name)
@@ -143,7 +154,12 @@ class Converter:
         for media_file in anki_manager.list_of_media_files:
             os.remove(media_file)
 
-    def __read_buckets(self, import_lines):
+    @abc.abstractmethod
+    def read_buckets(self, import_lines):
+        pass
+
+class LinesWordMeaningExampleConverter(IConverter):
+    def read_buckets(self, import_lines):
         buckets = []
         counter = 1
         bucket = Bucket()
@@ -155,6 +171,24 @@ class Converter:
                 bucket.meaning = line
             elif type_of_field == 0:
                 bucket.example = line
+                bucket.process(self.temporary_dir)
+                buckets.append(bucket)
+                bucket = Bucket()
+            counter += 1
+        return buckets
+
+
+class LinesWordTranslateConverter(IConverter):
+    def read_buckets(self, import_lines):
+        buckets = []
+        counter = 1
+        bucket = Bucket()
+        for line in import_lines:
+            type_of_field = counter % 2
+            if type_of_field == 1:
+                bucket.word = line
+            elif type_of_field == 0:
+                bucket.word_translation = line
                 bucket.process(self.temporary_dir)
                 buckets.append(bucket)
                 bucket = Bucket()
@@ -215,10 +249,14 @@ class AnkiManager:
             self.list_of_media_files.append(bucket.path_to_picture)
         else:
             print("Image is not present for word:", bucket.word)
-        word_sound_string = "[sound:" + os.path.basename(bucket.word_sound_path) + "]"
-        meaning_sound_string = "[sound:" + os.path.basename(bucket.meaning_sound_path) + "]"
-        self.list_of_media_files.append(bucket.word_sound_path)
-        self.list_of_media_files.append(bucket.meaning_sound_path)
+        word_sound_string = ""
+        if(bucket.word_sound_path != ""):
+            word_sound_string = "[sound:" + os.path.basename(bucket.word_sound_path) + "]"
+            self.list_of_media_files.append(bucket.word_sound_path)
+        meaning_sound_string = ""
+        if(bucket.meaning_sound_path != ""):
+            meaning_sound_string = "[sound:" + os.path.basename(bucket.meaning_sound_path) + "]"
+            self.list_of_media_files.append(bucket.meaning_sound_path)
         note = genanki.Note(model=self.my_model,
                             fields=[bucket.word,
                                     image_string,
@@ -236,8 +274,24 @@ class AnkiManager:
 
 
 def main():
-    converter = Converter()
-    import_file_name = Helper.get_import_file_name()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-t", "--type", type=int, choices=[0, 1],
+                        help="Converter Type: 1-LinesWordMeaningExample; 2-LinesWordTranslateConverter", default=0)
+    parser.add_argument("-i", "--input", type=str, default="",
+                        help="import file")
+    args = parser.parse_args()
+    type : int = args.type
+    print("args.type=", args.type)
+    converter = object
+
+    if type == 0:
+        converter = LinesWordMeaningExampleConverter()
+    elif type == 1:
+        converter = LinesWordTranslateConverter()
+
+    import_file_name = args.input
+    if(import_file_name == ""):
+        raise AttributeError("File name must be present")
     print("Processing file:", import_file_name)
     export_dir = "export"
     temporary_dir = "downloads"
