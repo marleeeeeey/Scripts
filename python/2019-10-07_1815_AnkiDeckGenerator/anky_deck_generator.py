@@ -49,14 +49,18 @@ class Bucket:
         count_of_pictures = 1  # TODO
         basewidth = 400
         pictures = Helper.load_pictures(self.word, temporary_dir, count_of_pictures)
-        if (len(pictures) == 0 and self.meaning != ""):
-            print("Attempt to load picture from meaning:", self.meaning)
-            pictures = Helper.load_pictures(self.meaning, temporary_dir, count_of_pictures)
-        if (len(pictures) != 0):
-            self.path_to_picture = pictures[0]
-            Helper.resize_image(self.path_to_picture, basewidth)
-        else:
-            print("Can't load pictures for word:", self.word)
+        try:
+            if (len(pictures) == 0 and self.meaning != ""):
+                print("Attempt to load picture from meaning:", self.meaning)
+                pictures = Helper.load_pictures(self.meaning, temporary_dir, count_of_pictures)
+            if (len(pictures) != 0):
+                self.path_to_picture = pictures[0]
+                Helper.resize_image(self.path_to_picture, basewidth)
+            else:
+                print("Can't load pictures for word:", self.word)
+        except IOError:
+            print("Error during opening the image:", self.path_to_picture, ". Image will skip.")
+            self.path_to_picture = ""
 
 
 class Helper:
