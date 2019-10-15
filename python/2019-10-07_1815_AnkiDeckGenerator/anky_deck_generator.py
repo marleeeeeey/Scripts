@@ -34,21 +34,24 @@ class Bucket:
             print("Can't generate image", self.word)
 
     def __generate_translations(self):
-        if(self.example != ""):
+        if (self.example != ""):
             self.example_translation = Helper.translate(self.example)
-        if(self.meaning != ""):
+        if (self.meaning != ""):
             self.meaning_translation = Helper.translate(self.meaning)
-        if(self.word_translation == ""):
+        if (self.word_translation == ""):
             self.word_translation = Helper.translate(self.word)
 
     def __generate_speech(self, temporary_dir):
         self.word_sound_path = Helper.save_speech_to(self.word, temporary_dir, "en")
-        #self.meaning_sound_path = Helper.save_speech_to(self.meaning, temporary_dir, "en")
+        # self.meaning_sound_path = Helper.save_speech_to(self.meaning, temporary_dir, "en")
 
     def __generate_pictures(self, temporary_dir):
         count_of_pictures = 1  # TODO
         basewidth = 400
         pictures = Helper.load_pictures(self.word, temporary_dir, count_of_pictures)
+        if (len(pictures) == 0 and self.meaning != ""):
+            print("Attempt to load picture from meaning:", self.meaning)
+            pictures = Helper.load_pictures(self.meaning, temporary_dir, count_of_pictures)
         if (len(pictures) != 0):
             self.path_to_picture = pictures[0]
             Helper.resize_image(self.path_to_picture, basewidth)
@@ -136,7 +139,6 @@ class Helper:
         return import_lines
 
 
-
 class IConverter(abc.ABC):
     def __init__(self):
         self.temporary_dir = ""
@@ -160,6 +162,7 @@ class IConverter(abc.ABC):
     @abc.abstractmethod
     def read_buckets(self, import_lines):
         pass
+
 
 class LinesWordMeaningExampleConverter(IConverter):
     def read_buckets(self, import_lines):
@@ -196,6 +199,35 @@ class LinesWordTranslateConverter(IConverter):
                 buckets.append(bucket)
                 bucket = Bucket()
             counter += 1
+        return buckets
+
+
+class LinesWordMeaningConverter(IConverter):
+    def read_buckets(self, import_lines):
+        buckets = []
+        counter = 1
+        bucket = Bucket()
+        for line in import_lines:
+            type_of_field = counter % 2
+            if type_of_field == 1:
+                bucket.word = line
+            elif type_of_field == 0:
+                bucket.meaning = line
+                bucket.process(self.temporary_dir)
+                buckets.append(bucket)
+                bucket = Bucket()
+            counter += 1
+        return buckets
+
+
+class LinesWordConverter(IConverter):
+    def read_buckets(self, import_lines):
+        buckets = []
+        for line in import_lines:
+            bucket = Bucket()
+            bucket.word = line
+            bucket.process(self.temporary_dir)
+            buckets.append(bucket)
         return buckets
 
 
@@ -253,11 +285,11 @@ class AnkiManager:
         else:
             print("Image is not present for word:", bucket.word)
         word_sound_string = ""
-        if(bucket.word_sound_path != ""):
+        if (bucket.word_sound_path != ""):
             word_sound_string = "[sound:" + os.path.basename(bucket.word_sound_path) + "]"
             self.list_of_media_files.append(bucket.word_sound_path)
         meaning_sound_string = ""
-        if(bucket.meaning_sound_path != ""):
+        if (bucket.meaning_sound_path != ""):
             meaning_sound_string = "[sound:" + os.path.basename(bucket.meaning_sound_path) + "]"
             self.list_of_media_files.append(bucket.meaning_sound_path)
         note = genanki.Note(model=self.my_model,
@@ -278,22 +310,26 @@ class AnkiManager:
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-t", "--type", type=int, choices=[0, 1],
-                        help="Converter Type: 1-LinesWordMeaningExample; 2-LinesWordTranslateConverter", default=0)
+    parser.add_argument("-t", "--type", type=int, choices=[0, 1, 2, 3], default=0,
+                        help="Converter Type: 0-LinesWord; 1-LinesWordMeaningExample; 2-LinesWordTranslate; "
+                             "3-LinesWordMeaning")
     parser.add_argument("-i", "--input", type=str, default="",
                         help="import file")
     args = parser.parse_args()
-    type : int = args.type
-    print("args.type=", args.type)
-    converter = object
+    type: int = args.type
 
+    converter = object
     if type == 0:
-        converter = LinesWordMeaningExampleConverter()
+        converter = LinesWordConverter()
     elif type == 1:
+        converter = LinesWordMeaningExampleConverter()
+    elif type == 2:
         converter = LinesWordTranslateConverter()
+    elif type == 3:
+        converter = LinesWordMeaningConverter()
 
     import_file_name = args.input
-    if(import_file_name == ""):
+    if (import_file_name == ""):
         raise AttributeError("File name must be present")
     print("Processing file:", import_file_name)
     export_dir = "export"
