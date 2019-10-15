@@ -152,7 +152,10 @@ class IConverter(abc.ABC):
 
         # remove temporary files
         for media_file in anki_manager.list_of_media_files:
-            os.remove(media_file)
+            try:
+                os.remove(media_file)
+            except FileNotFoundError:
+                print("Can't remove file: ", media_file)
 
     @abc.abstractmethod
     def read_buckets(self, import_lines):
