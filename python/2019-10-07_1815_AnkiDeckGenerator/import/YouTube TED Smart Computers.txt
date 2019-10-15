@@ -1,0 +1,153 @@
+substrate
+the substance that is acted upon by an enzyme or ferment
+And the corollary, of course, is that any further changes that could significantly change the substrate of thinking could have potentially enormous consequences.
+lexical
+of or relating to words
+Look at these two highly distinguished gentlemen: We have Kanzi -- he's mastered 200 lexical tokens, an incredible feat.
+anthropomorphize
+ascribe human features to something
+To make any headway with this, we must first of all avoid anthropomorphizing.
+artificial
+contrived by art rather than nature
+Artificial intelligence used to be about putting commands in a box.
+axon
+long nerve fiber that conducts impulses away from a cell
+Neurons propagate slowly in axons, 100 meters per second, tops.
+neuron
+a cell that is specialized to conduct nerve impulses
+A biological neuron fires, maybe, at 200 hertz, 200 times a second.
+intelligence
+the ability to comprehend
+I work with a bunch of mathematicians, philosophers and computer scientists, and we sit around and think about the future of machine intelligence, among other things.
+malfunction
+fail to work properly
+Or maybe you could pretend to malfunction, and then when the programmers open you up to see what went wrong with you, they look at the source code -- Bam! -- the manipulation can take place.
+transistor
+a semiconductor device capable of amplification
+But even a present-day transistor operates at the Gigahertz.
+paradigm
+a standard or typical example
+But since then, a paradigm shift has taken place in the field of artificial intelligence.
+proximate
+very close in space or time
+Now it's true, technology has accumulated through human history, and right now, technology advances extremely rapidly -- that is the proximate cause, that's why we are currently so very productive.
+detonation
+the act of setting off an explosive
+The initial conditions for the intelligence explosion might need to be set up in just the right way if we are to have a controlled detonation.
+ballistic
+of the motion of objects moving under their own momentum
+So a bunch of relatively minor changes take us from Kanzi to Witten, from broken-off tree branches to intercontinental ballistic missiles.
+dormant
+inactive but capable of becoming active
+So the potential for superintelligence lies dormant in matter, much like the power of the atom lay dormant throughout human history, patiently waiting there until 1945.
+cranium
+the part of the skull that encloses the brain
+There are also size limitations, like a human brain has to fit inside a cranium, but a computer can be the size of a warehouse or larger.
+worthwhile
+sufficiently valuable to justify the investment of time
+This means that there is no necessary connection between being highly intelligent in this sense, and having an objective that we humans would find worthwhile or meaningful.
+corollary
+an inference following from the proof of another proposition
+And the corollary, of course, is that any further changes that could significantly change the substrate of thinking could have potentially enormous consequences.
+esoteric
+understandable only by an enlightened inner circle
+And there are also some esoteric issues that would need to be solved, sorted out: the exact details of its decision theory, how to deal with logical uncertainty and so forth.
+blueprint
+something intended as a guide for making something else
+Or it could output the blueprint to a really nifty technology, and when we implement it, it has some surreptitious side effect that the artificial intelligence had planned.
+wiggle
+move to and fro
+More creative scenarios are also possible, like if you're the artificial intelligence , you can imagine wiggling electrodes around in your internal circuitry to create radio waves that you can use to communicate.
+clutter
+a confused multitude of things
+But I think that from the point of view of artificial intelligence, the true picture is actually probably more like this: AI starts out at this point here, at zero intelligence, and then, after many, many years of really hard work, maybe eventually we get to mouse-level artificial intelligence, something that can navigate cluttered environments as well as a mouse can.
+surreptitious
+marked by quiet and caution and secrecy
+Or it could output the blueprint to a really nifty technology, and when we implement it, it has some surreptitious side effect that the artificial intelligence had planned.
+facial
+of or concerning the front of the head
+When the artificial intelligence becomes superintelligent, it realizes that there is a more effective way to achieve this goal: take control of the world and stick electrodes into the facial muscles of humans to cause constant, beaming grins.
+headway
+forward movement
+To make any headway with this, we must first of all avoid anthropomorphizing.
+brittle
+having little elasticity
+You build up these expert systems, and they were kind of useful for some purposes, but they were very brittle, you couldn't scale them.
+ironic
+displaying incongruity between what is expected and what is
+And this is ironic because every newspaper article about the future of artificial intelligence has a picture of this: So I think what we need to do is to conceive of the issue more abstractly, not in terms of vivid Hollywood scenarios.
+painstaking
+characterized by extreme care and great effort
+You would have human programmers that would painstakingly handcraft knowledge items.
+leverage
+the mechanical advantage gained by a machine on a fulcrum
+We would thus leverage its intelligence as much as possible to solve the problem of value-loading.
+aging
+the organic process of growing older
+Think of all the crazy technologies that you could have imagined maybe humans could have developed in the fullness of time: cures for aging, space colonization, self-replicating nanobots or uploading of minds into computers, all kinds of science fiction-y stuff that's nevertheless consistent with the laws of physics.
+era
+a period marked by distinctive character
+The industrial era started two seconds ago.
+anomaly
+deviation from the normal or common order or form or rule
+(Laughter) Let's ask ourselves, what is the cause of this current anomaly?
+domain
+a particular environment or walk of life
+The result is artificial intelligence that is not limited to one domain -- the same system can learn to translate between any pairs of languages, or learn to play any computer game on the Atari console.
+preference
+the right or chance to choose
+We would then have a future that would be shaped by the preferences of this artificial intelligence Now a good question is, what are those preferences?
+beaming
+radiating or as if radiating light
+When the artificial intelligence becomes superintelligent, it realizes that there is a more effective way to achieve this goal: take control of the world and stick electrodes into the facial muscles of humans to cause constant, beaming grins.
+instrumental
+serving or acting as a means or aid
+And notice that this gives the artificial intelligence s an instrumental reason to do things to us that we might not approve of.
+maturity
+the period of time in life after physical growth has stopped
+Now, a superintelligence with such technological maturity would be extremely powerful, and at least in some scenarios, it would be able to get what it wants.
+potentially
+with a possibility of becoming actual
+And the corollary, of course, is that any further changes that could significantly change the substrate of thinking could have potentially enormous consequences.
+warehouse
+a storehouse for goods and merchandise
+There are also size limitations, like a human brain has to fit inside a cranium, but a computer can be the size of a warehouse or larger.
+metaphor
+a figure of speech that suggests a non-literal similarity
+This could become practically relevant, not just as a metaphor for greed, but as an illustration of what happens if you create a powerful optimization process and give it misconceived or poorly specified goals.
+propagate
+multiply through reproduction
+Neurons propagate slowly in axons, 100 meters per second, tops.
+transgress
+act in disregard of laws, rules, contracts, or promises
+So we disconnect the ethernet cable to create an air gap, but again, like merely human hackers routinely transgress air gaps using social engineering.
+incorporate
+make into a whole or make part of a whole
+But the general point here is important: if you create a really powerful optimization process to maximize for objective x, you better make sure that your definition of x incorporates everything you care about.
+profound
+situated at or extending to great depth
+Some of my colleagues think we're on the verge of something that could cause a profound change in that substrate, and that is machine superintelligence.
+missile
+a weapon that is forcibly thrown or projected at a target
+So a bunch of relatively minor changes take us from Kanzi to Witten, from broken-off tree branches to intercontinental ballistic missiles.
+uncertainty
+the state of being unsure of something
+And there are also some esoteric issues that would need to be solved, sorted out: the exact details of its decision theory, how to deal with logical uncertainty and so forth.
+myth
+a traditional story serving to explain a world view
+This is a lesson that's also taught in many a myth.
+species
+taxonomic group whose members can interbreed
+But if we think about it, we are actually recently arrived guests on this planet, the human species.
+nevertheless
+despite anything to the contrary
+Think of all the crazy technologies that you could have imagined maybe humans could have developed in the fullness of time: cures for aging, space colonization, self-replicating nanobots or uploading of minds into computers, all kinds of science fiction-y stuff that's nevertheless consistent with the laws of physics.
+conceive
+have the idea for
+And this is ironic because every newspaper article about the future of artificial intelligence has a picture of this: So I think what we need to do is to conceive of the issue more abstractly, not in terms of vivid Hollywood scenarios.
+throughout
+from first to last
+So the potential for superintelligence lies dormant in matter, much like the power of the atom lay dormant throughout human history, patiently waiting there until 1945.
+pursue
+follow in an effort to capture
+Instead, we would create an artificial intelligence that uses its intelligence to learn what we value, and its motivation system is constructed in such a way that it is motivated to pursue our values or to perform actions that it predicts we would approve of.
