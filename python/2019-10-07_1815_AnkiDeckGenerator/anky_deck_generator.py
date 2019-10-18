@@ -13,6 +13,8 @@ from googletrans import Translator
 
 
 class Bucket:
+    current_bucket = 0
+
     def __init__(self):
         self.word = ""
         self.word_translation = ""
@@ -25,6 +27,8 @@ class Bucket:
         self.path_to_picture = ""
 
     def process(self, temporary_dir):
+        Bucket.current_bucket += 1
+        print("Word", Bucket.current_bucket, ":", end=" ")
         self.__generate_translations()
         self.__generate_speech(temporary_dir)
         try:
