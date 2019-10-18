@@ -1,0 +1,1494 @@
+accept
+receive willingly something given or offered
+Once your errata are verified, your submission will be accepted and the errata will be uploaded to our website or added to any list of existing errata under the Errata section of that title.
+recipe
+directions for making something
+Over 90 recipes that leverage the powerful features of the standard library in C++17
+sum
+a quantity obtained by the addition of a group of numbers
+Calculating the error sum of two vectors How to do it...
+distribution
+the act of spreading or apportioning
+Generating random numbers and letting the STL shape specific
+distributions
+How to do it...
+predicate involve as a necessary condition of consequence Creating complex predicates with logical conjunction How to do it...
+complex
+complicated in structure
+Creating complex predicates with logical conjunction How to do it...
+completely
+with everything necessary
+By now, it is a completely different language compared to what it was just a decade ago.
+yield
+give or supply
+Compiling and running the program yields the following two output lines from the two item removing approaches. $ ./main
+gather
+assemble or get together
+Composing useful algorithms from standard algorithms - gather How to do it...
+partition
+separation by the creation of a boundary that divides
+Another interesting function is std:: partition.
+scope
+the state of the environment in which a situation exists
+Limiting variable scopes to if and switch
+statements
+It is good style to limit the scope of variables as much as possible.
+combine put or add together He has a strong passion for modern C++ implementations of lowlevel software, and he tries hard to combine high performance with an elegant coding style.
+implemented
+forced or compelled or put in force
+During and after his studies, he worked as a freelancer and implemented applications as well as kernel drivers in C and C++, touching various areas, including 3D graphics programming, databases, network communication, and physics simulation.
+complicated
+difficult to analyze or understand
+Without using constexpr-if, this class works for all different types we wished for, but it looks super complicated.
+produce
+bring forth or yield
+The process_monitor class should both contain a static member and be globally accessible itself, which would produce double-defined symbols when included from multiple translation units: // foo_lib.hpp class process_monitor { public: static const std::string standard_string {"some static globally available string"}; }; process_monitor global_process_monitor;
+reduce
+make smaller
+Implementing a tool that reduces folder size by substituting duplicates with symlinks How to do it...
+through
+having finished or arrived at completion
+Now, let's go through the list and try to emplace a new payload pair for every country.
+comparison
+the act of examining resemblances
+We do not only need a hash function in order to use the structure as a key for a hash map, it also needs a comparison operator implementation: bool operator==(const coord &l, const coord &r) { return l.x == r.x && l.y == r.y;
+exclusive
+admitting or accepting only a particular group
+At www.PacktPub.com, you can also read a collection of free technical articles, sign up for a range of free newsletters and receive exclusive discounts and offers on Packt books and eBooks.
+trait
+a distinguishing feature of your personal nature
+Creating custom string classes by inheriting from std::char_ traits How to do it...
+represent
+be a delegate or spokesperson for
+Let's define a structure that represents billionaire items for our list. struct billionaire { string name; double dollars; string country; };
+drop
+let fall to the ground
+This is very sad because using C++ like that means dropping half its strength.
+generic
+applicable to an entire class or group
+Learning purely functional programming and Haskell in recent years triggered his drive to implement generic code with the aid of meta programming.
+forward
+at or to or toward the front
+If only unidirectional list traversal is needed, std:: forward_list may be more performant in both space and maintenance complexity, because it maintains only list item pointers in one direction.
+canonical
+conforming to orthodox or recognized rules
+Getting canonical file paths from relative paths How to do it...
+consume
+take in as food
+It will accept an iterator pair, which denotes the beginning and end of a mathematical expression in string form, which will be consumed token by token. template double evaluate_rpn(IT it, IT end) {
+consist
+have its essential character
+How it works… This section usually consists of a detailed explanation of what happened in the previous section.
+meme
+a cultural idea or behavior passed from person to person
+We want to maintain a little Internet meme database.
+allocate
+distribute according to a plan or set apart for a purpose
+Whenever new objects are pushed into the vector exceeding its current size, it will automatically move all items to a larger chunk of newly allocated memory, and delete the old chunk.
+literal
+limited to the explicit meaning of a word or text
+...expressions, constant expressions, portable thread control for concurrent programming, regular expressions, random number generators, exceptions, variadic templates (the part of C++ for expressing template types is even Turing-complete!), user-defined literals, portable filesystem traversal, and so much more.
+extract
+remove, usually with some force or effort
+Once the file is downloaded, please make sure that you unzip or extract the folder using the latest version of: WinRAR / 7-Zip for Windows Zipeg / iZip / UnRarX for Mac 7-Zip / PeaZip for Linux The code bundle for the book is also hosted on GitHub at https://github.com/PacktPubl ishing/Cpp17-STL-Cookbook.
+maintain
+keep in a certain state, position, or activity
+Arne works at Zühlke Engineering, Germany and is known for his blog, Simplify C++! ( https://arne-mertz.de) on clean and maintainable C++.
+deadlock
+a situation in which no progress can be made
+Avoiding deadlocks with std::scoped_lock How to do it...
+concentrate
+make denser, stronger, or purer
+that the C++17 standard brought to C++ as a language, so we can concentrate on the additions to the STL in the following chapters.
+elegant
+refined and tasteful in appearance, behavior, or style
+He has a strong passion for modern C++ implementations of lowlevel software, and he tries hard to combine high performance with an elegant coding style.
+assume
+take to be the case or to be true
+Both the command-line examples assume that the file recipe_code.cpp is the text file containing your C++ code.
+dupe
+fool or hoax
+The only thing we need to do now is to call reduce_ dupes on this directory and print how many files it deleted. const size_t dupes {reduce_ dupes(dir)}; cout << "Removed " << dupes << " duplicates.\n"; }
+evaluate
+estimate the nature, quality, ability or significance of
+The difference is that the condition that it tests has to be evaluated at compile time.
+fit
+meeting adequate standards for a purpose
+In this chapter, we will be creative and stick tightly to the STL while implementing solutions to more complex problems, and we will learn how to combine existing algorithms to create new ones that really fit our needs.
+permutation
+a complete change in character or condition
+Generating permutations of input sequences
+formula
+a group of symbols that make a mathematical statement
+Implementing the Fourier transform formula with STL numeric
+algorithms
+How to do it...
+performance the act of doing something successfully In recent years, he has been programming performance- and security-sensitive microkernel operating systems for Intel x86 virtualization at Intel and FireEye in Braunschweig, Germany.
+surround
+extend on all sides of simultaneously; encircle
+If we use any operator (+, in this example) together with ... in order to apply it to all the values of a parameter pack, we need to surround the expression with parentheses: template
+mutable
+capable of or tending to change in form or quality or nature
+Capture list mutable (optional) constexpr (optional) exception attr (optional) return type (optional)
+bracket
+a punctuation mark used to enclose textual material
+Profiting from the new bracket initializer rules How to do it...
+obtain
+come into possession of
+About the Author Jacek Galowicz obtained his master of science in electrical engineering/computer engineering at RWTH Aachen University, Germany.
+implicitly
+without ever expressing so clearly
+The map implicitly does another job for us: If we say ops.at("foo"), then "foo" is a valid key value, but we did not store any operation named like this.
+accessible
+capable of being reached
+Fully searchable across every book published by Packt Copy and paste, print, and bookmark content On demand and accessible via a web browser
+bundle
+a collection of things wrapped or boxed together
+Table of Contents
+Preface
+Chapter 1: The New C++17 Features
+Introduction Using structured bindings to unpack bundled return values How to do it...
+decompress
+restore something reduced in volume to its full volume
+Compressing and decompressing strings How to do it...
+decimal
+a number in a system based on ten
+Because copying a value from a double variable to an int variable cuts its decimal part after the point, we have some loss.
+concurrent
+occurring or operating at the same time
+Synchronizing concurrent std::cout use
+frequency
+the number of occurrences within a given time period
+Implementing a word frequency counter with std::map How to do it...
+potential
+existing in possibility
+Unfortunately, they will potentially ignore a lot of optimization potential while doing that.
+characteristic
+typical or distinctive
+The size of the hash table can be manipulated by the user, and the hash function can also be chosen individually, which is important, because the performance versus space consumption characteristics depend on that. std::unordered_set and std::unordered_map have so much interface in common with their std::set and std::map pendants, that they can be used almost interchangeably.
+matter
+that which has mass and occupies space
+It allows us to hide complex solutions behind simple high-level interfaces but, at the same time, to write low-level code where high performance and low overhead really matter.
+sentinel
+a person employed to keep watch for some anticipated event
+Terminating iterations over ranges with iterator sentinels How to do it...
+arbitrary
+based on or subject to individual discretion or preference
+This struct, sum, accepts an arbitrary number of parameters and adds them together using a fold expression (have a look at the fold expression recipe a little later in this chapter to get more details on fold expressions).
+denote
+have as a meaning
+The first two denote beginning and end of the underlying range.
+concatenation
+the act of linking together as in a series or chain
+Composing functions by concatenation How to do it...
+legacy
+a gift of personal property by will
+Simplifying resource handling of legacy APIs with smart pointers How to do it...
+unnecessary
+not needed
+Especially for libraries with only very short functions, this is unnecessarily uncomfortable.
+distinguish
+mark as different
+Conventions In this book, you will find a number of text styles that distinguish between different kinds of information.
+arbitrarily
+in a random manner
+It does this in a greedy manner, which means that it is not possible to match non-aggregate constructors (nonaggregate constructors are usual constructors in contrast to the ones that accept an initializer list). std::vector, for example, provides a specific non-aggregate constructor, which fills arbitrarily many items with the same value: std::vector v (N, value).
+underlying
+in the nature of something though not readily apparent
+The first two denote beginning and end of the underlying range.
+consecutive
+one after the other
+Removing consecutive whitespace between words How to do it...
+leak
+enter or escape as through a hole or crack or fissure
+This is another example where we would have a useless shared_pointer variable leaking into the current scope, although it has a potentially useless state outside the if conditional block or noisy extra brackets!
+inherit
+receive from a predecessor
+Creating custom string classes by inheriting from std::char_traits How to do it...
+obvious
+easily perceived by the senses or grasped by the mind
+The obvious idea is that the sum of nothing is 0.
+spare
+more than is needed, desired, or required
+Then we declare that we are using namespace std to spare us some typing. using namespace std;
+stock
+a supply of something available for future use
+Structured bindings also work with std::tuple: Let's take the following example function, which gets us online stock information: std::tuple std::chrono::system_clock::time_point, unsigned> stock_info(const std::string &name);
+clamp
+a device that holds things firmly together
+Limiting the values of a vector to a specific numeric range with std:: clamp How to do it...
+deduction
+the act of removing a part from the whole
+Using structured bindings to unpack bundled return values C++17 comes with a new feature, which combines syntactic sugar and automatic type deduction: structured bindings.
+shuffle
+walk by dragging one's feet
+, rather than seeing one line of code, which uses a standard algorithm whose name clearly states what it does, such as accumulate, copy, move, transform, or shuffle.
+sane
+mentally healthy; free from mental disorder
+Because we are handling not a numeric index, but an iterator this time, we need to check a bit differently if the iterator position is sane.
+succeed
+attain success or reach a desired goal
+The first read succeeds in a strange way. repetitive
+persistent
+Calling multiple functions with the same
+input There are a lot of tasks, which lead to repetitive code.
+parenthesis
+a punctuation mark used to enclose textual material
+One nice detail about the {} operator compared to constructor calling using normal () parentheses is that they do no implicit type conversions: int x (1.2); and int x = 1.2; will initialize x to value 1 by silently rounding down the floating point value and converting it to int. int x {1.2};, in contrast, will not compile because it wants to exactly match the constructor type.
+comma
+a punctuation mark (,) indicating the separation of elements
+Another operator that defaults to a certain expression when applied on empty parameter packs is the comma operator (,), which then defaults to void().
+defining
+the process of determining the form or meaning of something
+When used for other data structures as vectors or lists, that second parameter is crucial for defining where the insert iterator shall insert new items.
+contiguous
+having a common boundary or edge
+Contiguous storage The simplest way to store objects is to put them just next to each other in one large chunk of memory.
+fraction
+a small part or item forming a piece of a whole
+Then, we can have a look at multiple examples that show how we can do it in C++17: Accessing individual values of an std::pair: Imagine we have a mathematical function, divide_remainder, which accepts a dividend and a divisor parameter and returns the fraction of both as well as the remainder.
+emit
+give off, send forth, or discharge
+Other compilers would emit different but similar error messages.
+trim
+make a reduction in
+Trimming whitespace from the beginning and end of strings How to do it...
+failure
+an act that does not succeed
+Safely signalizing failure with std::optional How to do it...
+acquire
+come into the possession of something concrete or abstract
+At runtime, the sanitizer libraries that are then linked into the program binary can, for example, replace the malloc and free functions in order to analyze how the program deals with the memory it acquires.
+alias
+a name that has been assumed temporarily
+It contains the same using type alias clauses as other hash specializations. namespace std { template <> struct hash { using argument_type = coord; using result_type = size_t;
+extremely
+to the greatest possible degree
+Chapter 3, Iterators, explains iterators, which are an extremely important abstraction as they
+leaf
+a flat, usually green part of a plant attached to a stem
+That leaves the question, where will the end iterator point to if we do not know where the stream's end is?
+slight
+small in quantity or degree
+We can also just encapsulate code to call it multiple times with slightly different parameters without having to implement a whole new function class for that task.
+naive
+marked by or showing unaffected simplicity
+We could just naively use the insert or emplace methods of map and see if they succeed.
+tidy
+marked by order and cleanliness in appearance or habits
+In this recipe, we use the initializer syntax in both the supported contexts in order to see how they tidy up our code: The if statements: Imagine we want to find a character in a character map using the find method of std::map: if (auto itr (character_map.find(c)); itr != character_map.end()) { // *itr is valid.
+management
+the act of controlling something
+As of today, C++ is a language that provides language features and standard library facilities for sophisticated standard data structures and algorithms, automatic resource management pointers, lambda expressions, constant expressions, portable thread control for concurrent programming, regular expressions, random number generators, exceptions, variadic templates (the part of C++ for expressing template types is even...
+nevertheless
+despite anything to the contrary
+Doing so and ignoring some of them is efficient, nevertheless, because the compiler can optimize the unused bindings out easily.
+concept
+an abstract or general idea inferred from specific instances
+We are going to roll up the whole iterator concept from the ground to learn how to put them to the best use in all our programs.
+determine
+find out or learn with certainty, as by making an inquiry
+Before C++17, a pair of extra braces was needed in order to determine the scope where it unlocks again.
+observe
+watch attentively
+If it does not crash, we might observe that the program just behaves strangely from time to time, which could lead to even more headaches than a crashing program.
+closure
+termination of operations
+Lambda expressions or lambda functions construct closures.
+simulate
+reproduce someone's behavior or looks
+This way, we simulate the problem that we have to access specific functions that create and destroy instances of it: class Foo { string name; Foo(string n) : name{n} { cout << "CTOR " << name << '\n'; } ~Foo() { cout << "DTOR " << name << '\n';}
+storage
+the act of keeping something for future use
+Introduction Contiguous storage List storage Search trees Hash tables Container adapters Using the erase-remove idiom on std::vector How to do it...
+ownership
+the state of being in possession of something
+Thanks to C++11, we don't even need to copy strings when we want to transfer ownership to some other function or data structure anymore because we can move them.
+tedious
+so lacking in interest as to cause mental weariness
+Unfortunately, they are sometimes a bit tedious to use, which is why many novices avoid them and fall back to C-Style C++.
+quotation
+a passage or expression that is cited
+No part of this book may be reproduced, stored in a retrieval system, or transmitted in any form or by any means, without the prior written permission of the publisher, except in the case of brief quotations embedded in critical articles or reviews.
+preface
+a short introductory essay preceding the text of a book
+Preface The C++17 STL Cookbook will teach you how to get the most out of C++17 by providing coding recipes that combine the C++ language and its standard library, the STL.
+needle
+a sharp pointed implement
+In this case, this is "elitr": int main() { const string long_string { "Lorem ipsum dolor sit amet, consetetur" " sadipscing elitr, sed diam nonumy eirmod"}; const string needle {"elitr"};
+descend
+move downward and lower, but not necessarily all the way
+It works exactly like directory_iterator in the previous recipe, but it also descends down into subdirectories.
+asynchronous
+not occurring or existing at the same time
+In this recipe, we are going to write a simple program that does multiple things at the same time using asynchronous function calls.
+efficiently
+in a manner that wastes no time or effort
+Inserting items efficiently and conditionally into std::map How to do it...
+transformed
+given a completely different form or appearance
+It calls the reduce function on this accumulator and the fn transformed input variable.
+defer
+yield to another's wish or opinion
+The second constructor argument defer_lock tells the object to keep the lock unlocked.
+expire
+lose validity
+The expired function of weak_ptr tells us if the object it points to still really exists, because holding a weak pointer to an object does not prolong its lifetime!
+preceding
+existing or coming before
+Instead of doing it as shown in the preceding code snippet, we can now assign the individual values to individual variables with expressive names, which is much better to read: auto [fraction, remainder] = divide_remainder(16, 3); std::cout << "16 / 3 is " << fraction << " with a remainder of " << remainder << '\n';
+revolve
+turn on or around an axis or a center
+The whole recipe revolves around the try_emplace function of std::map, which is a new C++17 addition.
+rely
+have confidence or faith in
+All the recipes in this book are designed to be as near as possible to real-life problems, while at the same time, they do not rely on any external libraries other than the STL.
+alter
+cause to change; make different
+Moreover, as std::move is an algorithm that also alters the data source, we will print the source vector too.
+prompt
+according to schedule or without delay
+Let's add a little helper function that prints a line that prompts the user to enter some text: static void prompt() { cout << "Next input please:\n > "; }
+especial
+surpassing what is common or usual or expected
+The if statements with initializers are especially useful when using legacy APIs with output parameters: if (DWORD exit_code; GetExitCodeProcess(process_handle, &exit_code)) { std::cout << "Exit code of process was: " << exit_code << '\n'; } // No useless exit_code variable outside the if-conditional
+encapsulate
+enclose in or as if in a small container
+In order to read the whole file, we initialize an std::string from input stream iterators which encapsulate std::cin. int main() { cin.unsetf(ios::skipws); string content {istream_iterator{cin}, {}};
+redundant
+more than is needed, desired, or required
+In some cases, this might be declared redundant, because the combination of items with themselves (like in (1, 1)) or redundant combinations of (1, 2) and (2, 1) may not be needed.
+buggy
+a small lightweight carriage
+Therefore it's better to not define them because if an algorithm depends on those items being referenceable in memory, it might be buggy when combined with our iterator.
+decompose
+break down
+The compiler immediately chokes on this and tells us about our mistake: error: type 'std::tuple' decomposes into 3 elements, but only 2 names were provided auto [a, b] = tup;
+sharing
+unselfishly willing to partake with others
+Sharing different member values of the same object How to do it...
+weird
+strikingly odd or unusual
+Pointer alignment: Some architectures cannot access memory if it has a weird alignment in memory.
+simplicity
+the quality of being uncomplicated
+For the sake of simplicity, the new minimum is 0, so no matter what offset the old data had, its normalized values will always be relative to 0.
+partial
+being or affecting only a segment
+In this section, we are going to play with std::sort and std:: partial_sort: 1.
+shrink
+wither, as with a loss of moisture
+Note that this might lead the vector code to allocate a new chunk of memory that fits and moves all items from the old chunk to the new one. v. shrink_to_fit();
+notion
+a general inclusive concept
+When using binary folds in order to implement the no-argument case, the notion of an identity element is often important--in this case, adding a 0 to any number changes nothing, which makes 0 an identity element.
+strict
+rigidly accurate; allowing no deviation from a standard
+The algorithm will strictly preserve the order of all non-2 values while doing that.
+satisfy
+meet the requirements or expectations of
+constexpr (optional) If we mark the lambda expression explicitly as constexpr, the compiler will error out if it does not satisfy the criteria of constexpr functions.
+tamper
+alter or falsify, usually secretively or dishonestly
+Without knowing the population count of a city, and also without tampering with its == operator, we can search only by comparing its name with the vector's content.
+converge
+be adjacent or come together
+The Mandelbrot set consists of all such values of c for which the formula converges if it is applied often enough.
+constraint
+the state of being physically limited
+Just as for the search tree implementations, both containers have their multipendants: std::unordered_multiset and std::unordered_multimap both drop the constraint on the uniqueness of the objects/keys, so we can store multiple elements with the same key.
+doe
+the mature female of mammals such as deer
+Lambda Expressions void operator()() { std::cout << "Hello, " << name << '\n'; } }; name_greeter greet_john_ doe {"John Doe"}; greet_john_ doe(); }
+assignment
+an undertaking that you have been told to perform
+Yes, this would be completely correct, but imagine we stored some very large strings in every slot, or even another vector or map--in that situation, that little assignment would lead to a very expensive copy.
+mimic
+imitate, especially for satirical effect
+A reverse iterator kind of contains a normal iterator and mimics its interface completely, but it rewires the increment operation to a decrement operation.
+precision
+the quality of being reproducible in amount or performance
+All the numbers will be parsed and saved in double precision floating point, so it's going to be a stack of double values. stack val_stack;
+traverse
+journey across or pass over
+Lists can only be traversed linearly with O(n) time.
+fulfill
+meet a want or need
+And this requirement is also fulfilled by std::string, for example: std::string std::string std::string std::string
+vanish
+become invisible or unnoticeable
+Now let's remove all the items with the value 2 from the vector. std::remove moves the other items in a way that the one value 2 we actually have in the vector vanishes.
+cheap
+relatively low in price or charging low prices
+Although the last item has no connection to the actually selected item, it is in a special position: Removing the last item is cheap!
+composed
+serenely self-possessed and free from agitation
+We can also put a whole map or list or whatever composed complex data structure into an any variable.
+hence
+from that fact or reason or as a result
+Then, a call like v.erase(end, end); also does nothing, hence it is harmless.
+variety
+a category of things distinguished by a common quality
+Chapter 2, STL Containers, explains how the STL's rich variety of container data structures
+brief
+of short duration or distance
+No part of this book may be reproduced, stored in a retrieval system, or transmitted in any form or by any means, without the prior written permission of the publisher, except in the case of brief quotations embedded in critical articles or reviews.
+reserve
+hold back or set aside, especially for future use
+In order to get that, we will first instantiate a vector where all these word-frequency pairs fit in and move them from the map to the vector. vector> word_counts; word_counts. reserve(words.size()); move(begin(words), end(words), back_inserter(word_counts));
+preserve
+keep in safety and protect from harm, loss, or destruction
+The algorithm will strictly preserve the order of all non-2 values while doing that.
+profit
+the advantageous quality of being beneficial
+Profiting from the new bracket initializer rules How to do it...
+fib
+a trivial lie
+We call it fib_range, and its constructor will accept one parameter that tells how far in the Fibonacci range we want to iterate: class fib_range { size_t end_n; public: fib_range(size_t end_n_) : end_n{end_n_} {}
+agnostic
+a person who claims the existence of God is unknowable
+Explicit loops are rarely both better to read and as datastructure agnostic as standard algorithms.
+versatile
+having great diversity or variety
+As we can see, the matches helper function is quite versatile--it can be called on vectors or even on strings directly.
+novice
+someone new to a field or activity
+Using the erase-remove idiom on std::vector A lot of novice C++ programmers learn about std::vector, that it basically works like an automatically growing array, and stop right there.
+untouched
+emotionally unmoved
+It works exactly the same way as the map function, but it leaves the input untouched, while the map function transforms it using a transform function.
+flaw
+an imperfection in an object or machine
+In order to keep the example simple, we did not do anything about this, but if we do publish the Fibonacci iterator as a library, it would become apparent that it has a usability flaw--a fibit instance that was created with a constructor parameter will only be used as an end iterator because it does not contain valid Fibonacci values.
+assuming
+excessively forward or presumptuous
+We can even do that in a loop, assuming we have a whole vector of those: int main() { std::vector employees { /* Initialized from somewhere */}; for (const auto &[id, name, role, salary] : employees) { std::cout << "Name: " << name so-called doubtful or suspect This pretty and short, so-called, range-based for loop has been in existence since C++11.
+excess
+the state of being more than full
+In this section, we will implement a slick whitespace filtering algorithm, which removes excess whitespace from strings but leaves single whitespace characters untouched.
+detach
+cause to become separated
+An alternative to joining is detaching.
+omit
+leave undone or leave out
+Modern compilers support return value optimization (RVO), which enables for omitting intermediate copies.
+identity
+the characteristics by which a thing or person is known
+When using binary folds in order to implement the no-argument case, the notion of an identity element is often important--in this case, adding a 0 to any number changes nothing, which makes 0 an identity element.
+imply
+express or state indirectly
+However, the information contained in this book is sold without warranty, either express or implied.
+precise
+sharply exact or accurate or delimited
+Wow, this is a very precise description of what went wrong.
+impose
+charge and collect payment
+Interestingly, this function is very versatile because the only requirement it imposes on the types we use is that they are comparable with the <= operator.
+grasp
+hold firmly
+So, we make sure we grasp these concepts in this chapter.
+distribute
+give to several people
+A good hash function tries to distribute values as evenly over the whole value range as possible, in order to reduce the amount of hash collisions. result_type operator()(const argument_type &c) const { return static_cast(c.x) + static_cast(c.y);
+significant
+rich in implication
+In this case, the handcrafted loop variant is not much longer, and it is also not significantly harder to read than a one-liner which says what it does: accumulate.
+track
+a line or route along which something travels or moves
+It is used in audio/image/video compression, audio filters, medical imaging devices, cell phone apps that identify music tracks while listening to them on the fly, and so on.
+visible
+capable of being seen or open to easy view
+If we calculate the error in a continuous manner, first for the first pair of items, then for the first two pairs of items, then for the first three pairs of items, and so on, then we get the accumulated error curve, which is visible on the plotted graph as shown:
+flow
+move along, of liquids
+The flow is similar to the diagram in the recipe about shared pointers.
+tie
+fasten or secure with a rope, string, or cord
+Before C++17, it was possible to achieve a similar effect using std:: tie: int remainder; std:: tie(std::ignore, remainder) = divide_remainder(16, 5); std::cout << "16 % 5 is " << remainder << '\n';
+fresh
+recently made, produced, or harvested
+Create a fresh key-value pair.
+thus
+from that fact or reason or as a result
+Thus, the key being inserted is parameter k and the associated value is constructed from the parameter pack args.
+randomness
+the quality of lacking any predictable order or plan
+This device tries to distribute the randomness equally over all the possible values: cout << "random_device" << '\n'; histogram(partitions, samples);
+cologne
+a perfumed liquid made of essential oils and alcohol
+STL Algorithm Basics { auto found_ cologne (find(begin(c), end(c), city{" Cologne", 1060000})); print_city(found_ cologne); }
+equivalence
+essential comparability and interchangeability
+We can also test for the equivalence of two paths that are not canonical. equivalence canonicalizes the paths, which it accepts as arguments and returns true if they describe the same path after all.
+semantic
+of or relating to meaning or the study of meaning
+All the branches of a constexpr-if construct need to be syntactically well-formed, but the branches that are not taken do not need to be semantically valid.
+iota
+a tiny or scarcely detectable amount
+We fill this vector using std:: iota with the value range, 0 ... (w*h - 1).
+downside
+a negative aspect of something that is generally positive
+The downside of this approach is that this always needlessly reallocates some memory, which sounds bad in terms of performance.
+snippet
+a small piece of anything
+Instead of doing it as shown in the preceding code snippet, we can now assign the individual values to individual variables with expressive names, which is much better to read: auto [fraction, remainder] = divide_remainder(16, 3); std::cout << "16 / 3 is " << fraction << " with a remainder of " << remainder << '\n';
+computation
+the procedure of calculating
+Especially when doing numeric computations with indexed members which need to be really fast, it is advantageous to stick to [] indexed access.
+convertible
+designed to be changed from one use or form to another
+The trick here is that our lambda [](double, double) { return /* some double */ } is convertible to a function pointer that actually matches that pointer description.
+consuming
+very intense
+They help build strings in memory, and/or consuming data from them.
+specialty
+an asset of special worth or utility
+There were three specialties in this recipe.
+straightforward
+pointed directly ahead
+Using STL algorithms is good for: Maintainability: The names of the algorithms already state in a straightforward manner what they do.
+clause
+a separate section of a legal document
+It contains the same using type alias clauses as other hash specializations. namespace std { template <> struct hash { using argument_type = coord; using result_type = size_t;
+varying
+marked by diversity or difference
+The std::vector comes into play when array-like storage is needed, but with varying sizes.
+corresponding
+similar especially in position or purpose
+Measuring the difference between signals consisting of many data points usually involves loops and subtraction of corresponding data points, and so on.
+comply
+act in accordance with someone's rules, commands, or wishes
+But nevertheless, std::copy users automatically profit from it if their argument types comply with the requirements of this optimization.
+facility
+a building or place that provides a particular service
+As of today, C++ is a language that provides language features and standard library facilities for sophisticated standard data structures and algorithms, automatic resource management pointers, lambda expressions, constant expressions, portable thread control for concurrent programming, regular expressions, random number generators, exceptions, variadic templates...
+declaration
+a statement that is emphatic and explicit
+It's their return type declaration, which makes them look complicated, and which contains a trick--an expression such as std::enable_if_t evaluates to type if condition is true.
+provoke
+provide the needed stimulus for
+...error handling less clumsy compared to old-school C-style code, which is riddled with loads of if branches, which handle errors after every step. If we played around trying to provoke various reasons for streams to fail, we would realize that there are no different exceptions being thrown. This way, we can only find out when we get an error,...
+prior
+earlier in time
+No part of this book may be reproduced, stored in a retrieval system, or transmitted in any form or by any means, without the prior written permission of the publisher, except in the case of brief quotations embedded in critical articles or reviews.
+horrible
+provoking horror
+It looks horribly complicated because it unpacks the parameter pack ts into another lambda expression, which recursively calls concat again, with less parameters: template
+appropriate
+suitable for a particular person, place, or situation
+Packt Publishing has endeavored to provide trademark information about all of the companies and products mentioned in this book by the appropriate use of capitals.
+valuable
+having worth or merit
+We award our regular reviewers with free eBooks and videos in exchange for their valuable feedback.
+extent
+the point or degree to which something extends
+Python is not a purely functional language, but it supports similar patterns to some extent, as seen in the next example:
+invent
+come up with after a mental effort
+It was invented nearly 200 years ago, but with computers, the number of use cases for it really skyrocketed.
+waste
+use inefficiently or inappropriately
+We will learn how to use them, so we can be productive by concentrating on solutions, instead of wasting time reinventing the wheel.
+vary
+become different in some particular way
+The execution speed of this code will vary a lot, depending on the computer this code is executed on.
+guide
+someone employed to conduct others
+If there is a topic that you have expertise in and you are interested in either writing or contributing to a book, see our author guide at www.packtpub.com/authors.
+wise
+having intelligence and discernment
+The expression, make_tuple(xs, ys)..., groups the parameter packs item wise.
+argue
+have a disagreement about something
+A lot of people will still prefer this over returning complex structures like pairs, tuples, and structs, arguing that this way the code would be faster, due to avoided intermediate copies of those values.
+glance
+take a brief look at
+A glance at a possible implementation of std::inner_product shows us why and how this works: template T inner_product(InIt1 it1, InIt1 end1, InIt2 it2, T val, F bin_op1, G bin_op2) { while (it1 != end1) { val = bin_op1(val, bin_op2(*it1, *it2)); ++it1; ++it2; } return value; }
+latter
+the second of two or the second mentioned of two
+What does the latter mean?
+sanitize
+make sterile by cleaning
+The GCC and LLVM project homepages list their sanitizing capabilities in their online documentation pages: https://gcc.gnu.org/onlinedocs/gcc/Instrumentation-Options.html http://clang.llvm.org/docs/index.html(look for sanitizers in the table of
+garble
+distort or make false by mutilation or addition
+If they did, that would garble the output.
+interchangeable
+permitting mutual substitution without loss of function
+The size of the hash table can be manipulated by the user, and the hash function can also be chosen individually, which is important, because the performance versus space consumption characteristics depend on that. std::unordered_set and std::unordered_map have so much interface in common with their std::set and std::map pendants, that they can be used almost interchangeably.
+standardize
+cause to conform to a norm
+The C++ standard does not only standardize the language, as it needs to be understood by the compilers, but also the C++ standard template library (STL).
+intuitive
+spontaneously derived from or prompted by a natural tendency
+In order to merge two sorted ranges of items, we would intuitively create a new range and feed it with items from both the lists.
+feasible
+capable of being done with means at hand
+It is not feasible to always activate all available sanitizers because they make the program slower.
+pivot
+axis consisting of a shaft supporting something that turns
+The iterators a and c mark the whole range, and iterator b points to a pivot element.
+counterpart
+a person or thing having the same function as another
+It has the purpose of being the counterpart of the comparison which shall act as the abort condition in every iteration: istream_iterator end;
+advantageous
+giving a benefit
+Especially when doing numeric computations with indexed members which need to be really fast, it is advantageous to stick to [] indexed access.
+termination
+the act of ending something
+This iteration termination method will help you in implementing your own iterators wherever you run into a situation where the comparison with an end position approach is not helpful.
+aggregate
+a sum total of many heterogeneous things taken together
+Its purpose was to allow for aggregate initialization, but also for usual constructor calling.
+dividend
+a number to be divided by another number
+Then, we can have a look at multiple examples that show how we can do it in C++17: Accessing individual values of an std::pair: Imagine we have a mathematical function, divide_remainder, which accepts a dividend and a divisor parameter and returns the fraction of both as well as the remainder.
+furthermore
+in addition
+Furthermore, using {} brackets will select the only matching constructor, while initializer lines using () parentheses try to match the closest constructor and even do type conversion in order to match.
+thrice
+three times
+Let's begin with the main function, where we define two cheap simple function objects: int main() { auto twice ([] (int i) { return i * 2; }); auto thrice ([] (int i) { return i * 3; });
+detached
+no longer connected or joined
+Output iterator Output iterators are detached from the other categories.
+assumption
+the act of taking something for granted
+Let's compile and run the program to see if the output matches our assumptions: $ ./finding_items
+seemingly
+from appearances alone
+Seemingly, just because there are less obvious use cases for it, a lot of developers do not even know about its existence.
+expansion
+the act of increasing in size or volume or quantity or scope
+Here, the expression f(x, rest), together with the ... parameter pack expansion generates the function calls f(1, 1), f(1, 2), and so on, which results in the pairs being printed.
+wildly
+to an extreme or greatly exaggerated degree
+We construct a string, which consists of wildly interleaved 'a' and '_' characters: int main() { auto is_a ([](char c) { return c == 'a'; }); string a {"a_a_a_a_a_a_a_a_a_a_a"};
+eliminate
+end, take out, or do away with
+It tells the compiler that it can eliminate the function call by taking its implementation and directly putting it where it was called.
+forbidden
+excluded from use or mention
+We will use one helper function in order to crop possibly appended commas, dots, or colons from words. string filter_punctuation(const string &s) { const char * forbidden {".,:; "}; const auto idx_start (s.find_first_not_of( forbidden)); const auto idx_end (s.find_last_not_of( forbidden)); return s.substr(idx_start, idx_end - idx_start + 1); }
+accuracy
+the quality of being near to the true value
+Every effort has been made in the preparation of this book to ensure the accuracy of the information presented.
+awkward
+lacking grace or skill in manner or movement or performance
+In a lot of cases, however, it is awkward to read a 10-line code loop just to realize, "Did I just have to study the whole loop in order to understand that it does a standard task, X?",
+elaborate
+marked by complexity and richness of detail
+One thing we could elaborate on a bit is the fact that we used std::cin and an std::ifstream instance in a completely interchangeable way.
+coin
+a flat metal piece (usually a disc) used as money
+Implementing an ASCII Mandelbrot renderer In 1975, the mathematician Benoît Mandelbrot coined the term fractal.
+opt
+select as an alternative over another
+When used for printing, it will compare its iterator argument against the end iterator and then print the item or, otherwise, just : template static auto opt_print (const C &container) { return [end_it (end(container))] (const auto &item) { if (item != end_it) { cout << *item << '\n'; } else { cout << "\n"; } }; }
+rarely
+not often
+Explicit loops are rarely both better to read and as datastructure agnostic as standard algorithms.
+involved
+connected by participation or association or use
+This way, there's not much overhead involved in most cases.
+assemble
+create by putting components or members together
+It is possible to hack together all the code for an ASCII Mandelbrot image in something around 20 lines of code, but we will implement each logical step in a separate form, and then assemble all the steps in the end.
+interpret
+make sense of; assign a meaning to
+However, before doing this, we apply std::hex and std::showbase to tell the output stream object cout that it should print numbers in the hexadecimal format and that it should prepend "0x" to them so that it is obvious that they are to be interpreted as hex: cout << hex << showbase; print_aligned_demo(0x123abc, 15);
+consult
+seek information from
+The std::sample algorithm works similar to std::copy, but it takes two additional parameters: the number of samples, which it shall take from the input range, and a random number generator object, which it will consult to get random sampling positions: sample(begin(v), end(v), back_inserter(samples), sample_points, mt19937{random_device{}()});
+scheme
+an elaborate and systematic plan of action
+For normal text, it is of reduced utility because normal language is usually not so repetitive that its text representation would become shorter with this compression scheme.
+bold
+fearless and daring
+New terms and important words are shown in bold.
+purchase
+acquire by means of a financial transaction
+Customer support Now that you are the proud owner of a Packt book, we have a number of things to help you to get the most from your purchase.
+throughout
+from first to last
+Throughout the book, we have often been printing a container's content using the std::copy function.
+aware
+having or showing knowledge or understanding or realization
+Thorough testing with sanitizers is something that every programmer should be aware of and should always be doing.
+reside
+live in
+We are only comparing the step at which the Fibonacci iterators currently reside, which makes it easier to define the end iterator for step 1000000, for example, as we do not need to expensively calculate such a high Fibonacci number in advance: bool operator!=(const fibit &o) const { return i != o.i;
+prefer
+like better; value more highly
+A lot of people will still prefer this over returning complex structures like pairs, tuples, and structs, arguing that this way the code would be faster, due to avoided intermediate copies of those values.
+demand
+request urgently and forcefully
+Fully searchable across every book published by Packt Copy and paste, print, and bookmark content On demand and accessible via a web browser
+strength
+the property of being physically or mentally powerful
+This is very sad because using C++ like that means dropping half its strength.
+employ
+put into service
+The filtering using a predicate was added by us by wrapping the copy_and_advance function object into another function object, which employs a predicate function: template auto filter(T predicate) { return [=] (auto reduce_fn) { return [=] (auto accum, auto input) { if (predicate(input)) { return reduce_fn(accum, input); } else {
+fair
+free from favoritism, bias, or deception
+Fair enough; we do not need a library for that (although randomness experts know that just using the lowest few bits of a random number does not always lead to high-quality random numbers).
+reassign
+move somebody to a different position or location of work
+We should usually not access items that were a move source before we reassigned them, but let's ignore that for the sake of this experiment: $ ./copying_items
+uniqueness
+the quality of being one of a kind
+uniqueness of the key objects.
+verbose
+using or containing too many words
+The GNU STL implementation has a debug mode, and the GNU C++ compiler as well as the LLVM clang C++ compiler both support additional libraries that can be used to produce extra-sensitive and verbose binaries for us, which immediately blow up on a large variety of bugs.
+quirky
+strikingly unconventional
+Such code quickly leads to quirky looking and unsafe code.
+alignment
+the spatial property possessed by things in a straight line
+Pointer alignment: Some architectures cannot access memory if it has a weird alignment in memory.
+facet
+a distinct feature or element in a problem
+Most operating systems provide possibilities to control also these facets of multiprogramming, but such features are, at this point, not included in the STL.
+dolor
+(poetry) painful grief
+# # et #574 dolor #302 sed #273 diam #273 sit #259 ipsum #259 ...
+asterisk
+a star-shaped character used in printing
+By dividing its counter value by max_div and print so many asterisk symbols '*', we get histogram lines that fit into the terminal: for (size_t i {0}; i < partitions; ++i) { cout << setw(2) << i << ": " << string(v[i] / max_div, '*') << '\n'; } }
+colon
+the part of the large intestine between the cecum and rectum
+We will use one helper function in order to crop possibly appended commas, dots, or colons from words. string filter_punctuation(const string &s) { const char *forbidden {".,:; "}; const auto idx_start (s.find_first_not_of(forbidden)); const auto idx_end (s.find_last_not_of(forbidden)); return s.substr(idx_start, idx_end - idx_start + 1); }
+badger
+sturdy carnivorous burrowing mammal with strong claws
+2013 "Pepe" "Anthropomorphic frog" 2016 "Gabe" "Musical dog on maximum borkdrive" 2016 "Honey Badger" "Crazy nastyass honey badger" 2011 "Dramatic Chipmunk" "Chipmunk with a very dramatic look" 2007
+unrelated
+lacking a logical or causal linkage
+This is important to know because if we print some output with certain formatting, we should tidy up our stream object formatting settings afterward, because the next output from unrelated code may otherwise look crazy.
+delve
+turn up, loosen, or remove earth
+Without delving into the explanations of such foreign syntax, an important commonality in both examples is the magical zip function.
+abbreviation
+shortening something by omitting parts of it
+Of course, the command line consists of strings, which we can convert to numbers using std::stoull (stoull is an abbreviation for string to unsigned long long): size_t partitions {stoull(argv[1])}; size_t samples {stoull(argv[2])};
+intersection
+the act of meeting at a point
+std::replace_if std::reverse std::reverse_copy std::rotate std::rotate_copy std::search std::search_n std::set_difference std::set_ intersection std::set_symmetric_difference std::set_union std::sort std::stable_partition std::stable_sort std::swap_ranges std::transform std::transform_exclusive_scan std::transform_inclusive_scan std::transform_reduce std::uninitialized_copy std::uninitialized_copy_n std::uninitialized_fill std::uninitialized_fill_n std::unique std::unique_copy
+inclusive
+encompassing much or everything
+There are also the seven new ones that support execution policies from the beginning (highlighted in bold): std::adjacent_difference std::adjacent_find std::all_of std::any_of std::copy std::copy_if std::copy_n std::count std::count_if std::equal std::exclusive_scan std::fill std::fill_n std::find std::find_end std::find_first_of std::find_if std::find_if_not std::for_each std::for_each_n std::generate std::generate_n std::includes std:: inclusive_scan std::inner_product
+derivation
+the source or origin from which something comes
+The normal distribution accepts a mean value and a standard derivation as arguments: cout << "uniform_int_distribution\n"; print_distro(uniform_int_distribution{0, 9}, samples); cout << "normal_distribution\n"; print_distro(normal_distribution{0.0, 2.0}, samples);
+exploited
+developed or used to greatest advantage
+It can be exploited easily.
+pendant
+an adornment that hangs from a piece of jewelry
+The size of the hash table can be manipulated by the user, and the hash function can also be chosen individually, which is important, because the performance versus space consumption characteristics depend on that. std::unordered_set and std::unordered_map have so much interface in common with their std::set and std::map pendants, that they can be used almost interchangeably.
+oscillate
+move or swing from side to side regularly
+It oscillates between the values -1 and +1 and has no other values than those.
+misuse
+improper handling or application of something
+Automatically checking iterator code with checked iterators No matter how useful iterators are, and what generic interface they represent, iterators can easily be misused, just as pointers.
+sanity
+normal or sound powers of mind
+We surround this code with a little sanity check.
+waive
+do without or cease to hold or adhere to
+If the insertion hint is wrong, the insertion function will simply waive the hint and start over using the search algorithm.
+enhanced
+increased or intensified in value or beauty or quality
+C++17 comes with an enhanced set of initializer rules.
+criterion
+the ideal in terms of which something can be judged
+constexpr (optional) If we mark the lambda expression explicitly as constexpr, the compiler will error out if it does not satisfy the criteria of constexpr functions.
+slick
+made smooth, as by ice, grease, or water
+In this section, we will implement a slick whitespace filtering algorithm, which removes excess whitespace from strings but leaves single whitespace characters untouched.
+constellation
+a configuration of stars as seen from the earth
+In this constellation, the iterator it points to the beginning of the last slice, while slice_end points to the end of the last slice.
+inactive
+not engaged physically or mentally
+It is just put into an inactive state by the operating system. wipe out use up (resources or materials)
+This
+way, it wipes out repeated characters as it can , for example, transform "abbbbbbc" to
+"abc".
+erroneous
+containing or characterized by mistakes
+In this case, this means that the compiler does not error out if the return value of one of those functions cannot be deduced from an erroneous template expression (which std::enable_if is, in case its condition evaluates to false).
+specifically
+in distinction from others
+The pointer type, shared_ptr, was designed for specifically this case.
+discount
+an amount or percentage deducted
+You can upgrade to the eBook version at www.PacktPub.com and as a print book customer, you are entitled to a discount on the eBook copy.
+adjacent
+having a common boundary or edge
+There are also the seven new ones that support execution policies from the beginning (highlighted in bold): std:: adjacent_difference std:: adjacent_find std::all_of std::any_of std::copy std::copy_if std::copy_n std::count std::count_if std::equal std::exclusive_scan std::fill std::fill_n std::find std::find_end std::find_first_of std::find_if std::find_if_not std::for_each std::for_each_n std::generate std::generate_n std::includes std::inclusive_scan std::inner_product
+greedy
+immoderately desirous of acquiring something
+It does this in a greedy manner, which means that it is not possible to match non-aggregate constructors (nonaggregate constructors are usual constructors in contrast to the ones that accept an initializer list). std::vector, for example, provides a specific non-aggregate constructor, which fills arbitrarily many items with the same value: std::vector v (N, value).
+regardless
+in spite of everything
+In an empty set, both are the same, so we are not even allowed to dereference it, regardless if that is for reading from it or assigning to it.
+collide
+crash together with violent impact
+Otherwise, the iterator points to the existing item, which would collide with the item to be inserted.
+accompanying
+occurring at the same time, along with, or as a consequence
+It can easily be checked if this is true for a certain key and an accompanying hint.
+clumsy
+lacking grace in movement or posture
+...file is not possible: ifstream f {"non_existant.txt"}; f.exceptions(...); // too late for an exception This is a pity because exceptions actually promise that they make error handling less clumsy compared to old-school C-style code, which is riddled with loads of if branches, which handle errors after every step. If we played around trying to provoke various reasons for...
+equipped
+provided with whatever is necessary for a purpose
+Equipped with shared_ptr and unique_ptr, we can automatically deal with most dynamically allocated objects without having to worry about memory leaks any longer.
+era
+a period marked by distinctive character
+parallelism and concurrency which became very important topics at the time we entered the era of multi-core processors.
+consumption
+the act of using something up
+The size of the hash table can be manipulated by the user, and the hash function can also be chosen individually, which is important, because the performance versus space consumption characteristics depend on that. std::unordered_set and std::unordered_map have so much interface in common with their std::set and std::map pendants, that they can be used almost interchangeably.
+profitable
+yielding material gain
+In this chapter, we'll concentrate on using STL algorithms for different problems in order to get a feeling of how they can be profitably put to use.
+altered
+changed in form or character without becoming something else
+The source range is not altered. std::copy_if
+bud
+a partially opened flower
+Please Enter two numbers: > a b Oh no, that did not go well! now please enter some comma-separated names: > bud spencer, terence hill,, name: " bud spencer" name: "terence hill"
+masses
+the common people generally
+std::istream_iterator This class is really interesting in cases where we want to process masses of data of the same type from a stream, which is exactly the case in this recipe: we parse the whole input word by word and put it into the set in the form of std::string instances.
+evolve
+undergo development
+The syntax of lambda expressions was really new in C++11, and it has slightly evolved with the next two standard versions until C++17.
+seldom
+not often
+The additional rule introduced in C++17 affects the initialization with auto type deduction-while C++11 would correctly make the type of the variable auto x {123}; an std::initializer_list with only one element, this is seldom what we would want.
+devoted
+zealous in allegiance or affection
+Introduction This chapter is devoted to string handling, parsing, and printing of arbitrary data.
+capable
+having ability
+On my laptop with an Intel i7 processor with 4 hyperthreading capable cores (which results in eight virtual cores), the parallel version of this program ran more than 3-5 times faster compared to the original program.
+aside
+on or to one side
+Aside from that, std::string provides a member function, append, which can handle string_view instances, but it alters the string instead of returning a new one with the string view content appended. std::string_view is useful, but be cautious when mixing it with strings
+sink
+fall or descend to a lower place or level
+In such a situation, we would need to write our own hand-crafted algorithms that just deal with the question of how to shove data from the source to the sink.
+ordinary
+lacking special distinction, rank, or status
+It is simple to use but still very useful, which makes it an ordinary standard component used in portable day-to-day programs.
+edge
+a line determining the limits of an area
+Requirements for early adopters If you happen to read this book in the earliest days of C++17 and use bleeding- edge compilers to compile the code, you might experience that some recipes do not compile yet.
+deny
+declare untrue; contradict
+symbolic links to directories skip_permission_ denied: This tells the iterator to skip directories that would otherwise result in errors because permission to access is denied by the filesystem These options can be combined with the | operator.
+fashion
+the latest and most admired style in clothes or behavior
+The algorithm may be executed with multiple threads that share the work in a parallel fashion.
+apparent
+clearly revealed to the mind or the senses or judgment
+In order to keep the example simple, we did not do anything about this, but if we do publish the Fibonacci iterator as a library, it would become apparent that it has a usability flaw--a fibit instance that was created with a constructor parameter will only be used as an end iterator because it does not contain valid Fibonacci values.
+ancient
+belonging to times long past
+...course, not true for exception handling in general, but for the STL stream library). That is why we additionally consulted the value of errno. This global variable is an ancient construct, which has already been used in the old days when there were no C++ or exceptions in general. If any system-related function has seen an error condition, it...
+suit
+a set of garments for outerwear of the same fabric and color
+In this recipe, we create an example class that could suit as a member of a typical headeronly library.
+major
+greater in scope or effect
+The major difference from unique_ptr is that we can copy the shared_ptr instances because shared pointers maintain a so-called control block together with the object they manage.
+refuse
+show unwillingness towards
+As soon as one of these items cannot be parsed from the input stream, the input stream object enters an error state and refuses to parse anything further.
+suffice
+be adequate, either in quality or quantity
+C++ programs do often consist of multiple C++ source files (these do have .cpp or .cc suffices).
+occupy
+live in (a certain place)
+In order to make the vector occupy only as much memory as it needs, we make the shrink_to_fit call in the end.
+influence
+a power to affect persons or events
+When printing floating-point numbers, there are also a lot of things we may want to have an influence on.
+certainly
+definitely or positively
+...Mixed formatting: 123 +1.230000E+02 123.456 Catching readable exceptions from std::iostream errors In none of the recipes in this chapter, we used exceptions to catch errors. While this is certainly possible, working on stream objects without exceptions is already very convenient. If we try to parse in 10 values, but this fails somewhere in the middle, the whole stream...
+immediate
+directly before or after as in a chain of cause and effect
+Enables or disables immediate output buffer flushing after any output operation
+suffer
+undergo or be subjected to
+While on this little trip, we will also see where exactly STL algorithms suffer from reusability or prettiness.
+desire
+the feeling that accompanies an unsatisfied state
+These are then linked together with the modules that desire to use these functions.
+till
+work land as by ploughing to make it ready for cultivation
+All items from index 10 till (signal_length - 10) are set to 0.0.
+stochastic
+being or having a random variable
+Everyone who ever had stochastic as a topic in maths at school will most probably have heard about these already.
+humongous
+very large
+If the creation and/or destruction of specific types of objects relies on specific factory functions' deleter interfaces, does this prevent us from getting the humongous benefits of smart pointers?
+unstructured
+lacking definite organization
+The goal is to provide an unstructured list, and then the priority queue tells us what to do in which order.
+homogenize
+make uniform or consistent throughout
+Some people might prefer to homogenize all extensions.
+modular
+constructed with standardized, prefabricated units or pieces
+Keep your code modular by using stream abstractions.
+unmodified
+not changed in form or character
+The trade-off of this decision is that it is slightly slower than the unmodified version of Boyer-Moore, but it also needs fewer data structures for its operation.
+achievable
+capable of existing or taking place or proving true
+This sounds like a lot of hassle, but if we want to simply remove whitespace from a string, for example, this should be achievable without much code.
+cyclic
+marked by repeated series of events
+Shared pointers should not be used in this case because such cyclic reference chains prevent the use counter of such objects to ever reach 0.
+sneaky
+marked by quiet and caution and secrecy
+If not, you have the unique chance to fix important and sneaky bugs on your first day at work!
+sporadically
+in an irregular or unpredictable manner
+This type allows us to sporadically bundle multiple values into a single variable and reach them around.
+skewed
+having an oblique or slanting direction or position
+Since we measured the time distance, or duration from one absolute point in time and the other absolute point in time (which we captured in the variables tic and toc), we are not interested if those points in time were globally skewed. ad hoc for or concerned with one specific purpose The numbers are generated ad hoc while iterating.
+pseudo
+not genuine but having the appearance of
+With the STL algorithms, std::transform and std::accumulate, we wrote code, which can be summarized to the following pseudo code: transform(num_iterator{0}, num_iterator{s.size()}, ... accumulate((num_iterator0}, num_iterator{s.size()}, ... c + s[k] * polar(1.0, pol * k * j / double(s.size()));
+retroactive
+affecting things past
+The more our old programs utilize STL algorithms, the easier we can add parallelism to them retroactively.
+misspell
+write the letters of incorrectly
+A simply misspelled path in such a program can lead to a program that greedily removes too many files in unwanted ways.
+aforementioned
+being the one previously spoken of
+Contiguous iterator This category specifies all of the aforementioned requirements, plus the requirement that the data that is being iterated through lies in contiguous memory, like it does in an array, or std::vector.
+invasive
+gradually intrusive without right or permission
+While such an upgrade might be pretty invasive for the implementation, not much has changed in terms of their interface--they all got an additional ExecutionPolicy&& policy argument, and that's it.
+conceptual
+being or characterized by ideas or their formation
+Tasks where we simply transport data between conceptually different data structures can be implemented with a one-liner code, thanks to another abstraction provided by the STL: iterator adapters.
+knowledgeable
+alert and fully informed
+There's more… This section consists of additional information about the recipe in order to make the reader more knowledgeable about the recipe.
+supplemental
+functioning in a supporting capacity
+Both list all files in a directory and provide supplemental information such as file size, permissions, and so on.
+seamless
+not having a joint between two pieces
+...result of the measurement between units, such as seconds, milliseconds, and microseconds. The STL provides facilities, which enable us to define our own time units and convert between them seamlessly. [ 323 ] Utility Classes How to do it... In this section, we will write a little game that prompts the user to enter a...
+reestablish
+bring back into original existence, function, or position
+Now, we reestablish the original item ordering by using std::sort.
+caveat
+a warning against certain acts
+There is, however, one important caveat to consider--imagine we have two objects on the heap that contain shared pointers to each other, and some other shared pointer points to one of them from somewhere else.
+gimmick
+any clever maneuver
+Another gimmick of std::optional is optional::value_or.
+skyrocket
+shoot up abruptly, like a rocket
+It was invented nearly 200 years ago, but with computers, the number of use cases for it really skyrocketed.
+cryptic
+having a secret or hidden meaning
+...About : https://isocpp.org/about Current ISO C++ status : https://isocpp.org/std/status (...and many more...) How it works... Regular expressions (or regex in short) are extremely useful. They can look really cryptic, but it is worth learning how they work. A short regex can spare us writing many lines of code if we did the matching manually. In this recipe, we...
+pointless
+serving no useful purpose; having no excuse for being
+At first, this search looks pointless because we get exactly the item we searched for.
+flawless
+without a weakness or defect
+Compiling and running this program leads to a flawless execution.
+circumvent
+surround so as to force to give up
+There are two easy ways to circumvent this problem: // 1.) function(make_shared (), make_shared(), other_function()); // 2.) shared_ptr ap {new A{}}; shared_ptr bp {new B{}}; function(ap, bp, other_function());
+erroneously
+in a mistaken manner
+This way print_exclusive will not block on an erroneously still locked mutex: try { exclusive_throw(); } catch (int e) { cout << "Got exception " << e << '\n'; } print_exclusive(); }
+orchestrate
+plan and direct (a complex undertaking)
+It will use it to orchestrate the threads: static void print(size_t x) { std::call_once(callflag, once_print); cout << x; }
+negligible
+so small as to be meaningless; insignificant
+In any other situation, the at function helps uncovering bugs with usually negligible performance loss.
+willful
+done by design
+By implementing code that willfully causes a deadlock, we've seen how quick such an unwanted scenario can happen.
+meticulous
+marked by precise accordance with details
+Special thanks go to Arne Mertz for his invaluable and meticulous review suggestions, as well as Torsten Robitzki and Oliver Bruns from the C++ user group Hannover for their great feedback.
+divisible
+capable of being or liable to be divided or separated
+If we are on a row end (because the counter variable n is evenly divisible by w), we print a line break symbol: auto binfunc ([w, n{0}] (auto output_it, int x) mutable { *++output_it = (x > 50 ? '*' : ' '); if (++n % w == 0) { ++output_it = '\n'; } return output_it; });
+blatant
+without any attempt at concealment; completely obvious
+However, apart from implementation details, there is one blatant error source when using create_symlink or create_hard_link.
+evaluation
+the act of ascertaining or judging the quality of
+The function is executed by the same thread, but later (lazy evaluation).
+pitfall
+an unforeseen or unexpected or surprising difficulty
+This is a special pitfall
+permissible
+acceptable, especially as according to rule
+In addition to that, it is permissible to vectorize the code.
+unified
+formed or joined into a whole
+This way, we can not only start and stop threads without external libraries but also synchronize them with abstractions from a single unified library: the STL.
+underestimate
+make too low an approximation of
+The amount of work and thought needed in order to really and correctly make such classes generic is not to be underestimated.
+brevity
+the attribute of being short or fleeting
+Here we just have one for brevity.
+spurious
+plausible but false
+The nice thing about the wait call checking the predicate is that if there is a spurious wakeup call, the thread will go to sleep immediately again.
+manageable
+capable of being controlled
+Now, let's make such objects manageable by shared_ptr.
+archaic
+so extremely old as seeming to belong to an earlier period
+It was always necessary to call functions of the C library, which looks very archaic, considering that such calls could be encapsulated nicely into their own classes.
+warranty
+written assurance that a product or service will be provided
+However, the information contained in this book is sold without warranty, either express or implied.
+unconditional
+not qualified by reservations
+The std::transform unconditionally copies all items from a source range to a destination range but transforms them in between.
+deviation
+a variation from the standard or norm
+Any normal distribution can be characterized by the mean value and the standard deviation from the mean value: const int mean {10}; const size_t dev {3};
+proofread
+read for errors
+Proofreader Safis Editing
+concise
+expressing much in few words
+If we want to take an optional's value and fall back to a default value if it is in the empty state, then this is of help. x = optional_var.value_or(123) does this job in one concise line, where 123 is the fallback default value.
+reminiscent
+serving to bring to mind
+Ok, that was maybe kind of a crazy ride that was slightly reminiscent of the movie "Inception" because of the lambda expressions that return lambda expressions.
+emptiness
+the state of containing nothing
+Otherwise, we return a default constructed optional, which signals failure or emptiness: oint read_int() { int i; if (cin >> i) { return {i}; } return {}; }
+leverage
+the mechanical advantage gained by a machine on a fulcrum
+Over 90 recipes that leverage the powerful features of the standard library in C++17
+piracy
+the act of plagiarizing
+Piracy Piracy of copyrighted material on the Internet is an ongoing problem across all media.
+crane
+a long-necked wading bird
+In order to get the traffic flow going again, we either need a large crane that randomly picks one car from the center of the street intersection and removes it.
+substitution
+putting one thing or person in the place of another
+One could also put it that it works in a similar manner to preprocessor #if and #else text substitution macros, but for those, the code would not even have to be syntactically well-formed.
+avalanche
+a slide of large masses of snow, ice and mud down a mountain
+Then, when we called result(), we unleashed a little avalanche of async and .get() calls that come just in the right order to not block each other.
+ongoing
+currently happening
+Piracy Piracy of copyrighted material on the Internet is an ongoing problem across all media.
+leash
+restraint consisting of a rope used to restrain an animal
+We will start multiple threads and see how our program behaves when we unleash multiple processor cores to execute parts of its code at the same time: 1.
+derivative
+a compound obtained from another compound
+Then, at the same time, different operating systems use the slash / to separate directories (Linux, MacOS, and different UNIX derivatives), or the backslash \ (Windows).
+drawback
+a feature that makes something less convenient or acceptable
+The drawbacks of such an approach are the following ones: If the parallel function comes from a library, the user must not forget to call the setup function.
+shiny
+reflecting light
+Smart pointers are a shiny example of automatic memory management.
+ignite
+cause to start burning
+In order to ignite some inspiration, let's have a look at some more little helpers that we can implement using this feature.
+differentiate
+acquire a distinct character
+We are not going to differentiate between what is awkward and what is not; we'll only explore the possibilities.
+prune
+cultivate, tend, and cut back the growth of
+In this section, we are filling an std::vector instance with some example integers, and then prune some specific items away from it.
+inequality
+lack of balance or similarity in status
+The inequality of the partition counters wildly differs between individual engines.
+frustration
+an act of hindering someone's plans or efforts
+By doing so, you can save other readers from frustration and help us improve subsequent versions of this book.
+uneven
+not fairly matched as opponents
+Filtering out all uneven numbers from a numeric vector, and transforming the rest to strings: std::vector v {1,2,3,4,5,6,7,8,9,10}; auto rng = v | view::remove_if([](int i){return i % 2 == 1;}) | view::transform([](int i){return std::to_string(i);}); // rng == {"2"s,"4"s,"6"s,"8"s,"10"s};
+dice
+a small cube with 1 to 6 spots on the six faces
+The linker can't just roll the dice.
+regularity
+the quality of being characterized by a fixed rate
+We are pushing the boundaries a bit in order to prepare ourselves for modern C++, where functional programming patterns occur with increasing regularity.
+resurrect
+cause to become alive again
+After leaving that scope also, our standard output is resurrected and the last line of text output will be readable in the shell again: cout << "Readable from normal stdout again\n"; }
+livery
+a uniform, especially worn by servants and chauffeurs
+Livery Place 35 Livery Street
+Birmingham
+B3 2PB, UK.
+blindly without seeing or looking It takes no arguments because it will blindly consume until the queue runs empty.
+frustrated
+disappointingly unsuccessful
+If you see lambda expressions in the coming recipes that return lambda expressions, which again return lambda expressions, please don't feel frustrated or confused too quickly.
+horde
+a vast multitude
+One situation that condition_variable solves elegantly for us is the following: If a consumer fires the go_produce notification, there might be a horde of producers racing to produce the next item.
+archives
+collection of records especially about an institution
+Before compressing files in archives, a very simple way to reduce disk usage is just deleting duplicate files.
+trio
+a set of three similar things considered as a unit
+When we understand how all classes from the trio consisting of istream, ostream and iostream can be used, we basically are ready to immediately put all following ones to use, too: ifstream, ofstream and fstream inherit from istream, ostream and iostream
+retrieve
+get or find back; recover the use of
+From the character positions we retrieved from these functions in our helper function, we built us a substring without surrounding whitespace, using string::substring.
+surprisingly
+in a manner causing wonder or amazement
+Surprisingly, its class definition can stay completely empty: class cstring_iterator_sentinel {};
+dangle
+hang freely
+The weak pointer still needs the control block in order to distinguish if it dangles or not.
+exclusion
+a deliberate act of omission
+Mutex classes The term mutex stands for mutual exclusion.
+inject
+force or drive (a fluid or gas) into by piercing
+This helps decouple source code parts and makes your code easy to test because you can just inject any other matching type of stream.
+intentional
+done or made or performed with purpose and intent
+In this recipe, we are going to write code which intentionally provokes a deadlock situation.
+revoke
+cancel officially
+...Its constructor saves the formatting flags, which std::cout has set at the moment. Its destructor restores them to the state it had when the constructor was called. This effectively revokes any formatting settings that were applied in between: class format_guard { decltype(cout.flags()) f {cout.flags()}; public: ~format_guard() { cout.flags(f); } }; 3. Another little helper class is scientific_type. Because...
+relentless
+never-ceasing
+Help us be relentless in improving our products!
+forgetful
+(of memory) deficient in retentiveness or range
+As soon as a forgetful programmer misses to unlock a mutex somewhere after locking it, or an exception is thrown while a mutex is still locked, things look ugly pretty quick.
+controversial
+marked by or capable of arousing disagreement
+One can controversially argue about which initialization style is the best one.
+collision
+an accident resulting from violent impact of a moving object
+A good hash function tries to distribute values as evenly over the whole value range as possible, in order to reduce the amount of hash collisions. result_type operator()(const argument_type &c) const { return static_cast(c.x) + static_cast(c.y);
+taint
+place under suspicion or cast doubt upon
+The compiler selects the fastest implementation possible for the chosen algorithm, while the user code nicely expresses what the algorithm does without tainting the code with too many details of the how.
+beneficial
+promoting or enhancing well-being
+Generating permutations of input sequences When testing code that must deal with sequences of inputs where the order of the arguments is not important, it is beneficial to test whether it results in the same output for all possible permutations of that input.
+transmitted
+occurring among members of a family usually by heredity
+No part of this book may be reproduced, stored in a retrieval system, or transmitted in any form or by any means, without the prior written permission of the publisher, except in the case of brief quotations embedded in critical articles or reviews.
+monetary
+relating to or involving money
+left and right control where the padding for fixed-width prints (see setw) occurs. internal puts padding characters in the middle between integers and their negative sign, the hex prefix and a hexadecimally printed value, or monetary units and values.
+imperative
+requiring attention or action
+It is magically different from the imperative programming which C or C++ programmers are used to.
+advisable
+worthy of being recommended or suggested; prudent or wise
+The release function does that, but using this function is not advisable in most situations.
+adjusted
+altered to accommodate to certain requirements
+While seconds is the simplest unit to describe, as it works with Period = ratio<1>, the others have to be adjusted.
+constrain
+hold back
+C++17 comes with the great news that it does not constrain begin and end iterators to be of the same type.
+premature
+too soon or too hasty
+Between the two iterator dereferences, we add another guarding if branch that checks whether we prematurely reached the end of the iterable range, just for safety: const string link {*it++}; if (it == end_it) { break; } const string desc {*it++};
+monotonous
+sounded or spoken in a tone unvarying in pitch
+Its implementation can be based on the processor's timestamp counter, which always counts up monotonously since the system was started.
+purchasing
+the act of buying
+Customer Feedback Thanks for purchasing this Packt book.
+crisp
+tender and brittle
+The zip function for tuples The zip function accepts two tuples, but looks horribly complicated, although it has a very crisp implementation: template auto zip(const T1 &a, const T2 &b) { auto z ([](auto ...xs) { return [xs...](auto ...ys) enhance
+increase
+The std::stringstream,
+std::ostringstream, and std::istringstream classes are much better suited for this, as they enhance the memory management while appending, and provide all the formatting features we know from streams in general.
+clan
+group of people related by blood or marriage
+Let's compile the code with clan useful (the activation flag for checked iterators with the Microsoft Visual C++ compiler is /D_ITERATOR_DEBUG_LEVEL=1):
+vigorously
+in an energetic manner
+The reason why this is so unfortunate is that it will vigorously improve the possibilities of writing expressive and fast code in C++ by composing complex functionality from generic and simple blocks of code.
+unfair
+marked by injustice, inequality, or bias
+Apart from that, how do we model an unfair die whose sides do not all have the same probability?
+imaginary
+not based on fact; unreal
+This way, the type alias cmplx stands for two coupled double values, which represent the real and the imaginary parts of a complex number.
+comprehensive
+including all or everything
+The most comprehensive way to get to know the different distributions is playing around with the program we just wrote.
+disastrous
+having extremely unfortunate or dire consequences
+This is disastrous for files that are larger than our system memory.
+lurk
+lie in wait or behave in a sneaky and secretive manner
+Dealing with strings is generally not a hard thing, but the chances of implementing buffer overflow bugs lurk around a lot here if legacy C-style formatting functions are used.
+elapse
+pass by
+...user input and measures how long it took the user to type the input. It takes no arguments and returns us the user input string as well as the elapsed time, bundled in a pair: static pair get_input() { string s; 6. We need to take the time from the beginning of the period during which user...
+clue
+evidence that helps to solve a problem
+Apart from that, you are a good candidate for reading this book if you can identify yourself with one of the following bullet point descriptions: You have learned the basics of C++, but now, you don't have a clue where to go next, since the gap between your knowledge and the knowledge of an experienced C++ veteran is still large.
+stability
+the quality or attribute of being firm and steadfast
+Every computer science student who was tortured with having to learn a majority of existing sorting algorithms (together with their performance and stability trade-offs for exams) knows that.
+alteration
+the act of revising
+The std::sample function does not add random alterations to sample points with fixed offset but chooses completely random points; therefore, it works a bit differently from this example:
+insight
+clear or deep perception of a situation
+We are going to write a program that is similar to the program we wrote in the unique_ptr recipe in order to get insights into the usage and principles of shared_ptr: 1.
+sprinkle
+scatter with liquid; wet lightly
+...them are indeed so useful that we will most probably see them extremely often in any C++ program snippet in the future or have at least already seen them sprinkled over all other chapters in this book. The first two recipes are about measuring and taking the time. We will also see how to convert between different time units...
+solely
+without any others being included or involved
+This class has the potential of relieving us forever from memory leaks (at least together with its companions shared_ptr and weak_ptr, but in this recipe, we solely concentrate on unique_ptr).
+qualified
+meeting the proper standards and requirements for a task
+After installing a "z" in the tree, we knew that installing "y" will insert a new item just in front of the "z", which qualified it to be a correct hint.
+intensity
+high level or degree
+In this vector, every data point represents the intensity and phase of a certain repetitive wave frequency, which is or is not a part of the original signal.
+inspection
+a formal or official examination
+It is designed to hold variables of any kind and provides facilities that enable for type-safe inspection and access to it.
+overwhelming
+very intense
+This might look very overwhelming at first, but we will get to use most of these classes in this chapter and get familiar with them class by class.
+hover
+hang in the air; fly or be suspended above
+Hover the mouse pointer on the SUPPORT tab at the top.
+reduction
+the act of decreasing something
+This looks really weird at first as most binary reduction functions accept arguments of identical types and then merge them together with some operation, just as std::plus does.
+predecessor
+one who goes before you in time
+In linked lists (such as std::list), for example, a node can be removed by making its predecessor point to its successor.
+illegal
+prohibited by law or by official or accepted rules
+If you come across any illegal copies of our works in any form on the Internet, please provide us with the location address or website name immediately so that we can pursue a remedy.
+scratch
+cut, scrape, or wear away the surface of
+Using STL containers like this will only scratch the surface of how much they help writing clean, maintainable, and fast code.
+preliminary
+preceding or in preparation for something more important
+Getting ready This section tells you what to expect in the recipe, and describes how to set up any software or any preliminary settings required for the recipe.
+crude
+belonging to an early stage of technical development
+At this point, we are using STL data structures so intuitively that we can nicely avoid pointers, raw arrays, and other crude legacy structures.
+deliberately
+in a careful unhurried manner
+In this section, we'll write a program that deliberately accesses an invalidated iterator: 1.
+cluster
+a grouping of a number of similar things
+This algorithm removes clustered occurrences of whitespace, but no single spaces.
+independence
+freedom from control or influence of another or others
+The good thing is that we get data-structure independence for free this way.
+editorial
+an article giving opinions or perspectives
+At Packt, quality is at the heart of our editorial process.
+barrier
+a structure or object that impedes free movement
+How it works... std:call_once works like a barrier.
+infer
+conclude by reasoning
+But how did the priority queue infer that {2, "do homework"} is more important than {0, "watch tv"}, without us telling it to compare the numeric part?
+stumble
+miss a step and fall or nearly fall
+We end up calling our own entry_size helper function recursively if we stumble upon subdirectories again. return accumulate(directory_iterator{entry}, {}, 0u, [](size_t accum, const directory_entry &e) { return accum + entry_size(e); }); }
+corruption
+use of a position of trust for dishonest gain
+In order to prevent that concurrently running threads alter the same object in a non-orchestrated way that might lead to data corruption, we can use mutex objects.
+foresee
+realize beforehand
+Before compiling and running the program, go through the code again and try to foresee what it will print to the terminal.
+prolong
+lengthen in time; cause to be or last longer
+The expired function of weak_ptr tells us if the object it points to still really exists, because holding a weak pointer to an object does not prolong its lifetime!
+alleged
+doubtful or suspect
+Neither the authors, nor Packt Publishing, and its dealers and distributors will be held liable for any damages caused or alleged to be caused directly or indirectly by this book.
+hinder
+be an obstacle to
+But nothing hinders us from implementing our own.
+digest
+convert food into absorbable substances
+Take your time to digest all of this.
+choke
+struggle for breath; have insufficient oxygen intake
+The compiler immediately chokes on this and tells us about our mistake: error: type 'std::tuple' decomposes into 3 elements, but only 2 names were provided auto [a, b] = tup;
+legitimate
+in accordance with accepted standards or principles
+Just to list a few valuable examples: Out-of-bounds: This triggers whenever we access an array, vector, or anything similar outside its legitimate memory range.
+lap
+the upper side of the thighs of a seated person
+Let's say that during one race lap, Bowser had a little accident and dropped to the last place and Donkey Kong Jr. took the chance to jump from the last place to the third place.
+successor
+a person who follows next in order
+In linked lists (such as std::list), for example, a node can be removed by making its predecessor point to its successor.
+adhere
+stick to firmly
+This adheres to the erase-remove idiom, which we already know from vectors and lists.
+liable
+subject to legal action
+Neither the authors, nor Packt Publishing, and its dealers and distributors will be held liable for any damages caused or alleged to be caused directly or indirectly by this book.
+dislike
+a feeling of aversion or disapproval
+Let us know what you think about this book-what you liked or disliked.
+respective
+considered individually
+It does also work between unordered_map and unordered_multimap instances, as well as with set/multiset and respective unordered_set/unordered_multiset.
+award
+give, especially as an honor
+We award our regular reviewers with free eBooks and videos in exchange for their valuable feedback.
+endeavor
+attempt by employing effort
+Packt Publishing has endeavored to provide trademark information about all of the companies and products mentioned in this book by the appropriate use of capitals.
+blast
+a sudden very loud noise
+However, we are not going much into that direction, as this would quickly blast the scope of this book.
+subtle
+difficult to detect or grasp by the mind or analyze
+Also, there are many subtle edges in iterator code that can lead to bugs, so an iterator solution needs more tedious testing.
+obligation
+the state of being bound to do or pay something
+Safely postponing initialization with std::call_once Sometimes we have specific code sections that can be run in parallel context by multiple threads with the obligation that some setup code must be executed exactly once before executing the actual functions.
+cautious
+showing careful forethought
+Aside from that, std::string provides a member function, append, which can handle string_view instances, but it alters the string instead of returning a new one with the string view content appended. std::string_view is useful, but be cautious when mixing it with strings
+entitled
+qualified for by right according to law
+You can upgrade to the eBook version at www.PacktPub.com and as a print book customer, you are entitled to a discount on the eBook copy.
+suitable
+meant or adapted for an occasion or use
+The std::make_tuple is a really nice helper because it automatically deduces the type of all the arguments and creates a suitable tuple type: int main() { auto student_desc (make_tuple("ID", "Name", "GPA")); auto student (make_tuple(123456, "John Doe", 3.7));
+enforce
+compel to behave in a certain way
+Our tiny library does not enforce such usage.
+remedy
+a medicine or therapy that cures disease or relieves pain
+If you come across any illegal copies of our works in any form on the Internet, please provide us with the location address or website name immediately so that we can pursue a remedy.
+mock
+treat with contempt
+Let's mock an output-heavy function, so we can play with it later: void my_output_heavy_function() { cout << "some output\n"; cout << "this function does really heavy work\n"; cout << "... and lots of it...\n"; // ...
+intent
+an anticipated outcome that guides your planned actions
+This way, the programmer can lean back and express his intent, while the compiler can choose the optimal implementation for the given task.
+abrupt
+exceedingly sudden and unexpected
+If we don't do one of the two, the destructor of the thread object will call std::terminate(), which leads to an abrupt application shutdown.
+sketch
+preliminary drawing for later elaboration
+The std::begin and std::end functions both accept a vector instance as parameter, and return us iterators, which point to the first item, and past the last item, just as sketched in the upcoming diagram.
+plainly
+in a simple manner without extravagance
+For directories or other special files, we plainly return a size of 0.
+qualify
+prove capable or fit; meet requirements
+In order to prevent the user from modifying the key items of perfectly sorted map nodes, the const qualifier is added to the key type.
+luxury
+something that is an indulgence rather than a necessity
+Apart from that, we get a lot of the luxury interface we know from std::string already.
+formerly
+at a previous time
+If we design functions which formerly accepted std::string instances as parameters, but did not change them in a way that would require the string instances to reallocate the memory that holds the actual string payload, we could now use std::string_view and be more compatible with libraries that are STL-agnostic.
+pile
+a collection of objects laid on top of each other
+If we regularly pile up some new library code while solving our own problems, then we are also helping our fellow programmers when they have similar problems to solve.
+burden
+weight to be borne or conveyed
+...format_guard, which can automatically revert any format setting. Additionally, we add a wrapper type, which can contain any value, but when it is printed, it gets special formatting without burdening us with I/O manipulator noise: 1. First, we include some headers and declare that we use the std namespace: #include #include using namespace std; 2. The...
+fan
+a device for creating a current of air by movement
+Fans of the bracket initialization style say that using brackets makes it very explicit, that the variable is initialized with a constructor call, and that this code line is not reinitializing anything.
+inhabitant
+a person who lives in a particular place
+Let's use it to search for a German city with more than two million inhabitants in our small example set.
+absence
+the state of being not present
+...or exceptions in general. If any system-related function has seen an error condition, it is able to set the errno variable to something other than 0 (0 describes the absence of errors), and then the caller is able to read that error number and look up what its value means. The only problem with this is that when we...
+precede
+be earlier in time
+All code that precedes it is just set up work and all code that follows it is just for printing.
+remind
+put in the mind of someone
+The operating system does, of course, remind itself of waking the thread up again.
+observation
+the act of taking a patient look
+This is an important observation:
+reward
+compensation for worthy acts or retribution for wrongdoing
+A look at the loop that uses num_range is, on the other hand, very rewarding because it looks so perfectly simple!
+boil
+change from a liquid to vapor
+As size_type is an unsigned variable, this boils down to a very large number.
+passion
+a strong feeling or emotion
+He has a strong passion for modern C++ implementations of lowlevel software, and he tries hard to combine high performance with an elegant coding style.
+submit
+yield to the control of another
+To view the previously submitted errata, go to https://www.packtpub.com/books/conten t/supportand enter the name of the book in the search field.
+mental
+involving the mind or an intellectual process
+We should get a mental picture of what needs to happen:
+disappoint
+fail to meet the hopes or expectations of
+If we want to pass a string or a substring to a library that does not even support std::string, we can only provide a raw string pointer, which is a bit disappointing, because it sets us back to the old C days.
+praise
+an expression of approval and commendation
+However, we are not here to praise Haskell but to improve our C++ skills.
+principal
+main or most important
+Sean Parent, principal scientist at Adobe Systems at the time, popularized this algorithm because it is both useful and short.
+vast
+unusually great in size or amount or extent or scope
+Because of the vastness of general numeric application scenarios (not only because of the Fourier transformation of course), the STL also tries to be useful in the context of numeric computation.
+lean
+incline or bend from a vertical position
+This way, the programmer can lean back and express his intent, while the compiler can choose the optimal implementation for the given task.
+practical
+guided by experience and observation rather than theory
+If an std::vector is perfect for our use case, it is still very simple and practical to add items to it in a sorting manner.
+narrow
+not wide
+We are not going to change the string, but the view on the string by narrowing it down to the actual non-whitespace part of the string.
+pity
+a feeling of sympathy and sorrow for misfortunes of others
+...file if we want to get an exception when opening that file is not possible: ifstream f {"non_existant.txt"}; f.exceptions(...); // too late for an exception This is a pity because exceptions actually promise that they make error handling less clumsy compared to old-school C-style code, which is riddled with loads of if branches, which handle errors after every...
+accompany
+go or travel along with
+In that case, we must insert it, accompanied with a new counter being set to 1.
