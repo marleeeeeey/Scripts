@@ -10,6 +10,7 @@ from PIL import Image
 from google_images_download import google_images_download
 from google_speech import Speech
 from googletrans import Translator
+from yandex_translate import YandexTranslate
 
 
 class Bucket:
@@ -71,6 +72,8 @@ class Bucket:
 
 
 class Helper:
+    yandex_translator_api_key = ""
+
     @staticmethod
     def read_file_to_one_line(path):
         with open(path, 'r') as file:
@@ -79,9 +82,18 @@ class Helper:
 
     @staticmethod
     def translate(source, src='en', dest='ru'):
+        return Helper.translate_yandex(source, src, dest)
+
+    @staticmethod
+    def translate_google(source, src='en', dest='ru'):
         translator = Translator()
         result = translator.translate(source, src=src, dest=dest)
         return result.text
+
+    @staticmethod
+    def translate_yandex(source, src='en', dest='ru'):
+        translate = YandexTranslate(Helper.yandex_translator_api_key)
+        return translate.translate(source, src + "-" + dest)
 
     @staticmethod
     def get_random_id(string_length=10):
@@ -342,10 +354,12 @@ def main():
     parser.add_argument("-t", "--type", type=int, choices=[0, 1, 2, 3, 4], default=0,
                         help="Converter Type: 0-LinesWord; 1-LinesWordMeaningExample; 2-LinesWordTranslate; "
                              "3-LinesWordMeaning; 4-LinesTranslateWord")
-    parser.add_argument("-i", "--input", type=str, default="",
-                        help="import file")
+    parser.add_argument("-i", "--input", type=str, default="", help="import file")
+    parser.add_argument("-k", "--key", type=str, default="", help="yandex translator api key")
     args = parser.parse_args()
     type: int = args.type
+
+    Helper.yandex_translator_api_key = args.key
 
     converter = object
     if type == 0:
