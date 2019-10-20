@@ -27,3 +27,4 @@ Word translation and pronunciation will be generated for all types.
 3. googletrans
 4. genanki
 5. google_images_download
+6. yandex.translate

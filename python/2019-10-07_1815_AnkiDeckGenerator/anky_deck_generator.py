@@ -93,7 +93,7 @@ class Helper:
     @staticmethod
     def translate_yandex(source, src='en', dest='ru'):
         translate = YandexTranslate(Helper.yandex_translator_api_key)
-        return translate.translate(source, src + "-" + dest)
+        return translate.translate(source, src + "-" + dest)["text"][0]
 
     @staticmethod
     def get_random_id(string_length=10):
