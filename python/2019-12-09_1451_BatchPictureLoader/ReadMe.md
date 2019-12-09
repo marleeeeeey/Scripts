@@ -16,7 +16,7 @@ optional arguments:
   -c COUNT, --count COUNT
                         Count images of every word
   -o OUTPUT, --output OUTPUT
-                        Count images of every word
+                        Output folder
 ```
 
 ## Prerequisites

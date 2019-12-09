@@ -31,7 +31,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("-w", "--words", type=str, default="", help="List of words to find images")
     parser.add_argument("-c", "--count", type=int, default=1, help="Count images of every word")
-    parser.add_argument("-o", "--output", type=str, default="output", help="Count images of every word")
+    parser.add_argument("-o", "--output", type=str, default="output", help="Output folder")
     args = parser.parse_args()
 
     words = args.words.split()
