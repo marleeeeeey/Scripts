@@ -1,7 +1,8 @@
 from google_images_download import google_images_download
 from typing import Dict, List, Any, Tuple, Union
 import argparse
-
+import re
+import string
 
 def load_pictures(word, output_folder, count_of_pictures=1):
     file_names = []
@@ -29,19 +30,23 @@ def load_pictures(word, output_folder, count_of_pictures=1):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-w", "--words", type=str, default="", help="List of words to find images")
-    parser.add_argument("-c", "--count", type=int, default=1, help="Count images of every word")
+    parser.add_argument("-w", "--words", type=str, default="", help="List of phrases separated by punctuation symbols")
+    parser.add_argument("-c", "--count", type=int, default=1, help="Count images of every phrase")
     parser.add_argument("-o", "--output", type=str, default="output", help="Output folder")
     args = parser.parse_args()
 
-    words = args.words.split()
+    words = filter(None, re.split("[,!?:.]+", args.words))
     pic_numbers = args.count
     output_folder = args.output
     counter = 0
 
     for word in words:
-        pictures_array = load_pictures(word, output_folder, pic_numbers)
-        counter += len(pictures_array)
+        word: string = ''.join(e for e in word if e.isalnum() or e == ' ')
+        word: string = " ".join(word.split())
+        if word:
+            print("word", word)
+            pictures_array = load_pictures(word, output_folder, pic_numbers)
+            counter += len(pictures_array)
 
     print("Summary: Loaded", counter, "pictures")
 

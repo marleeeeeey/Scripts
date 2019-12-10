@@ -12,9 +12,9 @@ usage: load_pictures.py [-h] [-w WORDS] [-c COUNT] [-o OUTPUT]
 optional arguments:
   -h, --help            show this help message and exit
   -w WORDS, --words WORDS
-                        List of words to find images
+                        List of phrases separated by punctuation symbols
   -c COUNT, --count COUNT
-                        Count images of every word
+                        Count images of every phrase
   -o OUTPUT, --output OUTPUT
                         Output folder
 ```
