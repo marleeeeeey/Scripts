@@ -17,7 +17,7 @@ def main():
     args = parser.parse_args()
 
     gpx_files = gpxlib.get_file_list(args.input_glob_mask)
-    print('found files:', gpx_files)
+    #print('found files:', gpx_files)
     print('file count:', len(gpx_files))
 
     output_dir = args.output_dir

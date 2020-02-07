@@ -1,6 +1,8 @@
 import glob
 import xml.dom.minidom
 import xml.etree.ElementTree as ET
+import ntpath
+import os
 
 
 def get_default_ns():
@@ -33,43 +35,39 @@ def xml_pretty(src, dest):
         text_file.write(pretty_xml_str)
 
 
-def copy_track(src_root, dest_root, merge_tracks = False, ignore_time = False, ignore_elevation = False):
+def copy_track(src_root, dest_root, merge_tracks = False, ignore_time = False, ignore_elevation = False, desired_name = None):
     trks = src_root.findall(wrap_default_namespace('trk'))
     if(len(trks) == 0):
         return
 
     if merge_tracks:
-        _copy_track_and_merge_as_segments(src_root, dest_root, ignore_time, ignore_elevation)
-        return
-
-    for trk in trks:
         one_trk = ET.SubElement(dest_root, 'trk')
-        for trkseg in trk.findall(wrap_default_namespace('trkseg')):
+        for trk in trks:
             one_trkseg = ET.SubElement(one_trk, 'trkseg')
-            for trkpt in trkseg.findall(wrap_default_namespace('trkpt')):
-                new_trkpt = ET.SubElement(one_trkseg, 'trkpt', trkpt.attrib)
-                for child in trkpt:
-                    if child.tag == wrap_default_namespace('time') and not ignore_time:
-                        new_trkpt.append(child)
-                    if child.tag == wrap_default_namespace('ele') and not ignore_elevation:
-                        new_trkpt.append(child)
+            for trkseg in trk.findall(wrap_default_namespace('trkseg')):
+                copy_trkseg(trkseg, one_trkseg, ignore_time, ignore_elevation)
+    else:
+        for trk in trks:
+            dest_trk = ET.SubElement(dest_root, 'trk')
+            dest_trk_name = ET.SubElement(dest_trk, 'name')
+            src_track_name = get_track_name(trk)
+            if src_track_name != None:
+                dest_trk_name.text = src_track_name.replace(".gpx", "")
+            elif desired_name != None:
+                dest_trk_name.text = desired_name
+            for trkseg in trk.findall(wrap_default_namespace('trkseg')):
+                dest_trkseg = ET.SubElement(dest_trk, 'trkseg')
+                copy_trkseg(trkseg, dest_trkseg, ignore_time, ignore_elevation)
 
 
-def _copy_track_and_merge_as_segments(src_root, dest_root, ignore_time, ignore_elevation):
-    trks = src_root.findall(wrap_default_namespace('trk'))
-    if(len(trks) == 0):
-        return
-    one_trk = ET.SubElement(dest_root, 'trk')
-    for trk in trks:
-        one_trkseg = ET.SubElement(one_trk, 'trkseg')
-        for trkseg in trk.findall(wrap_default_namespace('trkseg')):
-            for trkpt in trkseg.findall(wrap_default_namespace('trkpt')):
-                new_trkpt = ET.SubElement(one_trkseg, 'trkpt', trkpt.attrib)
-                for child in trkpt:
-                    if child.tag == wrap_default_namespace('time') and not ignore_time:
-                        new_trkpt.append(child)
-                    if child.tag == wrap_default_namespace('ele') and not ignore_elevation:
-                        new_trkpt.append(child)
+def copy_trkseg(src_trkseg, dest_trkseg, ignore_time = False, ignore_elevation = False):
+    for trkpt in src_trkseg.findall(wrap_default_namespace('trkpt')):
+        new_trkpt = ET.SubElement(dest_trkseg, 'trkpt', trkpt.attrib)
+        for child in trkpt:
+            if child.tag == wrap_default_namespace('time') and not ignore_time:
+                new_trkpt.append(child)
+            if child.tag == wrap_default_namespace('ele') and not ignore_elevation:
+                new_trkpt.append(child)
 
 
 def copy_metadata(src_root, dest_root):
@@ -90,7 +88,7 @@ def copy_wpt(src_root, dest_root):
 
 def write_gpxtree(tree, dest):
     tree.write(dest, xml_declaration=True, encoding='utf-8', method="xml")
-    xml_pretty(dest, dest)
+    #xml_pretty(dest, dest)
 
 
 def gpx_cleaner(src, dest, merge_tracks = False, ignore_wpt = False, ignore_metadata = False, ignore_time = False, ignore_elevation = False):
@@ -120,5 +118,52 @@ def get_merge_gpx_tree(gpx_files, merge_tracks = False, ignore_wpt = False):
     for gpx in gpx_files:
         tree = ET.parse(gpx)
         root = tree.getroot()
-        copy_track(root, new_root, merge_tracks)
+        copy_track(root, new_root, merge_tracks, desired_name=ntpath.basename(gpx))
     return new_tree
+
+
+
+def split_gpx(gpx, output_dir):
+    tree = ET.parse(gpx)
+    root = tree.getroot()
+    full_name = ntpath.basename(gpx)
+    name_wihtout_ext = os.path.splitext(full_name)[0]
+    extension = os.path.splitext(full_name)[1]
+
+    trks = root.findall(wrap_default_namespace('trk'))
+    if(len(trks) == 0):
+        return
+
+    index = 0
+    for trk in trks:
+        new_tree = create_empty_gpx_tree(root)
+        new_root = new_tree.getroot()
+        new_metadata = ET.SubElement(new_root, 'metadata')
+        new_metadata_name = ET.SubElement(new_metadata, 'name')
+        track_name = get_track_name(trk)
+        new_metadata_name.text = track_name
+        new_trk = ET.SubElement(new_root, 'trk')
+        new_track_name = ET.SubElement(new_trk, 'name')
+        new_track_name.text = track_name
+        for trkseg in trk.findall(wrap_default_namespace('trkseg')):
+            dest_trkseg = ET.SubElement(new_trk, 'trkseg')
+            copy_trkseg(trkseg, dest_trkseg)
+
+        file_name = output_dir + str(index) + '_' + track_name + extension
+        write_gpxtree(new_tree, file_name)
+        index += 1
+
+
+def remove_special_symbols(track_name):
+    track_name = track_name.replace(':', '')
+    track_name = track_name.replace('/', '')
+    track_name = track_name.replace('_', ' ')
+    return track_name
+
+
+def get_track_name(trk):
+    trk_name_obj = trk.find(wrap_default_namespace('name'))
+    if trk_name_obj != None:
+        return remove_special_symbols(trk_name_obj.text)
+    else:
+        return None
