@@ -11,6 +11,7 @@ def main():
     parser.add_argument("--ignore_elevation", action='store_true')
     parser.add_argument("--ignore_metadata", action='store_true')
     parser.add_argument("--replace_original", action='store_true')
+    parser.add_argument("--merge_tracks", action='store_true')
     parser.add_argument("-o", "--output_dir", type=str, default="./output/", help="Output directory")
     args = parser.parse_args()
 
@@ -31,7 +32,8 @@ def main():
             ignore_metadata = args.ignore_metadata
             ignore_time = args.ignore_time
             ignore_elevation = args.ignore_elevation
-            gpxlib.gpx_cleaner(src_gpx, export_gpx, ignore_metadata, ignore_time, ignore_elevation)
+            merge_tracks = args.merge_tracks
+            gpxlib.gpx_cleaner(src_gpx, export_gpx, merge_tracks, ignore_metadata, ignore_time, ignore_elevation)
         except:
             print("Can't parse file: ", base_name)
 

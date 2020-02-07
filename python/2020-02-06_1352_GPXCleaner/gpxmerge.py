@@ -8,6 +8,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("-i", "--input_glob_mask", type=str, default="./", help="Input glob mask")
     parser.add_argument("-o", "--output_dir", type=str, default="./output/", help="Output directory")
+    parser.add_argument("--merge_tracks", action='store_true')
     args = parser.parse_args()
 
     gpx_files = gpxlib.get_file_list(args.input_glob_mask)
@@ -23,7 +24,7 @@ def main():
 
     base_name = ntpath.basename(gpx_files[0])
     export_gpx = output_dir + base_name
-    export_tree = gpxlib.get_merge_gpx_tree(gpx_files)
+    export_tree = gpxlib.get_merge_gpx_tree(gpx_files, args.merge_tracks)
     gpxlib.write_gpxtree(export_tree, export_gpx)
 
 
