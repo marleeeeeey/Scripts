@@ -1,9 +1,9 @@
-import xml.etree.ElementTree as ET
-import os
-import ntpath
 import argparse
 import glob
+import ntpath
+import os
 import xml.dom.minidom
+import xml.etree.ElementTree as ET
 
 
 def get_default_ns():
@@ -15,8 +15,8 @@ def get_gpx_file_list(mask):
     return files
 
 
-def wrap_default_namespace(str):
-    full_name = '{' + get_default_ns() + '}' + str
+def wrap_default_namespace(tag):
+    full_name = '{' + get_default_ns() + '}' + tag
     return full_name
 
 
@@ -31,7 +31,7 @@ def create_empty_gpx_tree(root):
 
 def xml_pretty(src, dest):
     dom = xml.dom.minidom.parse(src)
-    pretty_xml_str = '\n'.join([line for line in dom.toprettyxml(indent=' '*2).split('\n') if line.strip()])
+    pretty_xml_str = '\n'.join([line for line in dom.toprettyxml(indent=' ' * 2).split('\n') if line.strip()])
     with open(dest, "w", encoding="utf-8") as text_file:
         text_file.write(pretty_xml_str)
 
@@ -41,8 +41,8 @@ def convert_gpx(src, dest, args):
     root = tree.getroot()
     new_tree = create_empty_gpx_tree(root)
     new_root = new_tree.getroot()
-    # copy full metadata
-    if args.ignore_metadata == False:
+    # copy name from metadata
+    if not args.ignore_metadata:
         for metadata in root.findall(wrap_default_namespace('metadata')):
             new_metadata = ET.SubElement(new_root, 'metadata', metadata.attrib)
             for child in metadata:
@@ -63,9 +63,9 @@ def convert_gpx(src, dest, args):
                 new_trkpt = ET.SubElement(one_trkseg, 'trkpt', trkpt.attrib)
                 # keep elevation and time
                 for child in trkpt:
-                    if child.tag == wrap_default_namespace('time') and args.ignore_time == False:
+                    if child.tag == wrap_default_namespace('time') and not args.ignore_time:
                         new_trkpt.append(child)
-                    if child.tag == wrap_default_namespace('ele') and args.ignore_elevation == False:
+                    if child.tag == wrap_default_namespace('ele') and not args.ignore_elevation:
                         new_trkpt.append(child)
     # write to destination
     new_tree.write(dest, xml_declaration=True, encoding='utf-8', method="xml")
