@@ -93,28 +93,30 @@ def write_gpxtree(tree, dest):
     xml_pretty(dest, dest)
 
 
-def gpx_cleaner(src, dest, merge_tracks = False, ignore_metadata = False, ignore_time = False, ignore_elevation = False):
+def gpx_cleaner(src, dest, merge_tracks = False, ignore_wpt = False, ignore_metadata = False, ignore_time = False, ignore_elevation = False):
     tree = ET.parse(src)
     root = tree.getroot()
     new_tree = create_empty_gpx_tree(root)
     new_root = new_tree.getroot()
     if not ignore_metadata:
         copy_metadata(root, new_root)
-    copy_wpt(root, new_root)
+    if not ignore_wpt:
+        copy_wpt(root, new_root)
     copy_track(root, new_root, merge_tracks, ignore_time, ignore_elevation)
     write_gpxtree(new_tree, dest)
 
 
-def get_merge_gpx_tree(gpx_files, merge_tracks = False):
+def get_merge_gpx_tree(gpx_files, merge_tracks = False, ignore_wpt = False):
     main_tree = ET.parse(gpx_files[0])
     main_root = main_tree.getroot()
     new_tree = create_empty_gpx_tree(main_root)
     new_root = new_tree.getroot()
     copy_metadata(main_root, new_root)
-    for gpx in gpx_files:
-        tree = ET.parse(gpx)
-        root = tree.getroot()
-        copy_wpt(root, new_root)
+    if not ignore_wpt:
+        for gpx in gpx_files:
+            tree = ET.parse(gpx)
+            root = tree.getroot()
+            copy_wpt(root, new_root)
     for gpx in gpx_files:
         tree = ET.parse(gpx)
         root = tree.getroot()
