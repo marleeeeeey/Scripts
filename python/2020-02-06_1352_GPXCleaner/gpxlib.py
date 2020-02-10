@@ -88,7 +88,7 @@ def copy_wpt(src_root, dest_root):
 
 def write_gpxtree(tree, dest):
     tree.write(dest, xml_declaration=True, encoding='utf-8', method="xml")
-    #xml_pretty(dest, dest)
+    xml_pretty(dest, dest)
 
 
 def gpx_cleaner(src, dest, merge_tracks = False, ignore_wpt = False, ignore_metadata = False, ignore_time = False, ignore_elevation = False):
