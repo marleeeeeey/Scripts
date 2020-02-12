@@ -8,8 +8,8 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("-i", "--input_glob_mask", type=str, required=True, help="Input glob mask")
     parser.add_argument("-o", "--output_dir", type=str, default="./output/", help="Output directory")
-    parser.add_argument("--ignore_wpt", action='store_true')
-    parser.add_argument("--merge_tracks", action='store_true')
+    parser.add_argument("-w", "--ignore_wpt", action='store_true')
+    parser.add_argument("-m", "--merge_tracks", action='store_true')
     args = parser.parse_args()
 
     gpx_files = gpxlib.get_file_list(args.input_glob_mask)
