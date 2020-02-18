@@ -22,7 +22,7 @@ class GpxPoint:
         return "(x=" + str(self.x) + "; y=" + str(self.y) + ")" # TODO fix dublication
 
 
-class GpxRoute:
+class WebTrackConverter:
     def __init__(self):
         self.points = []
         self.center = GpxPoint()
@@ -31,11 +31,11 @@ class GpxRoute:
     @staticmethod
     def create_instance(url):
         if "google" in url:
-            return GpxRoute._url_parse_google(url)
+            return WebTrackConverter._url_parse_google(url)
         elif "graphhopper" in url:
-            return GpxRoute._url_parse_graphhopper(url)
+            return WebTrackConverter._url_parse_graphhopper(url)
         elif "yandex" in url:
-            return GpxRoute._url_parse_yandex(url)
+            return WebTrackConverter._url_parse_yandex(url)
         else:
             raise Exception("Unknown route provider(url)")
 
@@ -56,7 +56,7 @@ class GpxRoute:
             except:
                 continue
             gpx_points.append(gpx_point)
-        gpx_route = GpxRoute()
+        gpx_route = WebTrackConverter()
         gpx_route.points = gpx_points
         gpx_route.center = center
         gpx_route.zoom = zoom
@@ -74,7 +74,7 @@ class GpxRoute:
             except:
                 continue
             gpx_points.append(gpx_point)
-        gpx_route = GpxRoute()
+        gpx_route = WebTrackConverter()
         gpx_route.points = gpx_points
         return gpx_route
 
@@ -93,7 +93,7 @@ class GpxRoute:
             except:
                 continue
             gpx_points.append(gpx_point)
-        gpx_route = GpxRoute()
+        gpx_route = WebTrackConverter()
         gpx_route.points = gpx_points
         gpx_route.center = center
         return gpx_route
@@ -116,12 +116,11 @@ def main():
     args = parser.parse_args()
 
     input_url = args.input_url
-    gpx_route = GpxRoute.create_instance(input_url)
+    track_converter = WebTrackConverter.create_instance(input_url)
 
     export_format = args.export_format
-    export_url = ''
     if export_format == 'graphhopper':
-        export_url = gpx_route.export_url_graphhopper()
+        export_url = track_converter.export_url_graphhopper()
     else:
         raise Exception("Unknown type of export provider(url)")
 
