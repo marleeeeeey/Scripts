@@ -11,7 +11,7 @@ class GpxPoint:
             return
         xy = str_point.split(',')
         if len(xy) != 2:
-            raise Exception("Can't parse point")
+            raise Exception("Can't construct point")
         self.x = xy[0]
         self.y = xy[1]
 
@@ -29,7 +29,18 @@ class GpxRoute:
         self.zoom = 0.0
 
     @staticmethod
-    def url_parse_google(url):
+    def create_instance(url):
+        if "google" in url:
+            return GpxRoute._url_parse_google(url)
+        elif "graphhopper" in url:
+            return GpxRoute._url_parse_graphhopper(url)
+        elif "yandex" in url:
+            return GpxRoute._url_parse_yandex(url)
+        else:
+            raise Exception("Unknown route provider(url)")
+
+    @staticmethod
+    def _url_parse_google(url):
         url_path = urlparse(url).path
         split_points_and_center = url_path.split("dir/")[1].split("@")
         str_points = split_points_and_center[0].split('/')
@@ -52,7 +63,7 @@ class GpxRoute:
         return gpx_route
 
     @staticmethod
-    def url_parse_graphhopper(url):
+    def _url_parse_graphhopper(url):
         url_query = urlparse(url).query
         str_points = url_query.split("&locale")[0].split("point=")
         gpx_points = []
@@ -68,7 +79,7 @@ class GpxRoute:
         return gpx_route
 
     @staticmethod
-    def url_parse_yandex(url):
+    def _url_parse_yandex(url):
         url_query = urlparse(url).query
         split_center_and_points_str = url_query.split("&rtt=")[0].split("&rtext=")
         center_xy_str = split_center_and_points_str[0].split("ll=")[1].split("&mode")[0].replace("%2C", ",")
@@ -94,7 +105,6 @@ class GpxRoute:
         url += "locale=en-US&vehicle=bike&weighting=fastest&elevation=true&turn_costs=false&use_miles=false&layer=OpenStreetMap"
         return url
 
-
     def __str__(self):
         return "(points_number=" + str(len(self.points)) + "; center=" + str(self.center) + "; zoom=" + str(self.zoom) + ")"
 
@@ -106,22 +116,14 @@ def main():
     args = parser.parse_args()
 
     input_url = args.input_url
-    gpx_route = GpxRoute
-    if 'yandex' in input_url:
-        gpx_route = GpxRoute.url_parse_yandex(input_url)
-    elif 'graphhopper' in input_url:
-        gpx_route = GpxRoute.url_parse_graphhopper(input_url)
-    elif 'google' in input_url:
-        gpx_route = GpxRoute.url_parse_google(input_url)
-    else:
-        raise Exception("Unknow type of input url")
+    gpx_route = GpxRoute.create_instance(input_url)
 
     export_format = args.export_format
     export_url = ''
     if export_format == 'graphhopper':
         export_url = gpx_route.export_url_graphhopper()
     else:
-        raise Exception("Unknown type of export url")
+        raise Exception("Unknown type of export provider(url)")
 
     webbrowser.open(export_url)
 
