@@ -1,17 +1,12 @@
-import glob
-import xml.dom.minidom
-import xml.etree.ElementTree as ET
 import ntpath
 import os
+import xml.etree.ElementTree as ET
+
+import utils
 
 
 def get_default_ns():
     return "http://www.topografix.com/GPX/1/1"
-
-
-def get_file_list(mask):
-    files = [f for f in glob.glob(mask, recursive=True)]
-    return files
 
 
 def wrap_default_namespace(tag):
@@ -28,16 +23,9 @@ def create_empty_gpx_tree(root):
     return new_tree
 
 
-def xml_pretty(src, dest):
-    dom = xml.dom.minidom.parse(src)
-    pretty_xml_str = '\n'.join([line for line in dom.toprettyxml(indent=' ' * 2).split('\n') if line.strip()])
-    with open(dest, "w", encoding="utf-8") as text_file:
-        text_file.write(pretty_xml_str)
-
-
-def copy_track(src_root, dest_root, merge_tracks = False, ignore_time = False, ignore_elevation = False, desired_name = None):
+def copy_track(src_root, dest_root, merge_tracks=False, ignore_time=False, ignore_elevation=False, desired_name=None):
     trks = src_root.findall(wrap_default_namespace('trk'))
-    if(len(trks) == 0):
+    if (len(trks) == 0):
         return
 
     if merge_tracks:
@@ -60,7 +48,7 @@ def copy_track(src_root, dest_root, merge_tracks = False, ignore_time = False, i
                 copy_trkseg(trkseg, dest_trkseg, ignore_time, ignore_elevation)
 
 
-def copy_trkseg(src_trkseg, dest_trkseg, ignore_time = False, ignore_elevation = False):
+def copy_trkseg(src_trkseg, dest_trkseg, ignore_time=False, ignore_elevation=False):
     for trkpt in src_trkseg.findall(wrap_default_namespace('trkpt')):
         new_trkpt = ET.SubElement(dest_trkseg, 'trkpt', trkpt.attrib)
         for child in trkpt:
@@ -88,10 +76,11 @@ def copy_wpt(src_root, dest_root):
 
 def write_gpxtree(tree, dest):
     tree.write(dest, xml_declaration=True, encoding='utf-8', method="xml")
-    xml_pretty(dest, dest)
+    utils.xml_pretty(dest, dest)
 
 
-def gpx_cleaner(src, dest, merge_tracks = False, ignore_wpt = False, ignore_metadata = False, ignore_time = False, ignore_elevation = False):
+def gpx_cleaner(src, dest, merge_tracks=False, ignore_wpt=False, ignore_metadata=False, ignore_time=False,
+                ignore_elevation=False):
     tree = ET.parse(src)
     root = tree.getroot()
     new_tree = create_empty_gpx_tree(root)
@@ -104,7 +93,7 @@ def gpx_cleaner(src, dest, merge_tracks = False, ignore_wpt = False, ignore_meta
     write_gpxtree(new_tree, dest)
 
 
-def get_merge_gpx_tree(gpx_files, merge_tracks = False, ignore_wpt = False):
+def get_merge_gpx_tree(gpx_files, merge_tracks=False, ignore_wpt=False):
     main_tree = ET.parse(gpx_files[0])
     main_root = main_tree.getroot()
     new_tree = create_empty_gpx_tree(main_root)
@@ -122,7 +111,6 @@ def get_merge_gpx_tree(gpx_files, merge_tracks = False, ignore_wpt = False):
     return new_tree
 
 
-
 def split_gpx(gpx, output_dir):
     tree = ET.parse(gpx)
     root = tree.getroot()
@@ -131,7 +119,7 @@ def split_gpx(gpx, output_dir):
     extension = os.path.splitext(full_name)[1]
 
     trks = root.findall(wrap_default_namespace('trk'))
-    if(len(trks) == 0):
+    if (len(trks) == 0):
         return
 
     index = 0

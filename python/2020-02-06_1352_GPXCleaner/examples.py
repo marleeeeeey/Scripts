@@ -1,4 +1,3 @@
-
 def examples(input_file):
     tree = ET.parse(input_file)
     root = tree.getroot()

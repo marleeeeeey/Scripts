@@ -1,7 +1,8 @@
-import gpxlib
 import argparse
 import os
 
+import gpxlib
+import utils
 
 
 def main():
@@ -10,8 +11,7 @@ def main():
     parser.add_argument("-o", "--output_dir", type=str, default="./output/", help="Output directory")
     args = parser.parse_args()
 
-    gpx_files = gpxlib.get_file_list(args.input_glob_mask)
-    #print('found files:', gpx_files)
+    gpx_files = utils.get_file_list(args.input_glob_mask)
     print('file count:', len(gpx_files))
 
     if len(gpx_files) < 1:

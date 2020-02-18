@@ -1,7 +1,9 @@
-import gpxlib
 import argparse
 import ntpath
 import os
+
+import gpxlib
+import utils
 
 
 def main():
@@ -16,8 +18,7 @@ def main():
     parser.add_argument("-m", "--merge_tracks", action='store_true')
     args = parser.parse_args()
 
-    gpx_files = gpxlib.get_file_list(args.input_glob_mask)
-    #print('found files:', gpx_files)
+    gpx_files = utils.get_file_list(args.input_glob_mask)
     print('file count:', len(gpx_files))
 
     output_dir = args.output_dir
