@@ -9,6 +9,9 @@ class StravaBot():
     def __init__(self):
         self.driver = webdriver.Chrome()
 
+    def close_browser(self):
+        self.driver.quit()
+
     def login(self, username, password):
         self.driver.get('https://www.strava.com/')
         login_page_btn = self.driver.find_element_by_xpath('//*[@id="view"]/header/div/nav/a')
@@ -21,6 +24,8 @@ class StravaBot():
         sleep(1)
         login_btn = self.driver.find_element_by_xpath('//*[@id="login-button"]')
         login_btn.click()
+        if 'login' in self.driver.current_url:
+            raise Exception('login failed - authentication error')
 
     def download_tracks(self, skip_counter=0):
         self.driver.get('https://www.strava.com/athlete/training')
@@ -61,5 +66,5 @@ class StravaBot():
             sleep(0.5)
             export_gpx_btn = self.driver.find_element_by_xpath('/html/body/div[2]/div[3]/nav/div/div/ul/li[7]/a')
             export_gpx_btn.click()
-        except:
-            print('Error: downloading gpx:', track_name.text, "Unexpected error:", sys.exc_info()[0])
+        except Exception as e:
+            print('Error: downloading gpx:', track_name.text, "Unexpected error:", str(e))
