@@ -155,3 +155,46 @@ def get_track_name(trk):
         return remove_special_symbols(trk_name_obj.text)
     else:
         return None
+
+def get_pretty_name_from_gpx(gpx_file_name):
+    tree = ET.parse(gpx_file_name)
+    root = tree.getroot()
+    name_candidates = []
+    time = get_time_of_first_point(gpx_file_name)
+    for metadata in root.findall(wrap_default_namespace('metadata')):
+        for metadata_name in metadata.findall(wrap_default_namespace('name')):
+            name_candidates.append(time + ' ' + metadata_name.text)
+    for trk in root.findall(wrap_default_namespace('trk')):
+        for track_name in trk.findall(wrap_default_namespace('name')):
+            name_candidates.append(time + ' ' + track_name.text)
+
+    converted_name_candidates = []
+    min_length_index = -1
+    min_length = 99999
+    index = 0
+    for name in name_candidates:
+        new_name = ''.join(ch for ch in name if (ch.isalpha() or ch.isspace()))
+        converted_name_candidates.append(new_name)
+        cur_len = len(new_name)
+        if cur_len < min_length:
+            min_length = cur_len
+            min_length_index = index
+        index += 1
+
+    target_name = name_candidates[min_length_index]
+    filtered_target_name = ''.join(ch for ch in target_name if (ch.isalnum() or ch in '., _-' ))
+    return filtered_target_name
+
+
+
+    name_candidates.sort(key = len)
+    return name_candidates[0]
+
+def get_time_of_first_point(gpx_file_name):
+    tree = ET.parse(gpx_file_name)
+    root = tree.getroot()
+    for trk in root.findall(wrap_default_namespace('trk')):
+        for trkseg in trk.findall(wrap_default_namespace('trkseg')):
+            for trkpt in trkseg.findall(wrap_default_namespace('trkpt')):
+                for pt_time in trkpt.findall(wrap_default_namespace('time')):
+                    return utils.get_pretty_time(pt_time.text)
