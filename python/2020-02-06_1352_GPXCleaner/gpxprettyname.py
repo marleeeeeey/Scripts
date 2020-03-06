@@ -1,7 +1,8 @@
-import gpxlib
 import argparse
-import utils
 from shutil import copyfile
+
+import gpxlib
+import utils
 
 
 def main():
@@ -13,5 +14,6 @@ def main():
     for gpx_file in gpx_files:
         pretty_name = gpxlib.get_pretty_name_from_gpx(gpx_file)
         copyfile(gpx_file, args.output_dir + pretty_name + '.gpx')
+
 
 main()

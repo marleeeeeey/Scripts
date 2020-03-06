@@ -156,6 +156,7 @@ def get_track_name(trk):
     else:
         return None
 
+
 def get_pretty_name_from_gpx(gpx_file_name):
     tree = ET.parse(gpx_file_name)
     root = tree.getroot()
@@ -181,14 +182,16 @@ def get_pretty_name_from_gpx(gpx_file_name):
             min_length_index = index
         index += 1
 
-    target_name = name_candidates[min_length_index]
-    filtered_target_name = ''.join(ch for ch in target_name if (ch.isalnum() or ch in '., _-' ))
+    try:
+        target_name = name_candidates[min_length_index]
+    except:
+        target_name = "no_name" + str(utils.get_increment_integer())
+    filtered_target_name = ''.join(ch for ch in target_name if (ch.isalnum() or ch in '., _-'))
     return filtered_target_name
 
-
-
-    name_candidates.sort(key = len)
+    name_candidates.sort(key=len)
     return name_candidates[0]
+
 
 def get_time_of_first_point(gpx_file_name):
     tree = ET.parse(gpx_file_name)

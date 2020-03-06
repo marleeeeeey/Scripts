@@ -1,7 +1,6 @@
 import glob
 import xml.dom.minidom
 from datetime import datetime as dt
-import os.path
 
 
 def get_file_list(mask):
@@ -15,6 +14,7 @@ def xml_pretty(src, dest):
     with open(dest, "w", encoding="utf-8") as text_file:
         text_file.write(pretty_xml_str)
 
+
 def get_pretty_time(raw_time_str):
     # input '2018-09-29T12:37:34Z'
     try:
@@ -23,3 +23,11 @@ def get_pretty_time(raw_time_str):
         date_obj = dt.strptime(raw_time_str, '%Y-%m-%dT%H:%M:%S.%fZ')
     converted = dt.strftime(date_obj, '%Y-%m-%d_%H%M')
     return converted
+
+
+def get_increment_integer():
+    get_increment_integer.counter += 1
+    return get_increment_integer.counter
+
+
+get_increment_integer.counter = 0
