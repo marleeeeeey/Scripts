@@ -26,9 +26,3 @@ optional arguments:
 
 1. `python -i stravabot.py` - use this command to make StravaBot class available for experiments in python console.
 
-2. see example in `strart_stravabot.py`. Create a `secrets.py` file with variables:
-
-```
- username = 'your_username'
- password = 'your_password'
-```
