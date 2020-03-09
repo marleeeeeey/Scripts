@@ -1,0 +1,1 @@
+python gpxcleaner.py -i.\..\..\..\..\*.gpx -r
