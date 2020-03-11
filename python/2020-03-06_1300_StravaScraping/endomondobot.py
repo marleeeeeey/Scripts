@@ -2,7 +2,10 @@ import sys
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.action_chains import ActionChains
 from time import sleep
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as ExpectedConditions
 
 
 class EndomondoBot():
@@ -51,30 +54,11 @@ class EndomondoBot():
 
     def download_tracks(self, skip_counter=0):
         self.driver.get('https://www.endomondo.com/users/2944579/history')
-        print('Will skip', skip_counter, 'trainings')
-        while True:
-            for i in range(1, 21):
-                if skip_counter > 0:
-                    skip_counter -= 1
-                else:
-                    sleep(2)
-                    train_xpath = '/html/body/div[7]/ui-view/div/div/div/div[2]/div[1]/ul[2]/li[' + str(i) + ']/ng-include/a/div[2]/eo-workout-cell/div/div/div[2]/div[2]'
-                    try:
-                        train_btn = self.driver.find_element_by_xpath(train_xpath)
-                    except NoSuchElementException:
-                        print('Message: End element in the track list')
-                        input("Press Enter to continue script...")
-                        return
-                    # Open the link in a new tab by sending key strokes on the element
-                    train_btn.send_keys(Keys.CONTROL + Keys.SHIFT + Keys.RETURN)
-                    self.driver.switch_to.window(self.driver.window_handles[1])
-                    self._download_gpx()
-                    # Close current tab
-                    self.driver.close()
-                    self.driver.switch_to.window(self.driver.window_handles[0])
+        sleep(5)
+        train_xpath = '/html/body/div[7]/ui-view/div/div/div/div[2]/div[1]/ul[2]/li[1]/ng-include/div/div'
+        train_btn = self.driver.find_element_by_xpath(train_xpath)
+        train_btn.send_keys(Keys.CONTROL + Keys.SHIFT + Keys.RETURN)
         pass
 
     def _download_gpx(self):
-        print("Process train")
-        input("Press Enter to continue script...")
         pass
