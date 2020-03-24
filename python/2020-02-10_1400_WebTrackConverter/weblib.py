@@ -50,7 +50,7 @@ class WebTrackConverter:
         center = GpxPoint()
         center.x = str_center_and_zoom[0]
         center.y = str_center_and_zoom[1]
-        zoom = float(str_center_and_zoom[2].replace('z', ''))
+        zoom = float(str_center_and_zoom[2].replace('z', '').replace('m', ''))
         gpx_points = []
         for str_point in str_points:
             try:
