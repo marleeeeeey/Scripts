@@ -1,5 +1,6 @@
 from urllib.parse import urlparse
-
+from geopy.geocoders import Nominatim
+import geopy
 
 class GpxPoint:
     def __init__(self):
@@ -24,6 +25,22 @@ class GpxPoint:
         return self._print_str()
 
 
+class Coordinator:
+    def __init__(self, user_location_str):
+        self.geolocator = Nominatim(user_agent="specify_your_app_name_here")
+        user_location = self.geolocator.geocode(user_location_str)
+        self.user_location_point = user_location.point
+        if self.user_location_point == None:
+            print("Error: User location doesn't found for", user_location_str)
+
+    def get_coordinate_by_address(self, address):
+        location = self.geolocator.geocode(address, user_location = self.user_location_point)
+        gpx_point = GpxPoint()
+        gpx_point.x = location.latitude
+        gpx_point.y = location.longitude
+        return gpx_point
+
+
 class WebTrackConverter:
     def __init__(self):
         self.points = []
@@ -31,7 +48,7 @@ class WebTrackConverter:
         self.zoom = 0.0
 
     @staticmethod
-    def create_instance(url):
+    def create_instance_from_url(url):
         if "google" in url:
             return WebTrackConverter._url_parse_google(url)
         elif "graphhopper" in url:
@@ -40,6 +57,18 @@ class WebTrackConverter:
             return WebTrackConverter._url_parse_yandex(url)
         else:
             raise Exception("Unknown route provider(url)")
+
+    @staticmethod
+    def create_instance_from_list_of_addresses(user_location_str, addresses):
+        coordinator = Coordinator(user_location_str)
+        track_converter = WebTrackConverter()
+        for address in addresses:
+            try:
+                new_point = coordinator.get_coordinate_by_address(address)
+                track_converter.points.append(new_point)
+            except:
+                print("Exception: can't find address:", address)
+        return track_converter
 
     @staticmethod
     def _url_parse_google(url):
@@ -105,19 +134,10 @@ class WebTrackConverter:
     def export_url_graphhopper(self):
         url = "https://graphhopper.com/maps/?"
         for point in self.points:
-            url += "point=" + str(point.x) + "%2C" + str(point.y) + "&";
+            url += "point=" + str(point.x) + "%2C" + str(point.y) + "&"
         url += "locale=en-US&vehicle=bike&weighting=fastest&elevation=true&turn_costs=false&use_miles=false&layer=OpenStreetMap"
         return url
 
     def __str__(self):
         return "(points_number=" + str(len(self.points)) + "; center=" + str(self.center) + "; zoom=" + str(
             self.zoom) + ")"
-
-class WebPointSearchEngine:
-    def __init__(self):
-        # TODO
-        pass
-
-    def find_by_name(self, name):
-        # TODO
-        pass
