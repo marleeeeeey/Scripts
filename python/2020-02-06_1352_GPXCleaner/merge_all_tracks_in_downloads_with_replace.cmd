@@ -1,0 +1,1 @@
+python gpxmerge.py -i.\..\..\..\..\*.gpx
