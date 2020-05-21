@@ -31,9 +31,9 @@ def copy_track(src_root, dest_root, merge_tracks=False, ignore_time=False, ignor
     if merge_tracks:
         one_trk = ET.SubElement(dest_root, 'trk')
         for trk in trks:
-            one_trkseg = ET.SubElement(one_trk, 'trkseg')
             for trkseg in trk.findall(wrap_default_namespace('trkseg')):
-                copy_trkseg(trkseg, one_trkseg, ignore_time, ignore_elevation)
+                new_trkseg = ET.SubElement(one_trk, 'trkseg')
+                copy_trkseg(trkseg, new_trkseg, ignore_time, ignore_elevation)
     else:
         for trk in trks:
             dest_trk = ET.SubElement(dest_root, 'trk')
@@ -140,6 +140,15 @@ def split_gpx(gpx, output_dir):
         file_name = output_dir + str(index) + '_' + track_name + extension
         write_gpxtree(new_tree, file_name)
         index += 1
+
+
+def get_track_count(gpx_file_name):
+    tree = ET.parse(gpx_file_name)
+    root = tree.getroot()
+    counter = 0
+    for trk in root.findall(wrap_default_namespace('trk')):
+        counter += 1
+    return counter
 
 
 def remove_special_symbols(track_name):
