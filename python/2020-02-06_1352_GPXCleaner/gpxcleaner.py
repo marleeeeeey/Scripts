@@ -16,6 +16,7 @@ def main():
     parser.add_argument("-r", "--replace_original", action='store_true')
     parser.add_argument("-w", "--ignore_wpt", action='store_true')
     parser.add_argument("-m", "--merge_tracks", action='store_true')
+    parser.add_argument("-n", "--auto_rename", action='store_true')
     args = parser.parse_args()
 
     gpx_files = utils.get_file_list(args.input_glob_mask)
@@ -33,6 +34,8 @@ def main():
         try:
             gpxlib.gpx_cleaner(src_gpx, export_gpx, args.merge_tracks, args.ignore_wpt,
                                args.ignore_metadata, args.ignore_time, args.ignore_elevation)
+            if args.auto_rename:
+                gpxlib.gpx_auto_rename(export_gpx)
         except:
             print("Can't parse file: ", base_name)
 

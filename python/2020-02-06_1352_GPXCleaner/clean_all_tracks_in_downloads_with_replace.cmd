@@ -1,1 +1,2 @@
-python gpxcleaner.py -i.\..\..\..\..\*.gpx -r
+python gpxcleaner.py -i.\..\..\..\..\*.gpx --replace_original --ignore_metadata --auto_rename -m
+set /p DUMMY=Hit ENTER to continue...

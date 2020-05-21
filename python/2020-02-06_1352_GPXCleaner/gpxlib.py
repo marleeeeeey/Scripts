@@ -93,6 +93,21 @@ def gpx_cleaner(src, dest, merge_tracks=False, ignore_wpt=False, ignore_metadata
     write_gpxtree(new_tree, dest)
 
 
+def gpx_auto_rename(gpx_file_name):
+    track_count = get_track_count(gpx_file_name)
+    if track_count == 1:
+        tree = ET.parse(gpx_file_name)
+        root = tree.getroot()
+        for trk in root.findall(wrap_default_namespace('trk')):
+            trk_name_obj = trk.find(wrap_default_namespace('name'))
+            if trk_name_obj is None:
+                trk_name_obj = ET.SubElement(trk, 'name')
+            base_name = ntpath.basename(gpx_file_name)
+            print("Track name updated to", base_name)
+            trk_name_obj.text = base_name
+        write_gpxtree(tree, gpx_file_name)
+
+
 def get_merge_gpx_tree(gpx_files, merge_tracks=False, ignore_wpt=False):
     main_tree = ET.parse(gpx_files[0])
     main_root = main_tree.getroot()
