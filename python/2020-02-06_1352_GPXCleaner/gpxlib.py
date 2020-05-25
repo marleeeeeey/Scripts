@@ -30,6 +30,8 @@ def copy_track(src_root, dest_root, merge_tracks=False, ignore_time=False, ignor
 
     if merge_tracks:
         one_trk = ET.SubElement(dest_root, 'trk')
+        dest_trk_name = ET.SubElement(one_trk, 'name')
+        dest_trk_name.text = ""
         for trk in trks:
             for trkseg in trk.findall(wrap_default_namespace('trkseg')):
                 new_trkseg = ET.SubElement(one_trk, 'trkseg')
@@ -70,8 +72,8 @@ def copy_wpt(src_root, dest_root):
     for wpt in src_root.findall(wrap_default_namespace('wpt')):
         new_wpt = ET.SubElement(dest_root, 'wpt', wpt.attrib)
         for child in wpt:
-            if child.tag == wrap_default_namespace('name') or child.tag == wrap_default_namespace('time'):
-                new_wpt.append(child)
+            if child.tag == wrap_default_namespace('name'): # or child.tag == wrap_default_namespace('time')
+                new_wpt.append(child)                       # do not copy time for wpt
 
 
 def write_gpxtree(tree, dest):
