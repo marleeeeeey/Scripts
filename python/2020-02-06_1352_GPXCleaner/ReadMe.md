@@ -23,18 +23,28 @@ optional arguments:
 
 ## gpxmerge
 
-merge several gpx files into one
+merge several gpx files into one. 
 
 ```
-usage: gpxmerge.py [-h] -i INPUT_GLOB_MASK [-o OUTPUT_DIR] [-w] [-m]
+usage: gpxmerge.py [-h] [-o OUTPUT_DIR] [-w] [-m] [files [files ...]]
+
+positional arguments:
+  files
 
 optional arguments:
   -h, --help            show this help message and exit
-  -i INPUT_GLOB_MASK, --input_glob_mask INPUT_GLOB_MASK
   -o OUTPUT_DIR, --output_dir OUTPUT_DIR
   -w, --ignore_wpt
   -m, --merge_tracks
 ```
+
+It can read list of files from stdin. So it can be combine with other tools with pipes:
+
+```
+find . -maxdepth 1 -type f -name "*.gpx" | gpxmerge
+```
+
+It was tested on Windows with Cygwin.
 
 ## gpxsplit
 
