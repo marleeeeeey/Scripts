@@ -2,16 +2,18 @@
 
 These utilities provide easy way to work with raw gpx files. I create them because GUI applications to work with tracks sometimes remove useful information (for example, waypoints) from tracks.
 
-## gpxcleaner
+## gpxclean
 
 clean GPX track from noise information. Also can delete timestamps, elevation. Option `--merge_tracks` allows merge all tracks(there can be several tracks in one gpx file) to one track(`trk`, not into gpx file) with several segments.
 
 ```
-usage: gpxcleaner.py [-h] -i INPUT_GLOB_MASK [-o OUTPUT_DIR] [-t] [-e] [-d] [-r] [-w] [-m]
+usage: gpxclean.py [-h] [-o OUTPUT_DIR] [-t] [-e] [-d] [-r] [-w] [-m] [-n] [gpx_files [gpx_files ...]]
+
+positional arguments:
+  gpx_files
 
 optional arguments:
   -h, --help            show this help message and exit
-  -i INPUT_GLOB_MASK, --input_glob_mask INPUT_GLOB_MASK
   -o OUTPUT_DIR, --output_dir OUTPUT_DIR
   -t, --ignore_time
   -e, --ignore_elevation
@@ -19,6 +21,7 @@ optional arguments:
   -r, --replace_original
   -w, --ignore_wpt
   -m, --merge_tracks
+  -n, --auto_rename
 ```
 
 ## gpxmerge
@@ -26,10 +29,10 @@ optional arguments:
 merge several gpx files into one. 
 
 ```
-usage: gpxmerge.py [-h] [-o OUTPUT_DIR] [-w] [-m] [files [files ...]]
+usage: gpxmerge.py [-h] [-o OUTPUT_DIR] [-w] [-m] [gpx_files [gpx_files ...]]
 
 positional arguments:
-  files
+  gpx_files
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -51,33 +54,44 @@ It was tested on Windows with Cygwin.
 Split one GPX files to several. One track - one new file.	
 
 ```
-usage: gpxsplit.py [-h] [-i INPUT_GLOB_MASK] [-o OUTPUT_DIR]
+usage: gpxsplit.py [-h] [-o OUTPUT_DIR] [gpx_files [gpx_files ...]]
+
+positional arguments:
+  gpx_files
 
 optional arguments:
   -h, --help            show this help message and exit
-  -i INPUT_GLOB_MASK, --input_glob_mask INPUT_GLOB_MASK
   -o OUTPUT_DIR, --output_dir OUTPUT_DIR
 ```
 
-## gpxprettyname
+## gpxextractname
 
 Generate new file name from first point date and shortest metadata or track name.
 
 ```
-usage: gpxprettyname.py [-h] -i INPUT_GLOB_MASK [-o OUTPUT_DIR]
+usage: gpxextractname.py [-h] [-o OUTPUT_DIR] [-t] [gpx_files [gpx_files ...]]
+
+positional arguments:
+  gpx_files
 
 optional arguments:
   -h, --help            show this help message and exit
-  -i INPUT_GLOB_MASK, --input_glob_mask INPUT_GLOB_MASK
   -o OUTPUT_DIR, --output_dir OUTPUT_DIR
+  -t, --retrieve_time
 ```
 
 ## Examples
 
+Find all tracks in current folder and merge them into one in default output folder (./output)
+
 ```
-python gpxcleaner.py -i"C:\**\*.gpx"
-python gpxcleaner.py -iFile.gpx --ignore_time --ignore_elevation
-python gpxmerge.py -iC:\raw\*.gpx --merge_tracks
+find . -maxdepth 1 -type f -name "*.gpx" | gpxmerge
+```
+
+Find all tracks in current folder and clean(*update name, pretty print, remove noise*) them with replacing:
+
+```
+find . -maxdepth 1 -type f -name "*.gpx" | gpxclean -r
 ```
 
 ## Prerequisites

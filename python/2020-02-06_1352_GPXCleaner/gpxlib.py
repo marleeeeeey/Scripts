@@ -183,17 +183,23 @@ def get_track_name(trk):
         return None
 
 
-def get_pretty_name_from_gpx(gpx_file_name):
+def get_pretty_name_from_gpx(gpx_file_name, is_retrieve_time_from_point):
     tree = ET.parse(gpx_file_name)
     root = tree.getroot()
     name_candidates = []
     time = get_time_of_first_point(gpx_file_name)
     for metadata in root.findall(wrap_default_namespace('metadata')):
         for metadata_name in metadata.findall(wrap_default_namespace('name')):
-            name_candidates.append(time + ' ' + metadata_name.text)
+            if is_retrieve_time_from_point:
+                name_candidates.append(time + ' ' + metadata_name.text)
+            else:
+                name_candidates.append(metadata_name.text)
     for trk in root.findall(wrap_default_namespace('trk')):
         for track_name in trk.findall(wrap_default_namespace('name')):
-            name_candidates.append(time + ' ' + track_name.text)
+            if is_retrieve_time_from_point:
+                name_candidates.append(time + ' ' + track_name.text)
+            else:
+                name_candidates.append(track_name.text)
 
     converted_name_candidates = []
     min_length_index = -1

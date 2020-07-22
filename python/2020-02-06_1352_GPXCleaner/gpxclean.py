@@ -1,6 +1,7 @@
 import argparse
 import ntpath
 import os
+import sys
 
 import gpxlib
 import utils
@@ -8,7 +9,6 @@ import utils
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-i", "--input_glob_mask", type=str, required=True)
     parser.add_argument("-o", "--output_dir", type=str, default="./output/")
     parser.add_argument("-t", "--ignore_time", action='store_true')
     parser.add_argument("-e", "--ignore_elevation", action='store_true')
@@ -17,9 +17,16 @@ def main():
     parser.add_argument("-w", "--ignore_wpt", action='store_true')
     parser.add_argument("-m", "--merge_tracks", action='store_true')
     parser.add_argument("-n", "--auto_rename", action='store_true')
+    parser.add_argument('gpx_files', nargs='*')
     args = parser.parse_args()
 
-    gpx_files = utils.get_file_list(args.input_glob_mask)
+    gpx_files = []
+    if not args.gpx_files:
+        for line in sys.stdin:
+            line = line.strip('\n')
+            gpx_files.append(line)
+    else:
+        gpx_files = args.gpx_files
     print('file count:', len(gpx_files))
 
     output_dir = args.output_dir
