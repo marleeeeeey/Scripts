@@ -1,6 +1,0 @@
-trap 'echo Hello' INT
-while true
-do
-  echo -n "."
-  sleep 3
-done

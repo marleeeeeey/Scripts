@@ -1,6 +1,0 @@
-echo "Hello from expr"
-echo -n "Input x: "
-read x
-x=`expr $x + 1`
-echo "x=$x"
-exit 0

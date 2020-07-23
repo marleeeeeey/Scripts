@@ -1,3 +1,0 @@
-@echo off
-echo Start CCleaner ...
-call "c:\Program Files\CCleaner\CCleaner64.exe" /AUTO
