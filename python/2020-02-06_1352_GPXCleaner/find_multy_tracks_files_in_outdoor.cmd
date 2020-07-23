@@ -1,3 +1,0 @@
-python gpxstat.py -i.\..\..\..\..\_git\Outdoor\**\*.gpx -o.\..\..\..\..\gpxstat\
-set /p DUMMY=Hit ENTER to continue...
-
